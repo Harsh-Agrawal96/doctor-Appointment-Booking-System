@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- <link rel="stylesheet" href="authProfile.css"> -->
+</head>
+<body>
+    
+    <div class="contain">
+        <div class="inner_contain">
+            <div class="left_section"> 
+                <div class="diff_sec">
+                    <div>
+                        <p>info 1</p>
+                    </div>
+                    <div>
+                        <p>info 2</p>
+                    </div>
+                    <div>
+                        <p>info 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right_section">
+                <div class="diff_cont">
+                    <div class="content con1" >
+                        <div class="inner_cont">
+                        
+                            <form action="doctor/personal" method="post">
+                                <div>
+                                    <div>
+                                        <label for="">Name : </label>
+                                        <input type="text" placeholder="" name="name">
+                                    </div>
+                                    <div>
+                                        <label for="">Country : </label>
+                                        <input type="text"  placeholder="" name="country">
+                                    </div>
+                                    <div>
+                                        <label for="">State : </label>
+                                        <input type="text" placeholder="" name="state" >
+                                    </div>
+                                    <div>
+                                        <label for="">City : </label>
+                                        <input type="text"  placeholder="" name="city">
+                                    </div>
+                                    <div>
+                                        <label for="">address : </label>
+                                        <input type="text" placeholder="" name="address">
+                                    </div>
+                                    <div>
+                                        <label for="">Date of birth : </label>
+                                        <input type="data"  placeholder="" name="dob">
+                                    </div>
+                                </div>
+
+                                <button type="submit">submit</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="content con2" >
+                        <div class="inner_cont">
+
+                            <form action="/doctor/work" method="post">
+                                <div>
+                                    <div>
+                                        <label for="">work</label>
+                                        <input type="text" name="work" id="" placeholder="">
+                                    </div>
+                                    <div>
+                                        <label for="">about me</label>
+                                        <input type="text" name="about" id="" placeholder="">
+                                    </div>
+                                </div>
+
+                                <button type="submit">submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="content con3" >
+                        <div class="inner_cont">
+
+                            <form action="/doctor/profession" method="post">
+                                <div>
+                                    <div>
+                                        <label for="servicesInput">Add services:</label>
+                                        <input type="text" class="skillInput" name="service">
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="serviceslist" >
+                                    </div>
+                                    <div>
+                                        <label for="specializationInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="specialization" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="specializationlist">
+                                    </div>
+                                    <div>
+                                        <label for="awardInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="award" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="awardlist">
+                                    </div>
+                                    <div>
+                                        <label for="educationInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="education" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="educationlist">
+                                    </div>
+                                    <div>
+                                        <label for="membershipInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="membership" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="membershiplist">
+                                    </div>
+                                    <div>
+                                        <label for="experienceInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="experience" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="experiencelist">
+                                    </div>
+                                    <div>
+                                        <label for="registrationInput">Add specialization :</label>
+                                        <input type="text" class="skillInput" name="registration" >
+                                        <button type="button" class="skillButton">Add</button>
+        
+                                        <ul class="skilllist"></ul>
+
+                                        <input type="hidden" class="allskill" name="registrationlist" >
+                                    </div>
+                                </div>
+
+                                <button type="submit">submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

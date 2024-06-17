@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic register</title>
+    <link rel="stylesheet" href="/css/register/clinicRegisStyle.css">
+</head>
+<body>
+
+
+    <!-- nabvar -->
+
+    <div class="navbar">
+        <div class="inner">
+            <div class="left_head">
+                <div class="logo">
+                    <p>photo</p>
+                </div>
+                <div class="top_services">
+                    <div>
+                        <p>voice consultant</p>
+                    </div>
+                    <div>
+                        <p>lab tests</p>
+                    </div>
+                    <div>
+                        <p>sergeries</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-head">
+                <div class="features">
+                    <p>Book appointment</p>
+                </div>
+                <div class="status">
+                    <div>
+                        <p>Login</p>
+                    </div>
+                    <div>
+                        <p>Signup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content -->
+
+    <div>
+        <% if(locals.errors ) { %>
+            <% if( errors !== "" ) { %>
+                <% errors.forEach( ( iteams ) => { %>
+                    <div>
+                        <%= iteams  %>
+                    </div>
+                <% }) %>
+            <% } %>
+        <% } %>
+        </div>
+    
+    <div class="main">
+        <div class="contain">
+            <div class="forms">
+                <div class="formcon">
+                    <form method="POST" action="/clinic/register" >
+                        <label for="text">Doctor's name :</label>
+                        <br>
+                        <input type="text" name="doctorName" placeholder="enter doctor name" required>
+                        <br>
+                        <label for="text">Doctor's email :</label>
+                        <br>
+                        <input type="email" name="doctorEmail" placeholder="enter doctor email" required>
+                        <br>
+                        <label for="text">Clinic name :</label>
+                        <br>
+                        <input type="text" name="clinicName" placeholder="enter clinic name" required>
+                        <br>
+                        <label for="text">Clinic's email :</label>
+                        <br>
+                        <input type="email" name="clinicEmail" placeholder="enter clinic email" required>
+                        <br>
+                        <label for="text">Password :</label>
+                        <br>
+                        <input type="text" name="password" placeholder="enter Password" required>
+                        <br>
+                        <button> Signup </button>
+                    </form>
+                </div>
+                <div class="notsave">
+                    already have a account? <a href="">Login</a>
+                </div>
+                <div class="condition">
+                    By clicking to Signup, you are agree to our <a href="">terms and conditions </a> and accept all <a href="">cookies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="main_content">
+            <div class="left_sec">
+                <div class="logo2">
+
+                </div>
+            </div>
+            <div class="right_sec">
+                <div class="links">
+                    <div class="link_head">
+                        <p>for brand</p>
+                    </div>
+                    <div class="final_link">
+                        <div>
+                            <a href="">link1</a>
+                        </div>
+                        <div>
+                            <a href="">link2</a>
+                        </div>
+                        <div>
+                            <a href="">link3</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="links">
+                    <div class="link_head">
+                        <p>for hospital</p>
+                    </div>
+                    <div class="final_link">
+                        <div>
+                            <a href="">link1</a>
+                        </div>
+                        <div>
+                            <a href="">link2</a>
+                        </div>
+                        <div>
+                            <a href="">link3</a>
+                        </div>
+                        <div>
+                            <a href="">link4</a>
+                        </div>
+                        <div>
+                            <a href="">link5</a>
+                        </div>
+                        <div>
+                            <a href="">link6</a>
+                        </div>
+                        <div>
+                            <a href="">link7</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="links">
+                    <div class="link_head">
+                        <p>for clinic</p>
+                    </div>
+                    <div class="final_link">
+                        <div>
+                            <a href="">link1</a>
+                        </div>
+                        <div>
+                            <a href="">link2</a>
+                        </div>
+                        <div>
+                            <a href="">link3</a>
+                        </div>
+                        <div>
+                            <a href="">link4</a>
+                        </div>
+                        <div>
+                            <a href="">link5</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="links">
+                    <div class="link_head">
+                        <p>for patients</p>
+                    </div>
+                    <div class="final_link">
+                        <div>
+                            <a href="">link1</a>
+                        </div>
+                        <div>
+                            <a href="">link2</a>
+                        </div>
+                        <div>
+                            <a href="">link3</a>
+                        </div>
+                        <div>
+                            <a href="">link4</a>
+                        </div>
+                        <div>
+                            <a href="">link5</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

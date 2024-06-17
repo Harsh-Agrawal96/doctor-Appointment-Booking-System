@@ -6,17 +6,30 @@
     <title>Register</title>
 </head>
 <body>
+
+    <div>
+    <% if(locals.errors ) { %>
+        <% if( errors !== "" ) { %>
+            <% errors.forEach( ( iteams ) => { %>
+                <div>
+                    <%= iteams  %>
+                </div>
+            <% }) %>
+        <% } %>
+    <% } %>
+    </div>
     
     <div>
 
-        <form method="POST" action="/create-new-User">
-            <input type="text" name="firstname" placeholder="firstname....">
+        <!-- we made two post routes for register are "/create-new-User" and "/register" -->
+        <form method="POST" action="/register" >
+            <input type="text" name="firstname" placeholder="firstname...." value = "" >
             <br>
-            <input type="text" name="lastname" placeholder="lastname....">
+            <input type="text" name="lastname" placeholder="lastname...." value="">
             <br>
-            <input type="text" name="email" placeholder="email....">
+            <input type="text" name="email" placeholder="email...." value="">
             <br>
-            <input type="text" name="address" placeholder="address....">
+            <input type="text" name="address" placeholder="address...." value="">
             <br>
             <input type="text" name="password" placeholder="password....">
             <br>

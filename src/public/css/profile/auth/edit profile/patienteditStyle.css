@@ -1,0 +1,262 @@
+
+:root{
+    --minInputSize: 300px;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+/* nabvar */
+
+.navbar,footer{
+    width: 100%;
+    height: max-content;
+    padding: 1.3em 0.8em;
+}
+.inner{
+    width: 100%;
+    height: max-content;
+    padding: 0.4em 1.2em;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+}
+@media screen and ( min-width : 1400px ) {
+    .inner{
+        width: 1400px;
+    }
+}
+
+.left_head,.right-head{
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    height: max-content;
+    width: max-content;
+    align-items: center;
+}
+.top_services,.features,.status{
+    display: flex;
+    gap: 0.7em;
+    justify-content: center;
+    align-items: center;
+}
+
+.top_services  p,.status  p{
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 0.6em 0.4em;
+}
+
+.features p{
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+
+/* content */
+
+.contain{
+    width: 100%;
+    margin: auto;
+    padding: 1em;
+    height: max-content;
+}
+@media screen and (min-width : 1200px ) {
+    .contain{
+        width: 1200px;
+    }
+}
+
+.inner_contain{
+    width: 100%;
+    padding: 1em 0.7em;
+    height: max-content;
+    display: flex;
+    gap: 1em;
+}
+.left_section{
+    width: 20%;
+    padding: 1em 0.7em;
+    height: max-content;
+}
+.diff_sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5em;
+    width: 100%;
+    height: max-content;
+}
+.diff_sec > div{
+    padding: 0.5em 0.4em;
+    height: max-content;
+    width: 100%;
+    /* border-radius: 10px;
+    border : 2px solid black; */
+}
+.diff_sec p{
+    font-size: 1.2em;
+    font-weight: 600;
+    height: max-content;
+    width: max-content;
+    word-wrap: break-word;
+}
+
+.right_section{
+    width: 80%;
+    padding : 1em 0.6em;
+    height: max-content;
+}
+.diff_cont{
+    width: 100%;
+    height: max-content;
+    padding: 0.5em 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 0px;
+}
+.content{
+    width: 100%;
+    height: max-content;
+    padding: 0.5em 0.3em;
+}
+form{
+    width: 100%;
+    height: max-content;
+    padding: 0.3em 0.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formInner{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+    align-items: start;
+    gap: 1em;
+}
+
+/* css for personal input */
+.user_input1s{
+    width: 50%;
+    margin: 0.5em 1em;
+    /* background-color: grey; */
+}
+.user_input1s label{
+    font-size: 1.3em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+.user_input1s input{
+    padding: 0.5em 0.6em;
+    font-size: 0.9em;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 90%;
+    color: rgb(49, 49, 49);
+}
+/* end */
+
+form > button{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 8px 18px;
+    font-size: 1.1em;
+    font-weight: 500;
+    width: max-content;
+    margin: auto;
+    margin-top: 2em;
+}
+
+
+/* showing differnt sections on click */
+
+.content{
+    display: none;
+}
+.con1{
+    display: unset;
+}
+.con2{
+    display: unset;
+}
+.con3{
+    display: unset;
+}
+
+
+
+/* footer */
+
+.main_content{
+    width: 100%;
+    height: max-content;
+    padding: 0.4em 1.2em;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+@media screen and ( min-width : 1400px ) {
+    .main_content{
+        width: 1400px;
+    }
+}
+.left_sec{
+    padding: 0.7em 0.5em;
+    height: max-content;
+    width: 30%;
+
+}
+.right_sec{
+    margin: 0.6em 1.1em;
+    display: flex;
+    gap: 0.3em;
+    height: max-content;
+    width: 70%;
+    justify-content:space-evenly;
+    align-items: start;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em 0.4em;
+    margin: 0.5em 0.8em;
+    justify-content: center;
+    width: max-content;
+}
+.link_head{
+    padding: 0.5em auto;
+    font-weight: 600;
+    font-size: 1.2em;
+    height: max-content;
+}
+.final_link{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.4em auto;
+    font-size: 1.1em;
+    height: max-content;
+    width: max-content;
+}
+.final_link div{
+    padding: 0.2em auto;
+    height: max-content;
+    width: max-content;
+}

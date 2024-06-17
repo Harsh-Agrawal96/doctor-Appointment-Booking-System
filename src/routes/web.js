@@ -1,20 +1,26 @@
 import express from "express";
 import * as pages from "../controller/homepageController.js";
+import * as validate from "../validation/userValidate.js";
+import * as checkauth from "../controller/checklogin.js";
+import * as show from "../controller/profile/showProfileController.js"
 
-// init all web routes here
+
 
 let routes = express.Router();
 
-let initAllWebRoutes = (app) => {
+let initAllWebRoutes = (app) => { 
 
-    routes.get("/", pages.getHomepage);
+    // routes.get("/register",checkauth.checkLoggedOut, pages.getRegisterPage);
+    // routes.get("/login", pages.getLoginPage);
 
-    routes.get("/register",pages.getRegisterPage);
-    routes.get("/login",pages.getLoginPage);
+    // final routes
 
-    routes.get("/new-user",pages.getnewuserPage);
-    routes.post("/create-new-User",pages.createNewUser);
+    // routes.get("/", checkauth.checkLoggedIn,pages.getHomepage);
 
+    // for check
+    routes.get("/check", show.check);
+
+    
     return app.use("/",routes);
 };
 

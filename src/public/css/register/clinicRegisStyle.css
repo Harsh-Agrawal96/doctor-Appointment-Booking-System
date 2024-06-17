@@ -1,0 +1,239 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* nabvar */
+
+.navbar,footer{
+    width: 100%;
+    height: max-content;
+    padding: 1.3em 0.8em;
+}
+.inner{
+    width: 100%;
+    height: max-content;
+    padding: 0.4em 1.2em;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+}
+@media screen and ( min-width : 1400px ) {
+    .inner{
+        width: 1400px;
+    }
+}
+
+.left_head,.right-head{
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    height: max-content;
+    width: max-content;
+    align-items: center;
+}
+.top_services,.features,.status{
+    display: flex;
+    gap: 0.7em;
+    justify-content: center;
+    align-items: center;
+}
+
+.top_services  p,.status  p{
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 0.6em 0.4em;
+}
+
+.features p{
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+/* content */
+
+.main{
+    width: 100%;
+    margin: auto;
+    margin-top: 5em;
+}
+@media screen and (min-width : 550px ) {
+    .main{
+        width: 550px;
+    }
+}
+
+.contain{
+    width: 100%;
+    height: max-content;
+    padding: 2em 3em;
+    align-items: center;
+}
+
+.forms{
+    width: 85%;
+    margin: auto;
+}
+
+.formcon{
+    font-size: 1.1em;
+    background-color: rgb(202, 200, 200);
+    padding: 1em;
+}
+
+input{
+    padding : 0.5em;
+    margin-bottom: 1.7em;
+    margin-top: 0.2em;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-size: 0.9em;
+    width: 100%;
+}
+button{
+    width: 100%;
+    font-size: 1em;
+    padding: 4px 15px;
+    border-radius: 3px;
+    border: 1px solid black;
+    margin-top: 1.5em;
+    margin-bottom: 0.3em;
+}
+
+.notsave{
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 0.7em;
+}
+.condition{
+    text-align: center;
+    font-size: 0.9em;
+}
+
+ @media screen and (max-width : 450px ) and ( min-width : 375px ) {
+    .forms{
+        width: 70%;
+    }
+    .formcon{
+        font-size: 0.7em;
+    }
+    .input{
+        font-size: 0.6em;
+        margin-bottom: 1em;
+    }
+    .notsave{
+        font-size: 1em;
+        margin-bottom: 0.6em;
+    }
+    .condition{
+        font-size: 0.7em;
+    }
+}
+@media screen and (max-width : 375px ) and ( min-width : 285px ) {
+    .forms{
+        width: 85%;
+    }
+    .formcon{
+        font-size: 0.7em;
+    }
+    .input{
+        font-size: 0.6em;
+        margin-bottom: 1em;
+    }
+    .notsave{
+        font-size: 1em;
+        margin-bottom: 0.6em;
+    }
+    .condition{
+        font-size: 0.7em;
+    }
+}
+@media screen and (max-width : 285px )  {
+    .forms{
+        width: 95%;
+    }
+    .formcon{
+        font-size: 0.5em;
+    }
+    .input{
+        font-size: 0.4em;
+        margin-bottom: 0.8em;
+    }
+    .notsave{
+        font-size: 0.8em;
+        margin-bottom: 0.5em;
+    }
+    .condition{
+        font-size: 0.6em;
+    }
+}
+
+
+
+
+/* footer */
+
+.main_content{
+    width: 100%;
+    height: max-content;
+    padding: 0.4em 1.2em;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+@media screen and ( min-width : 1400px ) {
+    .main_content{
+        width: 1400px;
+    }
+}
+.left_sec{
+    padding: 0.7em 0.5em;
+    height: max-content;
+    width: 30%;
+
+}
+.right_sec{
+    margin: 0.6em 1.1em;
+    display: flex;
+    gap: 0.3em;
+    height: max-content;
+    width: 70%;
+    justify-content:space-evenly;
+    align-items: start;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em 0.4em;
+    margin: 0.5em 0.8em;
+    justify-content: center;
+    width: max-content;
+}
+.link_head{
+    padding: 0.5em auto;
+    font-weight: 600;
+    font-size: 1.2em;
+    height: max-content;
+}
+.final_link{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.4em auto;
+    font-size: 1.1em;
+    height: max-content;
+    width: max-content;
+}
+.final_link div{
+    padding: 0.2em auto;
+    height: max-content;
+    width: max-content;
+}
