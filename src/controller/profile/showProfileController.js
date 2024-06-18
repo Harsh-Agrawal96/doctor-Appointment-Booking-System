@@ -1,3 +1,4 @@
+
 import * as getUsers from "../../services/profile/showProfileServices.js";
 
 let unauthPatientProfile = async ( req,res,id ) => {
@@ -74,7 +75,7 @@ let unauthClinicProfile = async ( req,res,id ) => {
 
 let check = async (req,res) => {
 
-    res.render("profile/auth/editProfile/doctorEdit.ejs");
+    res.render("profile/auth/editProfile/patientEdit.ejs");
 }
 
 

@@ -106,8 +106,7 @@
     font-size: 1.2em;
     font-weight: 600;
     height: max-content;
-    width: max-content;
-    word-wrap: break-word;
+    word-wrap:break-word;
 }
 
 .right_section{
@@ -193,6 +192,102 @@ form > button{
     display: unset;
 }
 .con3{
+    display: unset;
+}
+.con4{
+    display: unset;
+}
+.con5{
+    display: unset;
+}
+
+
+/* css for different booking sections */
+
+.main_feature {
+    padding : 0.1em 0.1em;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.2em;
+    height: max-content;
+}
+.bookhead {
+    padding: 0.2em 0.1em;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.bookhead > .multi_head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 1px;
+    height: max-content;
+}
+.multi_head > p{
+    word-wrap: break-word;
+    height: max-content;
+    text-align: center;
+    font-size: 1em;
+}
+.bookdata {
+    height: max-content;
+    width: 100%;
+    padding: 0.1em;
+}
+.multi_data {
+    height: max-content;
+    width: 100%;
+}
+
+.multi_data{
+    display: none;
+}
+.data0{
+    display: unset;
+}
+.data1{
+    display: unset;
+}
+.data2{
+    display: unset;
+}
+.data3{
+    display: unset;
+}
+.data4{
+    display: unset;
+}
+.data5{
+    display: unset;
+}
+.data6{
+    display: unset;
+}
+.data7{
+    display: unset;
+}
+.data8{
+    display: unset;
+}
+.data9{
+    display: unset;
+}
+.data10{
+    display: unset;
+}
+.data11{
+    display: unset;
+}
+.data12{
+    display: unset;
+}
+.data13{
     display: unset;
 }
 

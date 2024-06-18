@@ -1,7 +1,7 @@
 
 import express from "express";
 import * as profilePages from "../controller/profile/showProfileController.js";
-import * as editData from "../controller/profile/changeProfileController.js"
+import * as editData from "../controller/profile/changeProfileController.js";
 
 
 let routes = express.Router();
