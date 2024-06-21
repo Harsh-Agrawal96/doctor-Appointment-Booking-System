@@ -1,5 +1,6 @@
 
 import express from "express";
+import * as checkAuth from "../controller/checklogin.js";
 
 
 let routes = express.Router();
@@ -8,12 +9,16 @@ let routes = express.Router();
 let initBookingRoutes = (app) => {
 
 
-    routes.post( "/startbook", );
-    routes.post( "/for/progress", );
-    routes.post( "/for/comformed", );
-    routes.post( "/for/denied", );
-    routes.post( "/comformed", );
+    routes.post( "/start/sergery", checkAuth.checkLoggedIn,  );// no type
+    routes.post( "/start/appoint", checkAuth.checkLoggedIn,  );
+
+
+    routes.post( "/for/progress", checkAuth.checkLoggedIn,  );
+    routes.post( "/for/comformed", checkAuth.checkLoggedIn,  );
+    routes.post( "/for/denied", checkAuth.checkLoggedIn,  );
+    routes.post( "/comformed", checkAuth.checkLoggedIn,  );
 
 
     return app.use("/", routes);
+
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor-Profile</title>
+    <link rel="stylesheet" href="/css/profile/auth/show profile/doctorStyle.css">
+</head>
+<body>
+
+    
+    <div class="main">
+        <div class="profile_info">
+            <div class="left_info">
+                <div class="data"> <!-- left part -->
+                    <div class="sec1">
+                        <!-- info with photo -->
+                        <div class="photo">
+                            photo
+                            <img src="" alt="">
+                        </div>
+                        <div class="info">
+                            <div>
+                                <p>
+                                    <%= data.fullName %>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= data.work %>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= data.reviewNumber %>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= data.about %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2">
+                        <!-- experience and skills -->
+                        <% let val = JSON.parse(data.Services) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w1w" >
+                            <div class="heading" >
+                                <p>Services</p>
+                            </div>
+                            <div class="show_data">
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.specializations) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w2w" >
+                            <div class="heading" >
+                                <p>Specialization</p>
+                            </div>
+                            <div class="show_data">
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.awards) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w3w" >
+                            <div class="heading" >
+                                <p>Awards</p>
+                            </div>
+                            <div class="show_data">
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.education) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w4w" >
+                            <div class="heading" >
+                                <p>Education</p>
+                            </div>
+                            <div class="show_data">
+                                
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.membership) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w5w" >
+                            <div class="heading" >
+                                <p>Membership</p>
+                            </div>
+                            <div class="show_data">
+                                
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.experience) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div class="work w6w" >
+                            <div class="heading" >
+                                <p>Experiences</p>
+                            </div>
+                            <div class="show_data">
+                                
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% val = JSON.parse(data.Registration) %>
+                        <% if( Object.keys(val).length > 0 ) { %>
+                        <div  class="work w7w" >
+                            <div class="heading" >
+                                <p>Registrations</p>
+                            </div>
+                            <div class="show_data">
+                                
+                                <% for (let key in val) { %>
+                                    <%  if (val.hasOwnProperty(key)) {   %>
+                                      <li>
+                                        <%= val[key] %>
+                                      </li>
+                                    <%  }  %>
+                                <%  }  %>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <div class="sec3">
+                        <div>
+                            <!-- section 1 reviews -->
+                        </div>
+                        <div>
+                            <!-- section 2 question and answer -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="right_info">
+                <div class="data">
+                    <div class="booking_part">
+                        <div class="above">
+                            <div>
+                                <p>Doctor Consultant</p>
+                            </div>
+                            <div>
+                                <p>Rs. 400</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <form action="">
+                                <input type="hidden" value="12" name="data" >
+                                <button>Call Now</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="booking_part">
+                        <div class="above">
+                            <div>
+                                <p>Doctor Appointment</p>
+                            </div>
+                            <div>
+                                <p>Rs. 400</p>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                        <div class="btn">
+                            <form action="/maincheck" method="post">
+                                <input type="hidden" value="12" name="data" readonly>
+                                <button>Book Appointment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jsdoctorprofile.js"></script>
+
+</body>
+</html>

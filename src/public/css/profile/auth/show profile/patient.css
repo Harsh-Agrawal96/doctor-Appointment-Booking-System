@@ -1,0 +1,121 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.main{
+    width: 100%;
+    margin: 2em auto;
+    padding: 0.5em 1em;
+    height: max-content;
+}
+@media screen and (min-width : 1200px ) {
+    .main{
+        width: 1200px;
+    }
+}
+
+.profile_info{
+    padding: 1em 0.5em;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: start;
+}
+
+.left_info{
+    width: 70%;
+    padding: 0.5em 0.4em;
+}
+.right_info{
+    width: 30%;
+    padding: 1em 0.5em;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    height: max-content;
+    padding: 1em 0.4em;
+    /* background-color: grey; */
+}
+
+/* left part of profile */
+
+.sec1{
+    display: flex;
+    gap: 1em;
+    padding: 0.8em 0.5em;
+    justify-content: center;
+    align-items: start;
+    height: max-content;
+    width: 100%;
+}
+.photo{
+    padding: 0.5em;
+    width: 20%;
+    height: max-content;
+}
+.info{
+    padding: 0.3em;
+    padding-left: 0.7em;
+    width: 80%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+.info > div{
+    height: max-content;
+    padding: 0.3em 0.1em;
+}
+.info > p{
+    height: max-content;
+    word-wrap: break-word;
+    font-size: 1em;
+}
+
+.sec2{
+    display: flex;
+    width: 100%;
+    gap: 0px;
+    flex-wrap: wrap;
+    padding: 0.5em;
+}
+.work{
+    flex-grow: 1;
+    flex-basis: 50%;
+    height: max-content;
+    padding: 1em;
+}
+.heading{
+    width: 100%;
+    padding: 0.1em;
+    height: max-content;
+}
+.heading > p{
+    font-size: 1.1em;
+    font-weight: 600;
+    height: max-content;
+    width: max-content;
+}
+.show_data{
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
+/* right part of profile */
+
+.call_section{
+
+}
+.book_section{
+
+}
+
+

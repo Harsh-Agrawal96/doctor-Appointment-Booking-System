@@ -1,6 +1,8 @@
 
-let forstart = ( ) => {
+let forstart = (req,res ) => {
 
+    // check the authenticated user is patient
+    
 
 };
 

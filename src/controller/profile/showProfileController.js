@@ -6,15 +6,18 @@ let unauthPatientProfile = async ( req,res,id ) => {
     try{
 
         const patinetId = req.params.id;
+        console.log(patinetId)
 
         let data = await getUsers.getPatientInfo(patinetId);
 
         if( data == false ){
-            res.redirect("/");
+            res.redirect("/")
         }
         else{
             // profile page
-            res.redirect();
+            res.render("profile/auth/showProfile/patient.ejs",{
+                data : data
+            });
         }
     }
     catch(err){
@@ -29,6 +32,7 @@ let unauthDoctorProfile = async ( req,res,id ) => {
     try{
 
         const doctorId = req.params.id;
+        console.log(doctorId)
 
         let data = await getUsers.getDoctorInfo(doctorId);
 
@@ -37,7 +41,10 @@ let unauthDoctorProfile = async ( req,res,id ) => {
         }
         else{
             // profile page
-            res.redirect();
+            console.log(data)
+            res.render("profile/auth/showProfile/doctor.ejs",{
+                data : data
+            });
         }
     }
     catch(err){

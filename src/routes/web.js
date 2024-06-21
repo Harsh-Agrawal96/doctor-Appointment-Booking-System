@@ -1,7 +1,6 @@
 import express from "express";
 import * as pages from "../controller/homepageController.js";
 import * as validate from "../validation/userValidate.js";
-import * as checkauth from "../controller/checklogin.js";
 import * as show from "../controller/profile/showProfileController.js"
 
 

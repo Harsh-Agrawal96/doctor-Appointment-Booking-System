@@ -2,6 +2,7 @@
 import express from "express";
 import * as profilePages from "../controller/profile/showProfileController.js";
 import * as editData from "../controller/profile/changeProfileController.js";
+import * as checkAuth from "../controller/checklogin.js"
 
 
 let routes = express.Router();
@@ -16,9 +17,13 @@ let initProfileRoutes = (app) => {
     // auth
 
     // not done yet
-    routes.get( "/user/edit/", );
-    routes.get( "/doctor/edit/", );
-    routes.get( "/clinic/edit/", );
+    routes.get( "/user/edit/", checkAuth.checkLoggedIn );
+    routes.get( "/doctor/edit/",checkAuth.checkLoggedIn );
+    routes.get( "/clinic/edit/",checkAuth.checkLoggedIn );
+
+    // routes.post( "/maincheck", (req,res) => {
+    //     console.log(req.body);
+    // })
 
     // post for update profile
 

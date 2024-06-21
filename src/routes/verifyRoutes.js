@@ -1,6 +1,7 @@
 
 import express from "express";
 import * as verifyPages from "../controller/login and register/getController.js";
+import * as checkAuth from "../controller/checklogin.js";
 import * as verifyPost from "../controller/login and register/verifycontroller.js";
 import * as validate from "../validation/userValidate.js";
 import { passportOfUsers } from "../controller/passport/loginPassport.js";
@@ -16,21 +17,21 @@ let initAllVerifyRoutes = (app) => {
 
     routes.get("/", verifyPages.getHOMepage)
 
-    routes.get( "/login", verifyPages.getLoginPage );
-    routes.get( "/clinic/login", verifyPages.getclinicLoginPage );
-    routes.get( "/register", verifyPages.getRegisterPage );
-    routes.get( "/clinic/register", verifyPages.getclinicRegisPage );
+    routes.get( "/login", checkAuth.checkLoggedOut, verifyPages.getLoginPage );
+    routes.get( "/clinic/login",checkAuth.checkLoggedOut, verifyPages.getclinicLoginPage );
+    routes.get( "/register", checkAuth.checkLoggedOut, verifyPages.getRegisterPage );
+    routes.get( "/clinic/register", checkAuth.checkLoggedOut, verifyPages.getclinicRegisPage );
 
 
     routes.post( "/doctor/login", passport.authenticate("local" , {
         successRedirect : "/",
-        failureRedirect : "/clinic/login",
+        failureRedirect : "/login",
         successFlash : true,
         failureFlash : true
     })  );
     routes.post( "/user/login",passport.authenticate("local" , {
         successRedirect : "/",
-        failureRedirect : "/clinic/login",
+        failureRedirect : "/login",
         successFlash : true,
         failureFlash : true
     }) );
