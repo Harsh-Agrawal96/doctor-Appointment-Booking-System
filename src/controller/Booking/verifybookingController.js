@@ -1,32 +1,55 @@
 
 let forstart = (req,res ) => {
 
-    // check the authenticated user is patient
+    if( req.user.type != 1 ){
+        req.redirect("/");
+    }
+    next();
+
+};
+
+let forprogress = (req,res) => {
+
+    if( req.user.type == 1 ){
+        req.redirect("/");
+    }
+    next();
     
+};
+
+let forcomformed = ( req,res) => {
+
+    if( req.user.type == 1 ){
+        req.redirect("/");
+    }
+    next();
 
 };
 
-let forprogress = ( ) => {
+let fordenied = (req,res ) => {
 
+    if( req.user.type != 1 ){
+        req.redirect("/");
+    }
+    next();
+
+};
+
+let conform = (req,res ) => {
     
-};
+    if( req.user.type != 1 ){
+        req.redirect("/");
+    }
+    next();
 
-let forcomformed = ( ) => {
-
-
-};
-
-let fordenied = ( ) => {
-
-
-};
-
-let conform = ( ) => {
-    
 };
 
 export {
 
-
+    forstart,
+    forprogress,
+    forcomformed,
+    fordenied,
+    conform
 
 }

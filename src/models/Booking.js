@@ -48,15 +48,11 @@ export function Bookingfun( sequelize, DataTypes ) {
         type : DataTypes.INTEGER,
         default : false
       },
-      doctorId : {
+      consultantId : {
         type : DataTypes.INTEGER,
         default : false
       },
       consultanttype : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      consultantid : {
         type : DataTypes.INTEGER,
         allowNull : false
       },
@@ -64,13 +60,21 @@ export function Bookingfun( sequelize, DataTypes ) {
         type : DataTypes.STRING,
         allowNull : false
       },
-      patientId : {
-        type : DataTypes.INTEGER,
-        allowNull: false
-      },
-      preferredConsultant : {
+      consultantMeassage : {
         type : DataTypes.STRING,
         allowNull : false
+      },
+      patientMeassage : {
+        type : DataTypes.STRING,
+        allowNull : false
+      },
+      consultDate : {
+        type : DataTypes.DATE,
+        default : false
+      },
+      preferredConsultdate : {
+        type : DataTypes.DATE,
+        default : false
       }
 
 
