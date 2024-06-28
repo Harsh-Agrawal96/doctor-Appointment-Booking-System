@@ -4,53 +4,37 @@ export function Bookingfun( sequelize, DataTypes ) {
 
       // Model attributes are defined here
 
-      isnew : {
-        type : DataTypes.BOOLEAN,
-        default : false
-      },
-      isInProgress : {
-        type : DataTypes.BOOLEAN,
-        default : false
-      },
-      iswaitforConform : {
-        type : DataTypes.BOOLEAN,
-        default : false
-      },
-      isRejected : {
-        type : DataTypes.BOOLEAN,
-        default : false
-      },
-      isConformed : {
-        type : DataTypes.BOOLEAN,
-        default : false
+      status : {
+        type : DataTypes.INTEGER,
+        allowNull : false
       },
       dateofStart : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       dateofappointment : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       dateofComform : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       dateofDecline : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       datetoconform : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       patientId : {
         type : DataTypes.INTEGER,
-        default : false
+        allowNull : false
       },
       consultantId : {
         type : DataTypes.INTEGER,
-        default : false
+        allowNull : false
       },
       consultanttype : {
         type : DataTypes.INTEGER,
@@ -70,11 +54,11 @@ export function Bookingfun( sequelize, DataTypes ) {
       },
       consultDate : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       },
       preferredConsultdate : {
         type : DataTypes.DATE,
-        default : false
+        allowNull : false
       }
 
 

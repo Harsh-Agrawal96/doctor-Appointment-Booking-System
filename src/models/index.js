@@ -43,6 +43,10 @@ import { Clinicfun } from "./clinic.js";
 db.clinic = Clinicfun(sequelize,DataTypes);
 import { Bookingfun } from "./Booking.js";
 db.allbooking = Bookingfun(sequelize,DataTypes);
+import { doctor_clinicfun } from "./doctor_clinic_connection.js";
+db.doctorCLinicConnect = doctor_clinicfun(sequelize,DataTypes);
+import { doctor_clinicRequestfun } from "./doctor_clinic_request.js";
+db.doctorClinicRequest = doctor_clinicRequestfun(sequelize,DataTypes);
 
 db.sequelize.sync({ alter : true });
 
