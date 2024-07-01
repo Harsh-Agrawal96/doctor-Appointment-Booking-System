@@ -1,0 +1,468 @@
+
+:root{
+    --minInputSize: 300px;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+/* navbar */
+
+.navbar{
+    width: 100%;
+    height: max-content;
+    padding: 0em 0em;
+    padding-top: 0px;
+}
+
+.main{
+    width: 100%;
+    margin: auto;
+}
+@media screen and ( min-width: 1400px ) {
+    .main{
+        width: 1400px;
+    }
+}
+
+.navbar-expand-lg{
+    padding: 1.5em 1.5em;
+}
+.collapse li a{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: black;
+}
+@media screen and ( min-width : 1000px) {
+    .navbtn{
+        padding-right: 1.5em;
+    }
+    .collapse ul{
+        padding-left: 3em;
+    }
+}
+@media screen and ( max-width : 1000px) {
+    .navbtn{
+        padding-bottom: 1em;
+    }
+}
+
+
+/* content */
+
+.middle{
+    width: 100%;
+    height: max-content;
+    background-color: #e7edf4;
+    padding: 1em 0px;
+}
+.contain{
+    width: 100%;
+    margin: auto;
+    height: max-content;
+    background-color: white;
+}
+@media screen and (min-width : 1200px ) {
+    .contain{
+        width: 1200px;
+    }
+}
+
+.inner_contain{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    gap: 0em;
+}
+.left_section{
+    width: 20%;
+    padding: 1em auto;
+    margin-top: 7em;
+    padding-left: 1em;
+    height: max-content;
+}
+.diff_sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5em;
+    width: 100%;
+    height: max-content;
+}
+.diff_sec > div{
+    padding: 0.3em 0em;
+    height: max-content;
+    padding-left: 1em;
+    width: 100%;
+    /* border-radius: 10px;
+    border : 2px solid black; */
+}
+.diff_sec p{
+    font-size: 1em;
+    font-weight: 600;
+    height: max-content;
+    word-wrap:break-word;
+    margin: 0px;
+}
+
+.right_section{
+    width: 80%;
+    padding : 1em 0.6em;
+    height: max-content;
+    background-color: rgb(239, 239, 239);
+}
+.diff_cont{
+    width: 100%;
+    height: max-content;
+    padding: 0.5em 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 0px;
+}
+.content{
+    width: 100%;
+    height: max-content;
+}
+.content > .content_head{
+    height: max-content;
+    padding: 0.7em 0.8em;
+}
+.content > .content_head > p{
+    margin: 0px;
+    height: max-content;
+    font-size: 1.3em;
+}
+.contain form{
+    width: 100%;
+    height: max-content;
+    padding: 0.3em 0.2em;
+    padding-top: 2.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formInner{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5em;
+}
+
+/* css for personal input */
+.user_input1s{
+    width: 50%;
+    margin: 0.3em 1em;
+    /* background-color: grey; */
+}
+.user_input1s label{
+    font-size: 1em;
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
+}
+.user_input1s input{
+    padding: 0.5em 0.6em;
+    font-size: 0.7em;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 90%;
+    color: rgb(49, 49, 49);
+}
+/* end */
+
+.contain form > button{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 14px;
+    font-size: 1em;
+    font-weight: 500;
+    width: max-content;
+    margin: auto;
+    margin-top: 4em;
+}
+
+
+/* showing differnt sections on click */
+
+.content{
+    display: none;
+}
+.con1{
+    display: unset;
+}
+.con2{
+    display: unset;
+}
+.con3{
+    display: unset;
+}
+.con4{
+    display: unset;
+}
+.con5{
+    display: unset;
+}
+
+
+/* css for different booking sections */
+
+.main_feature {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap: 0em;
+    padding-top: 2em;
+    height: max-content;
+    margin: auto;
+}
+.bookhead {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.bookhead > .multi_head {
+    padding: 1em 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 1px;
+    height: max-content;
+}
+.multi_head > p{
+    word-wrap: break-word;
+    height: max-content;
+    text-align: center;
+    font-size: 1em;
+    margin: 0px;
+}
+.bookdata {
+    height: max-content;
+    width: 100%;
+    padding: 0.1em;
+}
+.multi_data {
+    height: 500px;
+    width: 100%;
+    background-color: white;
+}
+
+.multi_data{
+    display: none;
+}
+.data0{
+    display: block;
+}
+.data1{
+    display: block;
+}
+.data2{
+    display: block;
+}
+.data3{
+    display: block;
+}
+.data4{
+    display: block;
+}
+.data5{
+    display: block;
+}
+.data6{
+    display: block;
+}
+.data7{
+    display: block;
+}
+.data8{
+    display: block;
+}
+.data9{
+    display: block;
+}
+.data10{
+    display: block;
+}
+
+
+/* footer */
+
+footer{
+    width: 100%;
+    height: max-content;
+}
+.area{
+    width: 100%;
+    background-color: rgb(70, 70, 70);
+    padding: 1em 1.2em;
+}
+.main_content{
+    width: 100%;
+    height: max-content;
+    padding: 0.4em 1.2em;
+    margin: auto;
+    display: flex;
+    justify-content:space-around;
+    align-items: start;
+    gap: 3em;
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em 0.4em;
+    justify-content: center;
+    width: max-content;
+}
+.link_head{
+    position: relative;
+    padding: auto;
+    height: max-content;
+    padding-bottom: 8px;
+}
+.link_head > p{
+    height: max-content;
+    font-weight: 600;
+    font-size: 1.2em;
+    border: 50%;
+    margin: 0px;
+    color: rgb(200, 200, 200);
+}
+.link_head > p:hover{
+    cursor: pointer;
+}
+.final_link{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.4em auto;
+    font-size: 1.1em;
+    height: max-content;
+    width: max-content;
+    text-decoration: none;
+}
+.link_head::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 3px;
+    background-color: rgb(207, 207, 207);
+    transition: width 0.3s ease;
+}
+.link_head:hover::after {
+    width: 100%;
+    left: 0;
+}
+.final_link a{
+    text-decoration: none;
+}
+.final_link div{
+    padding: 0.2em auto;
+    height: max-content;
+    width: max-content;
+    cursor: pointer;
+    transition: padding 0.3s ease;
+}
+.final_link div:hover{
+    padding-left: 8px ;
+}
+.footer_follow{
+    width: 100%;
+    height: max-content;
+    padding: 1.2em 2em;
+    margin: auto;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+@media screen and ( min-width : 1200px ) {
+    .footer_follow,.main_content{
+        width: 1200px;
+    }
+}
+.web_name{
+    height: max-content;
+    padding: 0.1em 0.2em;
+    width: max-content;
+}
+.footer_follow p{
+    font-size: 1.2em;
+    word-wrap: break-word;
+    height: max-content;
+    margin: 0px;
+}
+.all_follow,.follow{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+.follow{
+    gap: 0.4em;
+}
+.footer_follow div{
+    height: max-content;
+    width: max-content;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.web_name a{
+    color: black;
+    font-size: 1.2em;
+}
+@media screen and ( max-width : 500px) and (min-width:300px) {
+    .main_content,.area{
+        gap: 1em;
+        padding: 0.4em 0.2em;
+    }
+    .link_head > p{
+        font-size: 0.9em;
+    }
+    .final_link{
+        font-size: 0.7em;
+    }
+    .footer_follow p,.footer_follow a{
+        font-size: 1em;
+    }
+    .footer_follow{
+        padding: 1em;
+    }
+}
+@media screen and (max-width:300px) {
+    .main_content,.area{
+        gap:0.4em;
+        padding: 0.4em 0em;
+    }
+    .link_head > p{
+        font-size: 0.7em;
+    }
+    .final_link{
+        font-size: 0.5em;
+    }
+    .footer_follow p,.footer_follow a{
+        font-size: 0.7em;
+    }
+    .footer_follow{
+        padding: 0.7em;
+    }
+}

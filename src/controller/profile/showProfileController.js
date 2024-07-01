@@ -1,7 +1,8 @@
 
 import * as getUsers from "../../services/profile/showProfileServices.js";
+import * as getata from "../../services/profile/editProfileDataServices.js";
 
-let unauthPatientProfile = async ( req,res,id ) => {
+let patientProfile = async ( req,res,id ) => {
 
     try{
 
@@ -15,7 +16,7 @@ let unauthPatientProfile = async ( req,res,id ) => {
         }
         else{
             // profile page
-            res.render("profile/auth/showProfile/patient.ejs",{
+            res.render("profile/showProfile/patient.ejs",{
                 data : data
             });
         }
@@ -24,10 +25,9 @@ let unauthPatientProfile = async ( req,res,id ) => {
         console.log(err);
         res.redirect("/");
     }
-
 };
 
-let unauthDoctorProfile = async ( req,res,id ) => {
+let doctorProfile = async ( req,res,id ) => {
 
     try{
 
@@ -42,7 +42,7 @@ let unauthDoctorProfile = async ( req,res,id ) => {
         else{
             // profile page
             console.log(data)
-            res.render("profile/auth/showProfile/doctor.ejs",{
+            res.render("profile/showProfile/doctor.ejs",{
                 data : data
             });
         }
@@ -54,7 +54,7 @@ let unauthDoctorProfile = async ( req,res,id ) => {
 
 };
 
-let unauthClinicProfile = async ( req,res,id ) => {
+let clinicProfile = async ( req,res,id ) => {
 
     try{
 
@@ -77,20 +77,102 @@ let unauthClinicProfile = async ( req,res,id ) => {
 
 };
 
+let doctorEditPage = async ( req,res ) => {
+
+    try{
+        // let id = req.user.maindata.id;
+        
+        // let data = getUsers.getDoctorInfo(id);
+        
+        let data = true;
+
+        if( data == false ){
+            res.redirect("/");
+        }
+        else{
+            // profile page
+            res.render("profile/editProfile/doctorEdit.ejs",{
+                data : data
+            });
+        }
+
+    }
+    catch(err){
+        console.log(err)
+        res.redirect("/");
+    }
+}
+
+let patientEditPage = async ( req,res ) => {
+
+    try{
+
+        // const id = req.user.maindata.id;
+        // console.log(id);
+
+        // let data = await getUsers.getPatientInfo(id);
+        let data = true;
+
+        if( data == false ){
+            res.redirect("/");
+        }
+        else{
+            // profile page
+            res.render("profile/editProfile/patientEdit.ejs",{
+                data : data
+            });
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.redirect("/");
+    }
+}
+
+let clinicEditPage = async ( req,res ) => {
+
+    try{
+
+        // const id = req.user.maindata.id;
+        // console.log(id);
+        await getata.dataforClinic(2);
+
+        // let data = await getUsers.getClinicInfo(id);
+        let data = true;
+
+        if( data == false ){
+            res.redirect("/");
+        }
+        else{
+            // profile page
+            res.render("profile/editProfile/clinicEdit.ejs",{
+                data : data
+            });
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.redirect("/");
+    }
+}
+
 
 // test
 
 let check = async (req,res) => {
 
-    res.render("profile/auth/editProfile/patientEdit.ejs");
+    res.render("profile/editProfile/doctorEdit.ejs");
 }
 
 
 export {
 
-    unauthPatientProfile,
-    unauthDoctorProfile,
-    unauthClinicProfile,
+    patientProfile,
+    doctorProfile,
+    clinicProfile,
+    patientEditPage,
+    doctorEditPage,
+    clinicEditPage,
     check,
 
 }

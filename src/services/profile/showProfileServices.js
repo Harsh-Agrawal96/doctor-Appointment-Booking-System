@@ -12,7 +12,7 @@ let getPatientInfo = async (idName) => {
                 where : {
                     id : idName
                 }
-            
+
             });
     
             let finalData = JSON.stringify(patientInfo);

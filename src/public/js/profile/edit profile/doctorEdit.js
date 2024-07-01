@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let content = document.querySelectorAll(".content")
     let firstSec = 'con' + 1;
     content[0].classList.add(firstSec);
+    console.log(content);
+    console.log(firstSec);
 
     let first;
     let multiData = document.querySelectorAll(".multi_data")
@@ -14,10 +16,60 @@ document.addEventListener("DOMContentLoaded", function() {
     multiData[0].classList.add(first);
     first = 'data' + 4;
     multiData[4].classList.add(first);
-    first = 'data' + 8;
-    multiData[8].classList.add(first);
-    first = 'data' + 12;
-    multiData[12].classList.add(first);
+
+    
+    // add and remove input in skills
+
+    const skillInput = document.querySelectorAll(".skillInput");
+    const addSkillButton = document.querySelectorAll(".addSkillButton");
+    const skillsList = document.querySelectorAll(".skillList");
+    const skillsHiddenInput = document.querySelectorAll(".hideskillList");
+
+
+    for( let i = 0;i<addSkillButton.length;i++ ){
+
+        addSkillButton[i].addEventListener("click", function() {
+
+            const skill = skillInput[i].value.trim();
+            console.log(skill);
+            if (skill) {
+                addSkill(skill,i);
+                skillInput[i].value = '';
+            }
+        })
+    }
+
+    for( let i = 0;i<skillsList.length;i++ ){
+
+        skillsList[i].addEventListener("click", function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                removeSkill(event.target.parentElement,i);
+            }
+        });
+    }
+
+    function addSkill(skill,ind) {
+        const li = document.createElement("li");
+        li.textContent = skill;
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        li.appendChild(removeButton);
+        skillsList[ind].appendChild(li);
+        updateHiddenInput(ind);
+    }
+
+    function removeSkill(skillElement,i) {
+        skillsList[i].removeChild(skillElement);
+        updateHiddenInput(i);
+    }
+
+    function updateHiddenInput(i) {
+        const skills = [];
+        skillsList[i].querySelectorAll("li").forEach(li => {
+            skills.push(li.firstChild.textContent);
+        });
+        skillsHiddenInput[i].value = skills.join(",");
+    }
 
 });
 
@@ -39,6 +91,7 @@ for( let i = 0;i<section_name.length;i++ ){
     })
 }
 
+
 let booking_section = document.querySelectorAll(".bookhead")
 let multiple_head = document.querySelectorAll(".multi_head");
 
@@ -58,8 +111,8 @@ for( let i = 0;i<booking_section.length;i++ ){
 
         let nameofsec = "data" + index;
 
-        if( i == 3 ){
-            for( let j = 4*i;j<(4*i + 2);j++ ){
+        if( i == 1 ){
+            for( let j = 4*i;j<(4*i + 3);j++ ){
                 let name = "data" + (j);
                 document.getElementsByClassName("multi_data")[j].classList.remove(name);
             }
@@ -74,4 +127,3 @@ for( let i = 0;i<booking_section.length;i++ ){
     
     })
 }
-

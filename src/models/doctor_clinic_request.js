@@ -24,6 +24,14 @@ export function doctor_clinicRequestfun( sequelize, DataTypes ) {
       workingTime : {
         type : DataTypes.STRING,
         allowNull : false
+      },
+      clinicMessage : {
+        type : DataTypes.STRING,
+        allowNull : false
+      },
+      doctorMessage : {
+        type : DataTypes.STRING,
+        allowNull : false
       }
 
 

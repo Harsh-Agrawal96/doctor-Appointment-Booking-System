@@ -8,7 +8,7 @@ let doctorPU_personal = async (req,res) => {
 
     try{
         let data = req.body;
-        let mainid = req.user;
+        let mainid = req.user.maindata.id;
         await updateProfile.doctorU_personal(data,mainid);
 
         // send profile page
@@ -27,7 +27,7 @@ let doctorPU_work = async (req,res) => {
 
     try{
         let data = req.body;
-        let mainid = req.user;
+        let mainid = req.user.maindata.id;
         await updateProfile.doctorU_work(data,mainid);
 
         // send profile page
@@ -44,7 +44,7 @@ let doctorPU_profession = async (req,res) => {
 
     try{
         let profession_data = req.body;
-        let mainid = req.user;
+        let mainid = req.user.maindata.id;
         let data = {};
         let val;
 
@@ -69,7 +69,7 @@ let doctorPU_profession = async (req,res) => {
         val = makeobject(profession_data.registrationlist);
         data["registration"] = val;
 
-        await updateProfile.doctorU_profession(data,2);
+        await updateProfile.doctorU_profession(data,mainid);
 
         // send profile page
         return res.redirect("/")
@@ -105,7 +105,7 @@ let clinicUP_personal = async (req,res) => {
     
     try{
         let data = req.body;
-        let mainid = req.user;
+        let mainid = req.user.maindata.id;
         await updateProfile.clinicU_personal(data,mainid);
 
         // send profile page
@@ -125,7 +125,7 @@ let patientUP_personal= async (req,res) => {
 
     try{
         let data = req.body;
-        let mainid = req.user;
+        let mainid = req.user.maindata.id;
         await updateProfile.patientU_personal(data,mainid);
 
         // send profile page

@@ -5,6 +5,7 @@ import { configViewEngine }  from "./config/viewEngine.js";
 import { initAllVerifyRoutes } from "./routes/verifyRoutes.js";
 import { initProfileRoutes } from "./routes/profileRoutes.js";
 import { initAllWebRoutes } from "./routes/web.js";
+import { initAllRequestRoutes } from "./routes/addDrRoutes.js";
 import connectFlash from "connect-flash";
 import session from "express-session";
 import cookiePars from "cookie-parser";
@@ -43,6 +44,7 @@ configViewEngine(app);
 initAllVerifyRoutes(app);
 initProfileRoutes(app);
 initAllWebRoutes(app);
+initAllRequestRoutes(app);
 
 app.listen( port, () => {
     console.log( `server is started at port ${port}` );

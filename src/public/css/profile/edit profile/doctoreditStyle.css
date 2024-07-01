@@ -10,63 +10,60 @@
 }
 
 
-/* nabvar */
+/* navbar */
 
-.navbar,footer{
+.navbar{
     width: 100%;
     height: max-content;
-    padding: 1.3em 0.8em;
+    padding: 0em 0em;
+    padding-top: 0px;
 }
-.inner{
+
+.main{
     width: 100%;
-    height: max-content;
-    padding: 0.4em 1.2em;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3em;
 }
-@media screen and ( min-width : 1400px ) {
-    .inner{
+@media screen and ( min-width: 1400px ) {
+    .main{
         width: 1400px;
     }
 }
 
-.left_head,.right-head{
-    display: flex;
-    gap: 1.5em;
-    justify-content: center;
-    height: max-content;
-    width: max-content;
-    align-items: center;
+.navbar-expand-lg{
+    padding: 1.5em 1.5em;
 }
-.top_services,.features,.status{
-    display: flex;
-    gap: 0.7em;
-    justify-content: center;
-    align-items: center;
-}
-
-.top_services  p,.status  p{
-    font-size: 1.5em;
-    font-weight: 600;
-    padding: 0.6em 0.4em;
-}
-
-.features p{
+.collapse li a{
     font-size: 1.2em;
-    font-weight: 400;
+    font-weight: 600;
+    color: black;
 }
-
+@media screen and ( min-width : 1000px) {
+    .navbtn{
+        padding-right: 1.5em;
+    }
+    .collapse ul{
+        padding-left: 3em;
+    }
+}
+@media screen and ( max-width : 1000px) {
+    .navbtn{
+        padding-bottom: 1em;
+    }
+}
 
 /* content */
 
+.middle{
+    width: 100%;
+    height: max-content;
+    background-color: #e7edf4;
+    padding: 1em 0px;
+}
 .contain{
     width: 100%;
     margin: auto;
-    padding: 1em;
     height: max-content;
+    background-color: white;
 }
 @media screen and (min-width : 1200px ) {
     .contain{
@@ -76,14 +73,15 @@
 
 .inner_contain{
     width: 100%;
-    padding: 1em 0.7em;
     height: max-content;
     display: flex;
-    gap: 1em;
+    gap: 0em;
 }
 .left_section{
     width: 20%;
-    padding: 1em 0.7em;
+    padding: 1em auto;
+    padding-top: 7em;
+    padding-left: 1em;
     height: max-content;
 }
 .diff_sec{
@@ -96,23 +94,26 @@
     height: max-content;
 }
 .diff_sec > div{
-    padding: 0.5em 0.4em;
+    padding: 0.3em 0em; 
     height: max-content;
+    padding-left: 1em;
     width: 100%;
     /* border-radius: 10px;
     border : 2px solid black; */
 }
 .diff_sec p{
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 600;
     height: max-content;
     word-wrap: break-word;
+    margin: 0px;
 }
 
 .right_section{
     width: 80%;
     padding : 1em 0.6em;
     height: max-content;
+    background-color: rgb(239, 239, 239);
 }
 .diff_cont{
     width: 100%;
@@ -127,12 +128,21 @@
 .content{
     width: 100%;
     height: max-content;
-    padding: 0.5em 0.3em;
 }
-form{
+.content > .content_head{
+    height: max-content;
+    padding: 0.7em 0.8em;
+}
+.content > .content_head > p{
+    margin: 0px;
+    height: max-content;
+    font-size: 1.3em;
+}
+.contain form{
     width: 100%;
     height: max-content;
-    padding: 0.3em 0.2em;
+    padding: 0.3em 1em;
+    padding-top: 2.3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,7 +154,7 @@ form{
     height: max-content;
     justify-content: center;
     align-items: start;
-    gap: 1em;
+    gap: 0.5em;
 }
 .inner3s{
     flex-wrap: wrap;
@@ -152,23 +162,23 @@ form{
 }
 .user_input1s,.user_input2s{
     width: 50%;
-    margin: 0.5em 1em;
+    margin: 0.3em 1em;
     /* background-color: grey; */
 }
 .user_input3s{
     flex-grow: 1;
     flex-basis: var(--minInputSize);
-    margin: 0.5em 1em;
+    margin: 0.3em 1em;
     /* background-color: grey; */
 }
 .user_input1s label,.user_input2s label,.user_input3s label{
-    font-size: 1.3em;
-    margin-top: 0.3em;
+    font-size: 1em;
+    margin-top: 0.2em;
     margin-bottom: 0.3em;
 }
 .user_input1s input,.user_input2s input{
     padding: 0.5em 0.6em;
-    font-size: 0.9em;
+    font-size: 0.7em;
     border: 1px solid black;
     border-radius: 2px;
     width: 90%;
@@ -176,27 +186,27 @@ form{
 }
 /* here change css for ".user_input2s input" for text area of work and about */
 .user_input3s .skillInput{
-    padding: 0.5em 0.6em;
-    font-size: 0.9em;
+    padding: 0.4em 0.6em;
+    font-size: 0.8em;
     border: 1px solid black;
     border-radius: 2px;
     width: 75%;
     color: rgb(49, 49, 49);
-    margin-bottom: 1.3em;
+    margin-bottom: 1em;
 }
 .user_input3s .addSkillButton{
-    padding: 5px 15px;
+    padding: 3px 11px;
     height: max-content;
     font-size: 1em;
     font-weight: 600;
     width: max-content;
     border-radius: 4px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 .skillList li {
     margin: 5px 0;
-    padding: 5px;
-    background-color: #f0f0f0;
+    padding: 3px;
+    background-color: white;
     width: 95%;
     display: flex;
     justify-content: space-between;
@@ -207,23 +217,24 @@ form{
     background-color: #ff4d4d;
     border: none;
     color: white;
-    padding: 5px 10px;
+    padding: 3px 10px;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .skillList li button:hover {
     background-color: #ff1a1a;
 }
 
-form > button{
+.contain form > button{
     border: 1px solid black;
     border-radius: 4px;
-    padding: 8px 18px;
-    font-size: 1.1em;
+    padding: 5px 14px;
+    font-size: 1em;
     font-weight: 500;
     width: max-content;
     margin: auto;
-    margin-top: 2em;
+    margin-top: 4em;
 }
 
 
@@ -247,23 +258,20 @@ form > button{
 .con5{
     display: unset;
 }
-.con6{
-    display: unset;
-}
 
 
 /* css for more different sections */
 
 .main_feature {
-    padding : 0.1em 0.1em;
     display: flex;
-    width: 100%;
+    width: 90%;
     flex-direction: column;
-    gap: 0.2em;
+    gap: 0em;
+    padding-top: 2em;
     height: max-content;
+    margin: auto;
 }
 .bookhead {
-    padding: 0.2em 0.1em;
     width: 100%;
     height: max-content;
     display: flex;
@@ -272,6 +280,7 @@ form > button{
     align-items: center;
 }
 .bookhead > .multi_head {
+    padding: 1em 0.5em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -284,100 +293,90 @@ form > button{
     height: max-content;
     text-align: center;
     font-size: 1em;
+    margin: 0px;
 }
 .bookdata {
     height: max-content;
     width: 100%;
-    padding: 0.1em;
 }
 .multi_data {
-    height: max-content;
+    height: 500px;
     width: 100%;
+    background-color: white;
 }
 
 .multi_data{
     display: none;
 }
 .data0{
-    display: unset;
+    display: block;
 }
 .data1{
-    display: unset;
+    display: block;
 }
 .data2{
-    display: unset;
+    display: block;
 }
 .data3{
-    display: unset;
+    display: block;
 }
 .data4{
-    display: unset;
+    display: block;
 }
 .data5{
-    display: unset;
+    display: block;
 }
 .data6{
-    display: unset;
-}
-.data7{
-    display: unset;
-}
-.data8{
-    display: unset;
-}
-.data9{
-    display: unset;
+    display: block;
 }
 
 
 
 /* footer */
 
+footer{
+    width: 100%;
+    height: max-content;
+}
+.area{
+    width: 100%;
+    background-color: rgb(70, 70, 70);
+    padding: 1em 1.2em;
+}
 .main_content{
     width: 100%;
     height: max-content;
     padding: 0.4em 1.2em;
     margin: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:space-around;
+    align-items: start;
     gap: 3em;
 }
-@media screen and ( min-width : 1400px ) {
-    .main_content{
-        width: 1400px;
-    }
-}
-.left_sec{
-    padding: 0.7em 0.5em;
-    height: max-content;
-    width: 30%;
-
-}
-.right_sec{
-    margin: 0.6em 1.1em;
-    display: flex;
-    gap: 0.3em;
-    height: max-content;
-    width: 70%;
-    justify-content:space-evenly;
-    align-items: start;
-}
-
 .links{
     display: flex;
     flex-direction: column;
     gap: 1em;
     padding: 0.5em 0.4em;
-    margin: 0.5em 0.8em;
     justify-content: center;
     width: max-content;
 }
 .link_head{
-    padding: 0.5em auto;
+    position: relative;
+    padding: auto;
+    height: max-content;
+    padding-bottom: 8px;
+}
+.link_head > p{
+    height: max-content;
     font-weight: 600;
     font-size: 1.2em;
-    height: max-content;
+    border: 50%;
+    margin: 0px;
+    color: rgb(200, 200, 200);
+}
+.link_head > p:hover{
+    cursor: pointer;
 }
 .final_link{
     display: flex;
@@ -387,9 +386,118 @@ form > button{
     font-size: 1.1em;
     height: max-content;
     width: max-content;
+    text-decoration: none;
+}
+.link_head::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 3px;
+    background-color: rgb(207, 207, 207);
+    transition: width 0.3s ease;
+}
+.link_head:hover::after {
+    width: 100%;
+    left: 0;
+}
+.final_link a{
+    text-decoration: none;
 }
 .final_link div{
     padding: 0.2em auto;
     height: max-content;
     width: max-content;
+    cursor: pointer;
+    transition: padding 0.3s ease;
+}
+.final_link div:hover{
+    padding-left: 8px ;
+}
+.footer_follow{
+    width: 100%;
+    height: max-content;
+    padding: 1.2em 2em;
+    margin: auto;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+@media screen and ( min-width : 1200px ) {
+    .footer_follow,.main_content{
+        width: 1200px;
+    }
+}
+.web_name{
+    height: max-content;
+    padding: 0.1em 0.2em;
+    width: max-content;
+}
+.footer_follow p{
+    font-size: 1.2em;
+    word-wrap: break-word;
+    height: max-content;
+    margin: 0px;
+}
+.all_follow,.follow{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+.follow{
+    gap: 0.4em;
+}
+.footer_follow div{
+    height: max-content;
+    width: max-content;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.web_name a{
+    color: black;
+    font-size: 1.2em;
+}
+@media screen and ( max-width : 500px) and (min-width:300px) {
+    .main_content,.area{
+        gap: 1em;
+        padding: 0.4em 0.2em;
+    }
+    .link_head > p{
+        font-size: 0.9em;
+    }
+    .final_link{
+        font-size: 0.7em;
+    }
+    .footer_follow p,.footer_follow a{
+        font-size: 1em;
+    }
+    .footer_follow{
+        padding: 1em;
+    }
+}
+@media screen and (max-width:300px) {
+    .main_content,.area{
+        gap:0.4em;
+        padding: 0.4em 0em;
+    }
+    .link_head > p{
+        font-size: 0.7em;
+    }
+    .final_link{
+        font-size: 0.5em;
+    }
+    .footer_follow p,.footer_follow a{
+        font-size: 0.7em;
+    }
+    .footer_follow{
+        padding: 0.7em;
+    }
 }

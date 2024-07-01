@@ -24,7 +24,7 @@ let startProgress = async ( req,res) => {
 
         let consultId = req.user.maindata.id;
         let consulttype = req.user.type;
-        let data = booking.newBookings(consultId,consulttype,req.body);
+        let data = booking.startprogress(consultId,consulttype,req.body);
 
         // profile page
         return res.redirect("/");

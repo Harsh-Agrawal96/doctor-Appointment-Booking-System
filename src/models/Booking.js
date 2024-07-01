@@ -1,3 +1,5 @@
+
+
 export function Bookingfun( sequelize, DataTypes ) {
 
     const Booking = sequelize.define('bookings', {
@@ -58,6 +60,10 @@ export function Bookingfun( sequelize, DataTypes ) {
       },
       preferredConsultdate : {
         type : DataTypes.DATE,
+        allowNull : false
+      },
+      bookingtype : {
+        type : DataTypes.INTEGER,
         allowNull : false
       }
 
