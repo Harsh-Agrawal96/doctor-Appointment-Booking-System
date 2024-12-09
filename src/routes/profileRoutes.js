@@ -17,14 +17,9 @@ let initProfileRoutes = (app) => {
     // auth
 
     // not done yet
-    routes.get( "/user/edit/", profilePages.patientEditPage ); //checkAuth.checkLoggedIn
-    routes.get( "/doctor/edit/", profilePages.doctorEditPage ); // checkAuth.checkLoggedIn
-    routes.get( "/clinic/edit/", profilePages.clinicEditPage ); // checkAuth.checkLoggedIn
+    routes.get( "/profile/edit/", checkAuth.checkLoggedIn, profilePages.profileEditPage ); //checkAuth.checkLoggedIn
 
-    // routes.post( "/maincheck", (req,res) => {
-    //     console.log(req.body);
-    // })
-
+    
     // post for update profile
 
     routes.post("/doctor/personal", editData.doctorPU_personal );

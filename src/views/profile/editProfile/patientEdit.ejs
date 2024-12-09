@@ -3,62 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>patient - Profile</title>
+    <title>Patient - Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/partials/header.css">
     <link rel="stylesheet" href="/css/profile/edit profile/patienteditStyle.css">
+    <link rel="stylesheet" href="/css/partials/footer.css">
+
 </head>
 <body>
 
-    <!-- nabvar -->
-
-    <div class="navbar">
-        <div class="inner">
-            <div class="left_head">
-                <div class="logo">
-                    <p>photo</p>
-                </div>
-                <div class="top_services">
-                    <div>
-                        <p>voice consultant</p>
-                    </div>
-                    <div>
-                        <p>lab tests</p>
-                    </div>
-                    <div>
-                        <p>sergeries</p>
-                    </div>
-                </div>
-            </div>
-            <div class="right-head">
-                <div class="features">
-                    <p>Book appointment</p>
-                </div>
-                <div class="status">
-                    <div>
-                        <p>Login</p>
-                    </div>
-                    <div>
-                        <p>Signup</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%- include("../../partials/header") %>
 
 
     <!-- content -->
+
+    <% let count = 0; %>
     
+    <div class="middle">
     <div class="contain">
         <div class="inner_contain">
             <div class="left_section"> 
-                <div class="diff_sec">
+                <div class="diff_sec lesec1">
+                    <div class="small_sec" >
+                        <p>Info.</p>
+                    </div>
+                    <div class="small_sec" >
+                        <p>Appoint.</p>
+                    </div>
+                    <div class="small_sec" >
+                        <p>Sergery</p>
+                    </div>
+                </div>
+                <div class="diff_sec lesec2">
                     <div class="section">
                         <p>Personal</p>
                     </div>
                     <div class="section">
-                        <p>Your appointments</p>
+                        <p>Appointment Booking</p>
                     </div>
                     <div class="section">
-                        <p>Your segeries</p>
+                        <p>sergery Booking</p>
                     </div>
                     <!-- add section as many as you want -->
                 </div>
@@ -67,90 +52,306 @@
                 <div class="diff_cont">
                     <div class="content" >
                         
-                            <form action="/patient/personal" method="post">
-                                <div class="formInner inner1s" >
-                                    <div class="user_input1s" >
-                                        <label for="">Name : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="fullname">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">Country : </label>
-                                        <br>
-                                        <input type="text"  placeholder="" name="country">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">State : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="state" >
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">City : </label>
-                                        <br>
-                                        <input type="text"  placeholder="" name="city">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">address : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="address">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">Date of birth : </label>
-                                        <br>
-                                        <input type="date"  placeholder="" name="dob">
-                                    </div>
-                                </div>
+                        <div class="content_head">
+                            <p>General Information</p>
+                        </div>
 
-                                <button type="submit">save changes</button>
-                            </form>
+                        <hr>
+
+                        <form class="firstform" action="/patient/personal" method="post">
+                            <div class="formInner inner1s" >
+                                <div class="user_input1s" >
+                                    <label for="">Name : </label>
+                                    <br>
+                                    <input type="text" placeholder="" name="fullname">
+                                </div>
+                                <div class="user_input1s" >
+                                    <label for="">Country : </label>
+                                    <br>
+                                    <input type="text"  placeholder="" name="country">
+                                </div>
+                                <div class="user_input1s" >
+                                    <label for="">State : </label>
+                                    <br>
+                                    <input type="text" placeholder="" name="state" >
+                                </div>
+                                <div class="user_input1s" >
+                                    <label for="">City : </label>
+                                    <br>
+                                    <input type="text"  placeholder="" name="city">
+                                </div>
+                                <div class="user_input1s" >
+                                    <label for="">address : </label>
+                                    <br>
+                                    <input type="text" placeholder="" name="address">
+                                </div>
+                                <div class="user_input1s" >
+                                    <label for="">Date of birth : </label>
+                                    <br>
+                                    <input type="date"  placeholder="" name="dob">
+                                </div>
+                            </div>
+
+                            <button type="submit">save changes</button>
+                        </form>
                             
                     </div>
                     <div class="content" >
 
-                        <div class="main_feature" >
-                            <div class="bookhead" >
-                                <div class="multi_head" >
-                                    <p>New appointments</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>In Progress</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>complition rejected</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>completed</p>
-                                </div>
-                            </div>
-                            <div class="bookdata" >
-                                <div class="multi_data" >
-                                    appointment book1
-                                </div>
-                                <div class="multi_data" >
-                                    appointment book2
-                                </div>
-                                <div class="multi_data" >
-                                    appointment book3
-                                </div>
-                                <div class="multi_data" >
-                                    appointment book4
-                                </div>
-                            </div>
+                        <div class="content_head">
+                            <p>Your Appointment details</p>
                         </div>
+
+                        <hr>
+
+                            <div class="main_feature" >
+                                <div class="bookhead" >
+                                    <div class="multi_head" >
+                                        <p>New appointments</p>
+                                    </div>
+                                    <div class="multi_head" >
+                                        <p>In Progress</p>
+                                    </div>
+                                    <div class="multi_head" >
+                                        <p>complition rejected</p>
+                                    </div>
+                                    <div class="multi_head" >
+                                        <p>completed</p>
+                                    </div>
+                                </div>
+                                <div class="bookdata" >
+                                    <div class="multi_data" >
+                                        
+                                        <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( appointment[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( appointment[i].status == 1 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div  class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
+                                    </div>
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( appointment[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( appointment[i].status == 2 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
+                                    </div>
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( appointment[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( appointment[i].status == 3 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_work">
+                                                            <form action="/user/response" method="post">
+                                                                <label for="">Message to Doctor :</label>
+                                                                <br>
+                                                                <input type="text" placeholder="enter message" name="message" required>
+                                                                <br>
+                                                                <label for="">Choose options conform completion or denied completion( if you have any problem ) :</label>
+                                                                <br>
+                                                                <select name="selection" required>
+                                                                    <option value="1">conform completion</option>
+                                                                    <option value="2">denied completion </option>
+                                                                </select>
+                                                                <br>
+    
+                                                            <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
+                                                                <button type="submit">Appoint it</button>
+                                                            </form>
+                                                            <div >
+                                                                <button type="submit">Appoint</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
+                                    </div>
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( appointment[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( appointment[i].status == 5 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
 
                     </div>
                     <div class="content" >
 
+                        <div class="content_head">
+                            <p>Your Sergery details</p>
+                        </div>
+
+                        <hr>
+
                         <div class="main_feature" >
                             <div class="bookhead" >
                                 <div class="multi_head" >
-                                    <p>New sergeries</p>
+                                    <p>new requests</p>
                                 </div>
                                 <div class="multi_head" >
-                                    <p>In Progress</p>
+                                    <p>sergery progress</p>
                                 </div>
                                 <div class="multi_head" >
-                                    <p>complition rejected</p>
+                                    <p>complition denied</p>
                                 </div>
                                 <div class="multi_head" >
                                     <p>completed</p>
@@ -158,128 +359,230 @@
                             </div>
                             <div class="bookdata" >
                                 <div class="multi_data" >
-                                    sergeries book1
+                                    <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( sergery[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( sergery[i].status == 1 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
                                 </div>
                                 <div class="multi_data" >
-                                    sergeries book2
+                                    <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( sergery[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( sergery[i].status == 2 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div> 
+                                            <% } %>
                                 </div>
                                 <div class="multi_data" >
-                                    sergeries book3
+                                    <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( sergery[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( sergery[i].status == 3 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_work">
+                                                            <form action="/user/response" method="post">
+                                                                <label for="">Message to Doctor :</label>
+                                                                <br>
+                                                                <input type="text" placeholder="enter message" name="message" required>
+                                                                <br>
+                                                                <label for="">Choose options conform completion or denied completion( if you have any problem ) :</label>
+                                                                <br>
+                                                                <select name="selection" required>
+                                                                    <option value="1">conform completion</option>
+                                                                    <option value="2">denied completion </option>
+                                                                </select>
+                                                                <br>
+    
+                                                            <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
+                                                                <button type="submit">Appoint it</button>
+                                                            </form>
+                                                            <div >
+                                                                <button type="submit">Appoint</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
                                 </div>
                                 <div class="multi_data" >
-                                    sergeries book4
+                                    <% count = 0; %>
+                                            <% for( let i = 0;i<100000;i++ ){ %>
+
+                                                <% if( sergery[i] == undefined ){ %>
+                                                    <% break; %>
+                                                <% } %>
+
+                                                <% if( sergery[i].status == 5 ){ %>
+                                                    <% count++; %>
+                                                    
+                                                    <div class="queue">
+                                                        <div class="main_info">
+                                                            <div class="info_show">
+                                                                <p>form user</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                            <div  class="info_show">
+                                                                <p>to</p>
+                                                            </div>
+                                                            <div class="info_show">
+                                                                <p>clinic</p>
+                                                                <p class="p_head2">name</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="all_info">
+                                                            <div>
+                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                            <% } %>
+
+                                            <% if( count == 0){ %>
+                                                <div class="null_book">
+                                                    <p>No booking right now </p>
+                                                </div>
+                                            <% } %>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <!-- add as many content section as you want -->
+                    
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
 
+    <%- include('../../partials/footer.ejs') %>
 
-    <footer>
-        <div class="main_content">
-            <div class="left_sec">
-                <div class="logo2">
 
-                </div>
-            </div>
-            <div class="right_sec">
-                <div class="links">
-                    <div class="link_head">
-                        <p>for brand</p>
-                    </div>
-                    <div class="final_link">
-                        <div>
-                            <a href="">link1</a>
-                        </div>
-                        <div>
-                            <a href="">link2</a>
-                        </div>
-                        <div>
-                            <a href="">link3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="links">
-                    <div class="link_head">
-                        <p>for hospital</p>
-                    </div>
-                    <div class="final_link">
-                        <div>
-                            <a href="">link1</a>
-                        </div>
-                        <div>
-                            <a href="">link2</a>
-                        </div>
-                        <div>
-                            <a href="">link3</a>
-                        </div>
-                        <div>
-                            <a href="">link4</a>
-                        </div>
-                        <div>
-                            <a href="">link5</a>
-                        </div>
-                        <div>
-                            <a href="">link6</a>
-                        </div>
-                        <div>
-                            <a href="">link7</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="links">
-                    <div class="link_head">
-                        <p>for clinic</p>
-                    </div>
-                    <div class="final_link">
-                        <div>
-                            <a href="">link1</a>
-                        </div>
-                        <div>
-                            <a href="">link2</a>
-                        </div>
-                        <div>
-                            <a href="">link3</a>
-                        </div>
-                        <div>
-                            <a href="">link4</a>
-                        </div>
-                        <div>
-                            <a href="">link5</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="links">
-                    <div class="link_head">
-                        <p>for patients</p>
-                    </div>
-                    <div class="final_link">
-                        <div>
-                            <a href="">link1</a>
-                        </div>
-                        <div>
-                            <a href="">link2</a>
-                        </div>
-                        <div>
-                            <a href="">link3</a>
-                        </div>
-                        <div>
-                            <a href="">link4</a>
-                        </div>
-                        <div>
-                            <a href="">link5</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="/js/profile/edit profile/patientEdit.js"></script>
 

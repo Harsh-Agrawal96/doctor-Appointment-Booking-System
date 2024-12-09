@@ -1,0 +1,379 @@
+:root{
+    --boxanimatonWidth : 230px;
+    --boxanimationHeight : 200px;
+}
+
+/* content */
+
+.card{
+    width: 13rem;
+    height: 100%;
+}
+.card-body{
+    height: 40%;
+}
+.card_parent{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+    padding: 1em 0.5em;
+    margin-top: 4em;
+    margin-bottom: 3em;
+    height: 20em;
+}
+.card_div{
+    height: max-content;
+    width: max-content;
+    padding: 0.4em 0.1em;
+    height: 100%;
+}
+.card{
+    border-radius: 20px;
+    padding: 5px 0.8em;
+}
+.card > img{
+    overflow: hidden;
+    height: 60%;
+}
+.card-text{
+    font-size: 0.9em;
+    padding: 0%;
+    margin: 0%;
+}
+
+
+.parts{
+    width: 100%;
+    padding: 1em 0.4em;
+    height: max-content;
+    margin-bottom: 2em;
+}
+.head{
+    width: 100%;
+    height: max-content;
+    padding: 0em 0.3em;
+    padding-left: 3em;
+}
+.head > p{
+    font-size: 1.2em;
+    font-weight: 600;
+    height: max-content;
+    word-wrap: break-word;
+    margin: 0px;
+}
+.describe{
+    width: 100%;
+    padding: 0em 0.4em;
+    height: max-content;
+    padding-left: 3em;
+}
+.describe > p{
+    font-size: 0.9em;
+    height: max-content;
+    word-wrap: break-word;
+}
+.options{
+    padding: 0.8em 0.1em;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1.4em;
+    width: 100%;
+}
+.scroll-btn {
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgb(55, 55, 55);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data_show{
+    overflow: hidden;
+    flex: 1;
+    width: 100%;
+    padding: 0.2em 0.3em;
+}
+.parent {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: 4em;
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    height: max-content;
+    width: max-content;
+}
+.child > .forimg{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forimg > img{
+    border-radius: 50%;
+    background-color: gray;
+    overflow: hidden;
+}
+.child > .consult_name{
+    height: max-content;
+    width: 100%;
+    padding: 0.2em 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.consult_name > p{
+    font-size: 1em;
+    font-weight: 600;
+    word-wrap: break-word;
+    height: max-content;
+    text-align: center;
+}
+
+.listtwo{
+    gap: 2em;
+}
+.subdiv{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    height: max-content;
+    width: max-content;
+}
+.subdiv > .showimg{
+    height: var(--boxanimationHeight);
+    width: var(--boxanimatonWidth);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.showimg > img{
+    border-radius: 7%;
+    background-color: gray;
+    overflow: hidden;
+}
+.subdiv > .divhead,.subdiv > .div_content{
+    height: max-content;
+    width: var(--boxanimatonWidth);
+    /* padding: 0.1em; */
+}
+.div_content > p{
+    height: max-content;
+    font-size: 1em;
+    word-wrap: break-word;
+    padding: 0px;
+    margin: 0px;
+}
+ .divhead > p{
+    height: max-content;
+    font-size: 1.2em;
+    font-weight: 600;
+    word-wrap: break-word;
+    padding: 0px;
+    margin: 0px;
+}
+
+.line1{
+    width: 90%;
+    color: rgb(64, 64, 64);
+    margin: auto;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+}
+
+.feedback{
+    width: 100%;
+    height: max-content;
+    padding: 0.6em 1em;
+    margin-top: 2.5em;
+    margin-bottom: 3em;
+}
+.feed_head{
+    height: max-content;
+    width: max-content;
+    margin: auto;
+}
+.feed_head > p{
+    font-size: 2.5em;
+    font-weight: 600;
+    height: max-content;
+    word-wrap: break-word;
+    margin: auto;
+}
+.carousel-inner{
+    padding: 1em 10em;
+}
+
+
+@media screen and ( min-width:750px) and ( max-width : 1000px ) {
+    .card_parent .card{
+        width: 10rem;
+    }
+    .card_parent{
+        height: 18em;
+    }
+    .card-text{
+        font-size: 0.7em;
+    }
+    .card-title{
+        font-size: 0.9em;
+    }
+    .feed_head > p{
+        font-size: 2em;
+    }
+    .carousel-inner{
+        padding: 1em 7em;
+    }
+    .card_parent{
+        margin-top: 2em ;
+    }
+}
+@media screen and ( min-width:450px) and ( max-width : 749px ) {
+    .card_parent .card{
+        width: 6rem;
+    }
+    .card_parent{
+        height: 14em;
+    }
+    .card-text{
+        font-size: 0.4em;
+    }
+    .card-title{
+        font-size: 0.6em;
+    }
+    .card_parent{
+        gap:1em;
+    }
+    .card-body{
+        padding: 10px;
+    }
+    .card{
+        border-radius: 15px;
+        padding: 2px 0.4em;
+    }
+    .head > p{
+        font-size: 1em;
+    }
+    .describe > p{
+        font-size: 0.7em;
+    }
+    .parent{
+        gap: 2em;
+    }
+    .child > .forimg{
+        height: 90px;
+        width: 90px;
+    }
+    .consult_name > p{
+        font-size: 0.8em;
+    }
+    :root{
+        --boxanimatonWidth : 190px;
+        --boxanimatonHeight : 160px;
+    }
+    .div_content > p{
+        font-size: 0.8em;
+    }
+    .divhead > p{
+        font-size: 1em;
+    }
+    .feed_head > p{
+        font-size: 1.5em;
+    }
+    .carousel-inner{
+        padding: 1em 2em;
+    }
+    .card_parent{
+        margin-top: 1.5em ;
+        margin-bottom: 2.1em;
+    }
+    .parts{
+        margin-bottom: 1.5em;
+    }
+}
+@media screen and ( max-width : 449px ) {
+    .card_parent .card{
+        width: 5rem;
+    }
+    .card_parent{
+        height: 12em;
+    }
+    .card-text{
+        font-size: 0.3em;
+    }
+    .card-title{
+        font-size: 0.4em;
+    }
+    .card_parent{
+        gap:0.8em;
+    }
+    .card-body{
+        padding: 7px;
+    }
+    .card{
+        border-radius: 10px;
+    }
+    .head > p{
+        font-size: 0.7em;
+    }
+    .describe > p{
+        font-size: 0.5em;
+    }
+    .parent{
+        gap: 1.5em;
+    }
+    .child > .forimg{
+        height: 80px;
+        width: 80px;
+
+    }
+    .consult_name > p{
+        font-size: 0.6em;
+    }
+    :root{
+        --boxanimatonWidth : 160px;
+        --boxanimationHeight : 140px;
+    }
+    .div_content > p{
+        font-size: 0.5em;
+    }
+    .divhead > p{
+        font-size: 0.7em;
+    }
+    .head,.describe{
+        padding-left: 2em;
+    }
+    .feed_head > p{
+        font-size: 1em;
+    }
+    .carousel-inner{
+        padding: 1em 1px;
+    }
+    .card_parent{
+        margin-top: 1.3em;
+        margin-bottom: 1.6em;
+    }
+    .parts{
+        margin-bottom: 0.9em;
+    }
+    .feedback{
+        margin-top: 1.5em;
+        margin-bottom: 1.7em;
+    }
+}
+
+

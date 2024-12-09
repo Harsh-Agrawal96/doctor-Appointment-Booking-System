@@ -19,10 +19,11 @@ let initAllWebRoutes = (app) => {
     // for check
     routes.get("/check", show.check);
 
-    
+
     return app.use("/",routes);
 };
 
 export {
     initAllWebRoutes,
 }
+

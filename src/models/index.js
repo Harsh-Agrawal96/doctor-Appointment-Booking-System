@@ -47,6 +47,10 @@ import { doctor_clinicfun } from "./doctor_clinic_connection.js";
 db.doctorCLinicConnect = doctor_clinicfun(sequelize,DataTypes);
 import { doctor_clinicRequestfun } from "./doctor_clinic_request.js";
 db.doctorClinicRequest = doctor_clinicRequestfun(sequelize,DataTypes);
+import { contactfun } from "./contacts.js";
+db.contact = contactfun(sequelize,DataTypes);
+import { feedbackfun } from "./feedbacks.js";
+db.feedback = feedbackfun(sequelize,DataTypes);
 
 db.sequelize.sync({ alter : true });
 

@@ -15,9 +15,9 @@ let createRequest = async ( id,body_data ) => {
                 }
             })
 
-            check = JSON.stringify(checkreq);
+            let check = JSON.stringify(checkreq);
             if( check.length == 2 ){
-                reject( "doctor is not valid! ");
+                return reject({ "1":"Something went Wrong", "2":"Error 404" });
             }
 
             let request = await db.doctorClinicRequest.findAll({
@@ -32,22 +32,32 @@ let createRequest = async ( id,body_data ) => {
             let data = JSON.stringify(request);
         
             if( data.length > 2 ){
-                reject("request already exist!");
+                return reject({ "1":"Something went Wrong", "2":"Error 404" });
             }
 
             // crate booking
             let createRequest = db.doctorClinicRequest;
-            const request_obj = createRequest.build( { status:1,clinicId : id,doctorId : body_data.id,workingDays : body_data.workday ,workingTime :body_data.worktime,clinicMessage : body_data.message,doctorMessage :""  });
+            const request_obj = createRequest.build( { 
+                status:1,
+                clinicId : id,
+                clinicName : body_data.clinicN,
+                doctorId : body_data.id,
+                doctorName : body_data.doctorN,
+                workingDays : body_data.workday,
+                workingTime :body_data.worktime,
+                clinicMessage : body_data.message,
+                doctorMessage :""
+            });
 
             await request_obj.save();
             console.log( "new booking created! ");
 
-            resolve();
+            resolve({ "1":"Request Send successfully" });
 
         }
         catch(err){
             console.log(err)
-            reject(err);
+            reject({ "1":"Something went Wrong", "2":"Error 502" });
         }
     })
 }
@@ -60,9 +70,9 @@ let clinicUpdate = async ( clinicid,body_data ) => {
 
         try{
 
-            let request = db.doctorClinicRequest.findAll({
+            let request = await db.doctorClinicRequest.findAll({
                 where : {
-                    id : body_data.id,
+                    id : body_data.uniqueId,
                     clinicId : clinicid
                 }
             })
@@ -70,25 +80,27 @@ let clinicUpdate = async ( clinicid,body_data ) => {
             let data = JSON.stringify(request);
 
             if( data.length <= 2 ){
-                reject("request not exist!");
+                return reject({ "1":"Something went Wrong", "2":"Error 404" });
             }
             if( request[0].dataValues.status != 2 ){
-                reject("invalid request!");
+                return reject({ "1":"Something went Wrong", "2":"Error 404" });
             }
 
             // update workingdate and time status clinicMessage
             await db.doctorClinicRequest.update(
-                { clinicMessage : body_data.message,workingDays : body_data.days,workingTime : workTime, status : 1 },
+                { clinicMessage : body_data.message,workingDays : body_data.days,workingTime : body_data.time, status : 1 },
                 {
                     where : {
-                        id : body_data.id
+                        id : body_data.uniqueId
                     },
                 },
             )
+
+            resolve({ "1":"Done" });
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject({ "1":"Something went Wrong", "2":"Error 502" });
         }
     })
 }
@@ -100,9 +112,12 @@ let doctorResponce = async ( doctorid,body_data ) => {
 
         try{
 
-            let request = db.doctorClinicRequest.findAll({
+            console.log(body_data.uniqueId);
+            console.log(doctorid)
+
+            let request = await db.doctorClinicRequest.findAll({
                 where : {
-                    id : body_data.id,
+                    id : body_data.uniqueId,
                     doctorId : doctorid
                 }
             })
@@ -110,28 +125,34 @@ let doctorResponce = async ( doctorid,body_data ) => {
             // check
         
             let data = JSON.stringify(request);
+
+            console.log(data);
         
-            if( data.length > 2 && data[0].dataValues.status == 1 ){
+            if( data.length > 2 && request[0].dataValues.status == 1 ){
                 
                 // update data and only status and doctorMessage 
                 if( body_data.choose == 2 ){
 
+                    console.log("doing denied")
+
                     await db.doctorClinicRequest.update(
-                        { doctorMessage : body_data.message, status : 4 },
+                        { workingDays : body_data.days, workingTime :body_data.time, doctorMessage : body_data.message, status : 2 },
                         {
                             where : {
-                                id : body_data.id
+                                id : body_data.uniqueId
                             },
                         },
                     )
                     console.log("successfully denied");
+
                 }else{
 
+                    console.log("doing accept")
                     await db.doctorClinicRequest.update(
-                        { doctorMessage : body_data.message, status : 5 },
+                        { doctorMessage : body_data.message, status : 3 },
                         {
                             where : {
-                                id : body_data.id
+                                id : body_data.uniqueId
                             },
                         },
                     )
@@ -143,18 +164,19 @@ let doctorResponce = async ( doctorid,body_data ) => {
                     await make.save();
 
                     console.log("connection maked!");
+
                 }
 
                 console.log("done")
-                resolve();
+                return resolve({ "1":"Done" });
 
             }else{
-                reject("Request not exist!");
+                return reject({ "1":"Something went Wrong", "2":"Error 404" });
             }
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject({ "1":"Something went Wrong", "2":"Error 502" });
         }
     })
 }

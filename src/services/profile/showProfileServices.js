@@ -17,7 +17,7 @@ let getPatientInfo = async (idName) => {
     
             let finalData = JSON.stringify(patientInfo);
             if( finalData.length > 2 ){
-                resolve(patientInfo[0].dataValues);
+                return resolve(patientInfo[0].dataValues);
             }
             // patient not found
             resolve(false);
@@ -46,7 +46,7 @@ let getDoctorInfo = async ( id ) => {
     
             let finalData = JSON.stringify(DoctorInfo);
             if( finalData.length > 2 ){
-                resolve(DoctorInfo[0].dataValues);
+                return resolve(DoctorInfo[0].dataValues);
             }
             // patient not found
             resolve(false);
@@ -75,7 +75,7 @@ let getClinicInfo = async ( id ) => {
     
             let finalData = JSON.stringify(ClinicInfo);
             if( finalData.length > 2 ){
-                resolve(ClinicInfo[0].dataValues);
+                return resolve(ClinicInfo[0].dataValues);
             }
             // patient not found
             resolve(false);

@@ -13,8 +13,16 @@ export function doctor_clinicRequestfun( sequelize, DataTypes ) {
         type : DataTypes.INTEGER,
         allowNull : false
       },
+      clinicName : {
+        type : DataTypes.STRING,
+        allowNull : false
+      },
       doctorId : {
         type : DataTypes.INTEGER,
+        allowNull : false
+      },
+      doctorName : {
+        type : DataTypes.STRING,
         allowNull : false
       },
       workingDays : {

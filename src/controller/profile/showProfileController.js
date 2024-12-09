@@ -1,23 +1,31 @@
 
 import * as getUsers from "../../services/profile/showProfileServices.js";
-import * as getata from "../../services/profile/editProfileDataServices.js";
+import * as getdata from "../../services/profile/editProfileDataServices.js";
+import * as connections from "../../services/profile/DrCliConnectServices.js";
 
-let patientProfile = async ( req,res,id ) => {
+
+let patientProfile = async ( req,res ) => {
 
     try{
 
         const patinetId = req.params.id;
-        console.log(patinetId)
 
         let data = await getUsers.getPatientInfo(patinetId);
 
         if( data == false ){
-            res.redirect("/")
+            res.redirect("/");
         }
         else{
-            // profile page
+            let islog = false;
+            let user = 199;
+            if( req.isAuthenticated() ){
+                islog = true;
+                user = req.user.type
+            }
             res.render("profile/showProfile/patient.ejs",{
-                data : data
+                data : data,
+                islog : islog,
+                usertype : user
             });
         }
     }
@@ -27,23 +35,37 @@ let patientProfile = async ( req,res,id ) => {
     }
 };
 
-let doctorProfile = async ( req,res,id ) => {
+let doctorProfile = async ( req,res ) => {
 
     try{
 
         const doctorId = req.params.id;
-        console.log(doctorId)
 
         let data = await getUsers.getDoctorInfo(doctorId);
+        let connect = await connections.clinics(doctorId);
+    
+        let clinics = {};
+        for( let i = 0;i<connect.length;i++ ){
+            let clinic = await getUsers.getClinicInfo( connect[i].dataValues.clinicId );
+            clinics[`${i}`] = clinic;
+        }
 
         if( data == false ){
             res.redirect("/");
         }
         else{
-            // profile page
-            console.log(data)
+            let islog = false;
+            let user = 199;
+            if( req.isAuthenticated() ){
+                islog = true;
+                user = req.user.type
+            }
             res.render("profile/showProfile/doctor.ejs",{
-                data : data
+                data : data,
+                islog : islog,
+                usertype : user,
+                clinics : clinics,
+                connection : connect
             });
         }
     }
@@ -54,20 +76,40 @@ let doctorProfile = async ( req,res,id ) => {
 
 };
 
-let clinicProfile = async ( req,res,id ) => {
+let clinicProfile = async ( req,res ) => {
 
     try{
 
-        const cinicId = req.params.id;
+        const clinicId = req.params.id;
 
-        let data = await getUsers.getClinicInfo(cinicId);
+        let data = await getUsers.getClinicInfo(clinicId);
+        let connect = await connections.doctors(clinicId);
+
+        let doctors = {};
+        for( let i = 0;i<connect.length;i++ ){
+            let doctor = await getUsers.getDoctorInfo( connect[i].dataValues.doctorId );
+            doctors[`${i}`] = doctor;
+        }
+        
 
         if( data == false ){
             res.redirect("/");
         }
         else{
             // profile page
-            res.redirect();
+            let islog = false;
+            let user = 199;
+            if( req.isAuthenticated() ){
+                islog = true;
+                user = req.user.type
+            }
+            res.render("profile/showProfile/clinic.ejs",{
+                data : data,
+                islog : islog,
+                usertype : user,
+                doctors : doctors,
+                connection : connect
+            });
         }
     }
     catch(err){
@@ -77,82 +119,110 @@ let clinicProfile = async ( req,res,id ) => {
 
 };
 
-let doctorEditPage = async ( req,res ) => {
+let profileEditPage = async ( req,res ) => {
 
     try{
-        // let id = req.user.maindata.id;
+
+        let id = req.user.maindata.id;
+        let usertype = req.user.type;
+
+        if( usertype == 1 ){
+
+            return patientEditPage(id,res);
+        }
+        else if( usertype == 2 ){
+
+            return doctorEditPage( id,res );
+        }else if( usertype == 3 ){
+
+            return clinicEditPage( id,res );
+        }
+
+        return res.redirect("/");
+    }
+    catch(err){
+        console.log(err);
+        res.redirect("/");
+    }
+
+}
+
+let doctorEditPage = async ( id,res ) => {
+
+    try{
         
-        // let data = getUsers.getDoctorInfo(id);
-        
-        let data = true;
+        let data = getUsers.getDoctorInfo(id);
+        let contant = await getdata.dataforDoctor(id);
+
+        console.log("ok now here");
 
         if( data == false ){
-            res.redirect("/");
+            return res.redirect("/");
         }
         else{
             // profile page
             res.render("profile/editProfile/doctorEdit.ejs",{
-                data : data
+                data : data,
+                appointment : contant.appoint,
+                requ : contant.requ
             });
         }
 
     }
     catch(err){
         console.log(err)
-        res.redirect("/");
+        return res.redirect("/");
     }
 }
 
-let patientEditPage = async ( req,res ) => {
+let patientEditPage = async ( id,res ) => {
 
     try{
 
-        // const id = req.user.maindata.id;
-        // console.log(id);
-
-        // let data = await getUsers.getPatientInfo(id);
-        let data = true;
+        let contant = await getdata.dataforPatient(id);
+        let data = await getUsers.getPatientInfo(id);
 
         if( data == false ){
-            res.redirect("/");
+            return res.redirect("/");
         }
         else{
-            // profile page
+            // profile page=
             res.render("profile/editProfile/patientEdit.ejs",{
-                data : data
+                data : data,
+                appointment : contant.appoint,
+                sergery : contant.sergery
             });
         }
     }
     catch(err){
         console.log(err);
-        res.redirect("/");
+        return res.redirect("/");
     }
 }
 
-let clinicEditPage = async ( req,res ) => {
+let clinicEditPage = async ( id,res ) => {
 
     try{
 
-        // const id = req.user.maindata.id;
-        // console.log(id);
-        await getata.dataforClinic(2);
-
-        // let data = await getUsers.getClinicInfo(id);
-        let data = true;
+        let contant = await getdata.dataforClinic(id);
+        let data = await getUsers.getClinicInfo(id);
 
         if( data == false ){
-            res.redirect("/");
+            return res.redirect("/");
         }
         else{
             // profile page
             res.render("profile/editProfile/clinicEdit.ejs",{
-                data : data
+                data : data,
+                appointment : contant.appoint,
+                sergery : contant.sergery,
+                requ : contant.requ
             });
         }
     }
     catch(err){
         console.log(err);
-        res.redirect("/");
+        return res.redirect("/");
     }
 }
 
@@ -170,9 +240,7 @@ export {
     patientProfile,
     doctorProfile,
     clinicProfile,
-    patientEditPage,
-    doctorEditPage,
-    clinicEditPage,
+    profileEditPage,
     check,
 
 }

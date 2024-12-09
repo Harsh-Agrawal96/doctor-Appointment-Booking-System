@@ -1,0 +1,46 @@
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navbar{
+    width: 100%;
+    height: max-content;
+    padding: 1.3em 0em;
+    padding-top: 0px;
+}
+
+.main{
+    width: 100%;
+    margin: auto;
+}
+@media screen and ( min-width: 1400px ) {
+    .main{
+        width: 1400px;
+    }
+}
+
+.navbar-expand-lg{
+    padding: 1.5em 1.5em;
+}
+.collapse li a{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: black;
+}
+@media screen and ( min-width : 1000px) {
+    .navbtn{
+        padding-right: 1.5em;
+    }
+    .collapse ul{
+        padding-left: 3em;
+    }
+}
+@media screen and ( max-width : 1000px) {
+    .navbtn{
+        padding-bottom: 1em;
+    }
+}

@@ -15,7 +15,6 @@ let routes = express.Router();
 
 let initAllVerifyRoutes = (app) => {
 
-    routes.get("/", verifyPages.getHOMepage)
 
     routes.get( "/login", checkAuth.checkLoggedOut, verifyPages.getLoginPage );
     routes.get( "/clinic/login",checkAuth.checkLoggedOut, verifyPages.getclinicLoginPage );

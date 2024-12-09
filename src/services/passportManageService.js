@@ -15,7 +15,7 @@ let findUserbyEmail = (email) => {
             if( data.length > 2) {
                 resolve(user);
             }else{
-                reject( ` Email is not found `);
+                reject( `Email is not found`);
             }
         }
         catch(err){

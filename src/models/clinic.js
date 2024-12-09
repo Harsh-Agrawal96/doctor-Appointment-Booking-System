@@ -40,6 +40,14 @@ export function Clinicfun( sequelize, DataTypes ) {
         type: DataTypes.STRING,
         allowNull : false
       },
+      facility : {
+        type: DataTypes.STRING,
+        allowNull : false
+      },
+      mainFacility : {
+        type: DataTypes.STRING,
+        allowNull : false
+      },
       establishedDate : {
         type: DataTypes.DATEONLY,
         allowNull : false

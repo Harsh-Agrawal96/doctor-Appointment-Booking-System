@@ -1,0 +1,623 @@
+
+/* hidden booking form */
+
+#centeredBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fafeff;
+    border: 1px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    height: max-content;
+    max-height: 90vh;
+    width: 80vh;
+}
+#centeredBox form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+}
+#centeredBox form .arrange{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+.arrange div{
+    flex-grow: 1;
+    flex-basis: 50%;
+    padding: 1em 1.5em;
+    margin-bottom: 0.5em;
+}
+.arrange div input{
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+}
+.arrange div label{
+    font-size: 1em;
+    margin-bottom: 0.4em;
+}
+#centeredBox form button{
+    font-size: 1em;
+    padding: 7px 21px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: auto;
+    background-color: #27a1d6;
+    color: white;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+/* content */
+
+.middle{
+    width: 100%;
+    height: max-content;
+    background-color: #e7edf4;
+    padding: 2em auto;
+}
+.main{
+    width: 90%;
+    margin: 0em auto;
+    padding: 0.5em 1em;
+    height: max-content;
+}
+@media screen and (min-width : 1200px ) {
+    .main{
+        width: 1200px;
+    }
+}
+
+.profile_info{
+    padding: 1em 0.5em;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    gap: 0.3em;
+    justify-content: center;
+    align-items: start;
+}
+
+.left_info{
+    width: 70%;
+    padding: 0.5em 0.2em;
+}
+.right_info{
+    width: 30%;
+    padding: 1em 0.2em;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    height: max-content;
+    padding: 1em 0.3em;
+    /* background-color: grey; */
+}
+
+/* left part of profile */
+
+.sec1{
+    display: flex;
+    gap: 1em;
+    padding: 0.8em 0.5em;
+    justify-content: center;
+    align-items: start;
+    height: max-content;
+    width: 100%;
+    background-color: white;
+}
+.photo{
+    padding: 0.5em;
+    width: 20%;
+    height: max-content;
+}
+.info{
+    padding: 0.3em;
+    padding-left: 0.7em;
+    width: 80%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+.info > div{
+    height: max-content;
+    padding: 0.2em 0.1em;
+}
+.info p{
+    height: max-content;
+    word-wrap: break-word;
+    font-size: 0.9em;
+    margin: 0px;
+}
+.main_data > p{
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.sec2{
+    display: flex;
+    width: 100%;
+    gap: 0px;
+    flex-wrap: wrap;
+    padding: 0.7em;
+    background-color: white;
+    padding-top: 1.5em;
+}
+
+.sec1 .segment{
+    display: flex;
+    padding: 0.5em;
+    padding-top: 1.7em;
+    justify-content: end;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+}
+.segment a{
+    text-decoration:underline;
+    font-size: 0.9em;
+}
+
+/* right part of profile */
+
+.booking_part{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: center;
+    align-items:start;
+    background-color: white;
+}
+.slot_div{
+    background-color: #e7edf4;
+    height: max-content;
+    width:100%;
+}
+.slot_div p{
+    height: max-content;
+    font-size: 1.5em;
+    word-wrap: break-word;
+    font-weight: 600;
+    margin: 0px;
+}
+.above{
+    display: flex;
+    gap: 1em;
+    padding: 0.4em 0.2em;
+    height: max-content;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d7f5fe;
+}
+.above > div{
+    height: max-content;
+    width: max-content;
+    padding: 0.5em;
+}
+.above p{
+    font-size: 0.9em;
+    font-weight: 500;
+    height: max-content;
+    word-wrap:break-word;
+    margin: 0px;
+}
+.booking_part .mid{
+    padding: 1.5em 0em;
+    padding-left: 1em;
+    height: max-content;
+    width: 100%;
+}
+.booking_part .mid > div{
+    height: max-content;
+    width: 100%;
+}
+.mid p{
+    height: max-content;
+    word-wrap: break-word;
+    font-size: 0.85em;
+    margin: 0px;
+}
+.booking_part .btn{
+    padding: 1em 2em;
+    width: 100%;
+    height: max-content;
+    background-color: #f0fbff;
+}
+.booking_part  button{
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 7px 24px;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+    color: white;
+    background-color: #27a1d6;
+}
+
+/* right booking options */
+
+.booking_left{
+    display: flex;
+    gap: 1px;
+    padding: 0px 1em;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+    display: none;
+}
+.book_left,.book_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    align-items: start;
+    height: max-content;
+    width: max-content;
+    padding: 1em;
+}
+.book_left > div,.book_right > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2em;
+    align-items: start;
+    height: max-content;
+    width: max-content;
+    padding: 0em;
+} 
+.glow{
+    font-weight: 600;
+}
+.book_left p,.book_right p{
+    font-size: 0.1em;
+    word-wrap: break-word;
+    height: max-content;
+    margin: 0px;
+}
+.book_right button{
+    font-size: 0.2em;
+    font-weight: 500;
+    padding: 4px 13px;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+    margin-top: 0.1em;
+    color: white;
+    background-color: #27a1d6;
+}
+
+@media screen and ( max-width : 700px ) {
+    .right_info{
+        display: none;
+    }
+    .left_info{
+        width: 100%;
+    }
+    .booking_left{
+        display: flex;
+    }
+    #centeredBox {
+        width: 80%;
+    }
+    
+}
+@media screen and ( max-width : 900px ) and ( min-width : 400px ) {
+    .left_info p{
+        font-size: 0.8em;
+    }
+    .left_info button,.right_info button{
+        font-size: 0.6em;
+    }
+    .right_info p{
+        font-size: 0.8em;
+    }
+    .heading > p{
+        font-size: 0.9em;
+    }
+    .main_data > p{
+        font-size: 1em;
+    }
+    .slot_div p{
+        font-size: 1.2em;
+    }
+}
+@media screen and ( min-width : 300px ) and ( max-width : 399px ) {
+    .right_info button{
+        font-size: 0.4em;
+    }
+    .right_info p{
+        font-size: 0.6em;
+    }
+    .heading > p{
+        font-size: 0.7em;
+    }
+    .main_data > p{
+        font-size: 0.8em;
+    }
+    .book_left p,.book_right p{
+        font-size: 0.4em;
+    }
+    .book_right button{
+        font-size: 0.3em;
+        margin-top: 0px;
+    }
+    .book_left > div,.book_right > div{
+        gap: 1px;
+    }
+    .book_left,.book_right{
+        gap: 1em;
+    }
+    .arrange div{
+        padding: 0.7em;
+    }
+    .arrange div input{
+        font-size: 0.7em;
+    }
+    .arrange div label{
+        font-size: 0.8em;
+        margin-bottom: 0.3em;
+    }
+}
+@media screen and ( max-width : 299px ) {
+    .right_info button{
+        font-size: 0.2em;
+    }
+    .right_info p{
+        font-size: 0.4em;
+    }
+    .heading > p{
+        font-size: 0.5em;
+    }
+    .main_data > p{
+        font-size: 0.6em;
+    }
+    .book_left p,.book_right p{
+        font-size: 0.3em;
+    }
+    .book_right button{
+        font-size: 0.2em;
+        margin-top: 0px;
+    }
+    .book_left > div,.book_right > div{
+        gap: 1px;
+    }
+    .book_left,.book_right{
+        gap: 1em;
+        padding: 0.5em;
+    }
+    .arrange div{
+        padding: 0.5em;
+    }
+    .arrange div input{
+        font-size: 0.5em;
+    }
+    .arrange div label{
+        font-size: 0.6em;
+        margin-bottom: 0.2em;
+    }
+}
+
+/* doctor work info */
+
+.sec2{
+    padding: 1em 2em;
+}
+.sec2 > p{
+    font-size: 1.5em;
+    margin: 0px;
+    font-weight: 600;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+.sec2 > div{
+    display: flex;
+    justify-content:space-between;
+    align-items: start;
+    width: 100%;
+    padding: 1.5em 0.5em;
+
+    & > .rights_info, & > .lefts_info{
+        padding: 0.2em 0.1em;
+    }
+    & .rights_datainfo{
+        padding: 0.3em 0.2em;
+    }
+
+    & > .rights_info{
+        width: max-content;
+    }
+    & > .lefts_info{
+
+        & > .img_div{
+            width: 40px;
+        }
+        & > .lefts_workinfo{
+            width : 100%
+        }
+        width: 70%;
+        & p{
+            font-size: 0.9em;
+            word-wrap: break-word;
+            width: 100%;
+        }
+    }
+}
+.sec2 .lefts_info{
+    display: flex;
+    justify-content: start;
+    gap: 1.5em;
+}
+
+.sec2 .rights_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    & button{
+        font-size: 0.9em;
+        padding: 4px 13px;
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+}
+.sec2 .rights_datainfo{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    
+    & p{
+        margin: 0px;
+        font-size: 0.9em;
+    }
+}
+.sec2 .lefts_info .doctor_name{
+    font-size: 1.3em;
+    font-weight: 550;
+}
+
+@media screen and ( max-width:1000px ) {
+    
+    .sec2{
+        padding: 0.8em 1.5em;
+    }
+    .sec2 > p{
+        font-size: 1.2em;
+        margin-top: 0.4em;
+        margin-bottom: 0.8em;
+    }
+    .sec2 > div{
+        padding: 1.2em 0.4em;
+    
+        & > .lefts_info{
+    
+            & > .img_div{
+                width: 35px;
+            }
+            & p{
+                font-size: 0.7em;
+            }
+        }
+    }
+    .sec2 .lefts_info{
+        gap: 1em;
+    }
+    
+    .sec2 .rights_info{
+        gap: 0.8em;
+    
+        & button{
+            font-size: 0.7em;
+            padding: 3px 11px;
+            border-radius: 1px;
+        }
+    }
+    .sec2 .rights_datainfo{
+        
+        & p{
+            font-size: 0.7em;
+        }
+    }
+    .sec2 .lefts_info .doctor_name{
+        font-size: 1.1em;
+    }
+}
+
+@media screen and ( max-width:500px ) {
+    
+    .sec2{
+        padding: 0.5em 0.8em;
+    }
+    .sec2 > p{
+        font-size: 0.9em;
+        margin-top: 0.2em;
+        margin-bottom: 0.3em;
+    }
+    .sec2 > div{
+        padding: 0.8em 0.3em;
+    
+        & > .lefts_info{
+    
+            & p{
+                font-size: 0.5em;
+            }
+        }
+    }
+    .sec2 > div{
+        flex-direction: column;
+
+        & > .lefts_info{
+            width: 100%;
+        }
+        & > .rights_info{
+            width: 100%;
+        }
+    }
+    .sec2 .rights_datainfo{
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.4em;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .sec2 .rights_datainfo > div{
+        flex-basis: max-content;
+    }
+    .sec2 .lefts_info{
+        gap: 0.7em;
+    }
+    
+    .sec2 .rights_info{
+        gap: 0.6em;
+    
+        & button{
+            font-size: 0.5em;
+            padding: 2px 9px;
+        }
+    }
+    .sec2 .rights_datainfo{
+        
+        & p{
+            font-size: 0.5em;
+        }
+    }
+    .sec2 .lefts_info .doctor_name{
+        font-size: 0.9em;
+    }
+}
+
+

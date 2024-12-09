@@ -7,7 +7,6 @@ let newRequest = async ( req,res ) => {
     try{
 
         if( req.user.type == 3 ){
-
             console.log(req.body);
     
             // send clinic and doctorid two check request
@@ -21,6 +20,7 @@ let newRequest = async ( req,res ) => {
         }
     }
     catch(err){
+        console.log(err)
         console.log("fail");
         return res.redirect("/")
     }
@@ -28,31 +28,43 @@ let newRequest = async ( req,res ) => {
 
 let updateRequest = async ( req,res ) => {
 
-    if( req.user.type == 3 ){
+    try{
 
-        // send request id if exist 
-        // call for make new request
-        await requestCrud.clinicUpdate( req.user.maindata.id,req.body );
+        if( req.user.type == 3 ){
 
-        return res.redirect("/");
+            await requestCrud.clinicUpdate( req.user.maindata.id,req.body );
+    
+            return res.redirect("/");
+        }
+        else{
+    
+            return res.redirect("/");
+        }
     }
-    else{
-
+    catch(err){
+        console.log(err)
         return res.redirect("/");
     }
 }
 
 let doctorResponse = async ( req,res ) => {
 
-    if( req.user.type == 2 ){
+    try{
 
-        // update request
-        await requestCrud.doctorResponce( req.user.maindata.id,req.body );
+        if( req.user.type == 2 ){
 
-        return res.redirect("/");
+            // update request
+            await requestCrud.doctorResponce( req.user.maindata.id,req.body );
+    
+            return res.redirect("/");
+        }
+        else{
+    
+            return res.redirect("/");
+        }
     }
-    else{
-
+    catch(err){
+        console.log(err)
         return res.redirect("/");
     }
 }

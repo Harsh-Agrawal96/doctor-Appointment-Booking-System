@@ -9,7 +9,13 @@ let createbooking = async ( patientid, data_body ) => {
 
         try{
 
-            if( body_data.consttype == 2 ){
+            if( data_body.type != 1 && data_body.type != 2 ){
+                return reject( {"1" : "something went wrong","2" : "Error 404"} );
+            }
+
+            let type;
+
+            if( data_body.consttype == 2 ){
                 let check = await db.doctor.findAll({
                     where : {
                         id : data_body.constid
@@ -18,11 +24,12 @@ let createbooking = async ( patientid, data_body ) => {
 
                 let check2 = JSON.stringify(check);
                 if( check2.length == 2 ){
-                    reject("consultant not found");
+                    return reject( {"1" : "something went wrong","2" : "Error 404"} );
                 }
+                type = 1;
             }
 
-            if( body_data.consttype == 3 ){
+            if( data_body.consttype == 3 ){
                 let check = await db.clinic.findAll({
                     where : {
                         id : data_body.constid
@@ -31,21 +38,41 @@ let createbooking = async ( patientid, data_body ) => {
 
                 let check2 = JSON.stringify(check);
                 if( check2.length == 2 ){
-                    reject("consultant not found");
+                    return reject( {"1" : "something went wrong","2" : "Error 404"} );
                 }
+                type = data_body.type;
             }
 
             let booking = db.allbooking;
-            const booking_obj = booking.build( { status:1, dateofStart : '1800-01-01',dateofappointment : '1800-01-01', dateofComform : '1800-01-01', dateofDecline : '1800-01-01', datetoconform : '1800-01-01', patientId :id, consultantId : data_body.constid,consultanttype : data_body.consttype, symtom : data_body.symtom,consultantMeassage : "",patientMeassage : data_body.message,consultDate : '1800-01-01',preferredConsultdate : data_body.preferredate });
+            const booking_obj = booking.build( { 
+
+                status:1, 
+                dateofStart : '1800-01-01',
+                dateofappointment : '1800-01-01', 
+                dateofComform : '1800-01-01', 
+                dateofDecline : '1800-01-01', 
+                datetoconform : '1800-01-01', 
+                patientId :patientid,
+                patientName : data_body.patinetName,
+                consultantId : data_body.constid,
+                consultantName : data_body.consultName,
+                consultanttype : data_body.consttype, 
+                symtom : data_body.symtom,
+                consultantMeassage : "",
+                patientMeassage : data_body.message,
+                consultDate : "",
+                preferredConsultdate : data_body.preferredate,
+                bookingtype : type 
+
+            });
 
             await booking_obj.save();
-            console.log( "new booking created! ");
 
-            resolve();
+            resolve( { "1" : "booking created successfully" } );
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     })
 }
@@ -68,7 +95,11 @@ let startprogress = async ( consultId, type, body_data) => {
                     
                     // update data
                     await db.allbooking.update(
-                        { consultantMeassage : body_data.message, status : 2, preferredConsultdate : body_data.date },
+                        { 
+                            consultantMeassage : body_data.message, 
+                            status : 2, 
+                            preferredConsultdate : body_data.date
+                        },
                         {
                             where : {
                                 id : body_data.uniqueId
@@ -76,19 +107,19 @@ let startprogress = async ( consultId, type, body_data) => {
                         },
                     )
                     console.log("progress start done!");
-                    resolve();
+                    resolve( { "1" : "done" } );
                 }else{
 
-                    reject("invalid user or booking details")
+                    reject( {"1" : "something went wrong","2" : "Error 404"} );
                 }
                 
             }else{
-                reject("booking not found");
+                reject( {"1" : "something went wrong","2" : "Error 404"} );
             }
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     });
 }
@@ -117,24 +148,25 @@ let requestforConform = async ( consultId, type, body_data) => {
                         },
                     )
                     console.log("send request for conform done!");
-                    resolve();
+                    resolve( { "1" : "done!" } );
                 }else{
 
-                    reject("invalid user or booking details")
+                    reject( {"1" : "something went wrong","2" : "Error 404"} )
                 }
                 
             }else{
-                reject("booking not found");
+                reject( {"1" : "something went wrong","2" : "Error 404"} );
             }
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     });
 }
 
-let CompleteBooking = async ( patientid, type, body_data, query) => {
+
+let CompleteBooking = async ( patientid, type, body_data ) => {
 
     return new Promise( async (resolve,reject) => {
 
@@ -148,25 +180,25 @@ let CompleteBooking = async ( patientid, type, body_data, query) => {
                 let bookingData = booking[0].dataValues;
 
                 if( bookingData.patientId != patientid || type != 1 || bookingData.status != 3 ){
-                    reject("details not found");
+                    reject( {"1" : "something went wrong","2" : "Error 404"} );
                 }
 
-                if( query == 1 ){
-                    conformed( body_data );
+                if( body_data.selection == 1 ){
+                    await conformed( body_data );
                 }
-                if( query == 2 ){
-                    denied( body_data );
+                if( body_data.selection == 2 ){
+                    await denied( body_data );
                 }
 
-                resolve("done");
+                return resolve( { "1" : "done" } );
                 
             }else{
-                reject("booking not found");
+                return reject( {"1" : "something went wrong","2" : "Error 404"} );
             }
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     });
 }
@@ -190,7 +222,7 @@ let conformed = async ( body_data ) => {
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     })
 }
@@ -214,7 +246,7 @@ let denied = async ( body_data ) => {
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     })
 }
@@ -231,11 +263,11 @@ let findbooking = async ( id ) => {
                     id : id
                 }
             })
-            resolve(booking)
+            resolve(booking);
         }
         catch(err){
             console.log(err);
-            reject(err);
+            reject( {"1" : "something went wrong","2" : "Error 502"} );
         }
     });
 }
