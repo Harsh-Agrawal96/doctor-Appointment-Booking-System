@@ -1,24 +1,21 @@
 
 import * as updateProfile from "../../services/profile/editProfileServices.js";
+import { tryAgainError as tryErr, profileUpdateMsg as profileMsg } from "../../utils/errorMsg.js";
 
 // doctor
 let doctorPU_personal = async (req,res) => {
 
-    console.log(req.body);
-
     try{
-        let data = req.body;
-        let mainid = req.user.maindata.id;
+        const data = req.body;
+        const mainid = req.user.maindata._id;
         await updateProfile.doctorU_personal(data,mainid);
 
-        // send profile page
-        return res.redirect("/");
+        req.flash("success", profileMsg);
+        res.redirect("/profile/edit");
     }
     catch(err){
-        console.log("here")
-        console.log(err);
-        // send updation page
-        return res.redirect("/");
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
     
 }
@@ -26,17 +23,16 @@ let doctorPU_personal = async (req,res) => {
 let doctorPU_work = async (req,res) => {
 
     try{
-        let data = req.body;
-        let mainid = req.user.maindata.id;
+        const data = req.body;
+        const mainid = req.user.maindata.id;
         await updateProfile.doctorU_work(data,mainid);
 
-        // send profile page
-        return res.redirect("/")
+        req.flash("success", profileMsg);
+        res.redirect("/profile/edit");
     }
     catch(err){
-        console.log(err);
-        // send updation page
-        return res.redirect("/")
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 
@@ -44,7 +40,7 @@ let doctorPU_profession = async (req,res) => {
 
     try{
         let profession_data = req.body;
-        let mainid = req.user.maindata.id;
+        const mainid = req.user.maindata.id;
         let data = {};
         let val;
 
@@ -71,70 +67,52 @@ let doctorPU_profession = async (req,res) => {
 
         await updateProfile.doctorU_profession(data,mainid);
 
-        // send profile page
-        return res.redirect("/")
+        req.flash("success", profileMsg);
+        res.redirect("/profile/edit");
     }
     catch(err){
-        console.log(err);
-        // send updation page
-        return res.redirect("/")
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 
 let makeobject = (string) => {
-
-    let substringsArray = string.split(",");
-    let substringsObject = {};
-    substringsArray.forEach((substring, index) => {
-        if( substring == ''){
-
-            let data = JSON.stringify(substringsObject);
-            return data;
-        }
-        substringsObject[`I${index}`] = substring;
-    });
-
-    let data = JSON.stringify(substringsObject);
-
-    return data;
+    const substringsArray = string.split(",");
+    return substringsArray;
 }
 
-//Clinic
 
+//Clinic
 let clinicUP_personal = async (req,res) => {
     
     try{
-        let data = req.body;
-        let mainid = req.user.maindata.id;
+        const data = req.body;
+        const mainid = req.user.maindata.id;
         await updateProfile.clinicU_personal(data,mainid);
 
-        // send profile page
-        return res.render();
+        req.flash("success", profileMsg);
+        res.redirect("/profile/edit");
     }
     catch(err){
-        console.log(err);
-        // send updation page
-        return res.render("")
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 
 // patient
 let patientUP_personal= async (req,res) => {
 
-    console.log(req.body);
-
     try{
-        let data = req.body;
-        let mainid = req.user.maindata.id;
+        const data = req.body;
+        const mainid = req.user.maindata.id;
         await updateProfile.patientU_personal(data,mainid);
 
-        // send profile page
-        return res.redirect("/");
+        req.flash("success", profileMsg);
+        res.redirect("/profile/edit");
     }
     catch(err){
-        console.log(err);
-        // send updation page
-        return res.redirect("/")
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 

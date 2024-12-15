@@ -1,51 +1,45 @@
 
-import { db } from "../models/index.js";
+import Doctor from "../models/doctor.js";
+import Clinic from "../models/clinic.js";
+import Booking from "../models/Booking.js";
+
+import { serverErrorFromService as serverErr, userErrorfromService as userErr } from "../utils/errorMsg.js";
 
 
 
 let createbooking = async ( patientid, data_body ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
+
             if( data_body.type != 1 && data_body.type != 2 ){
-                return reject( {"1" : "something went wrong","2" : "Error 404"} );
+                return reject(userErr);
             }
 
             let type;
 
             if( data_body.consttype == 2 ){
-                let check = await db.doctor.findAll({
-                    where : {
-                        id : data_body.constid
-                    }
+                const check = await Doctor.findOne({
+                    _id : data_body.constid
                 })
-
-                let check2 = JSON.stringify(check);
-                if( check2.length == 2 ){
-                    return reject( {"1" : "something went wrong","2" : "Error 404"} );
+                if( check == null ){
+                    return reject(userErr);
                 }
                 type = 1;
             }
 
             if( data_body.consttype == 3 ){
-                let check = await db.clinic.findAll({
-                    where : {
-                        id : data_body.constid
-                    }
+                const check = await Clinic.find({
+                    _id : data_body.constid
                 })
-
-                let check2 = JSON.stringify(check);
-                if( check2.length == 2 ){
-                    return reject( {"1" : "something went wrong","2" : "Error 404"} );
+                if( check== null ){
+                    return reject(userErr);
                 }
                 type = data_body.type;
             }
 
-            let booking = db.allbooking;
-            const booking_obj = booking.build( { 
-
+            const booking_obj = new Booking({ 
                 status:1, 
                 dateofStart : '1800-01-01',
                 dateofappointment : '1800-01-01', 
@@ -56,23 +50,20 @@ let createbooking = async ( patientid, data_body ) => {
                 patientName : data_body.patinetName,
                 consultantId : data_body.constid,
                 consultantName : data_body.consultName,
-                consultanttype : data_body.consttype, 
+                consultantType : data_body.consttype, 
                 symtom : data_body.symtom,
                 consultantMeassage : "",
                 patientMeassage : data_body.message,
                 consultDate : "",
                 preferredConsultdate : data_body.preferredate,
-                bookingtype : type 
-
+                bookingType : type 
             });
-
             await booking_obj.save();
 
-            resolve( { "1" : "booking created successfully" } );
+            resolve([ "booking created successfully" ]);
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            return reject(serverErr);
         }
     })
 }
@@ -81,45 +72,36 @@ let createbooking = async ( patientid, data_body ) => {
 let startprogress = async ( consultId, type, body_data) => {
 
     return new Promise( async (resolve,reject) => {
-
         try{
 
-            let booking = await findbooking(body_data.uniqueId);
+            const bookingData = await findbooking(body_data.uniqueId);
 
-            let data = JSON.stringify(booking);
+            if( bookingData != null ){
 
-            if( data.length > 2 ){
-                let bookingData = booking[0].dataValues;
-
-                if( bookingData.consultantId == consultId && bookingData.consultanttype == type && ( bookingData.status == 1 || bookingData.status == 4 ) ){
+                if( bookingData.consultantId == consultId && bookingData.consultantType === type && ( bookingData.status == 1 || bookingData.status == 4 ) ){
                     
                     // update data
-                    await db.allbooking.update(
-                        { 
-                            consultantMeassage : body_data.message, 
+                    await Booking.findByIdAndUpdate(
+                        {
+                            _id : body_data.uniqueId
+                        },
+                        {
+                            consultantMessage : body_data.message, 
                             status : 2, 
                             preferredConsultdate : body_data.date
                         },
-                        {
-                            where : {
-                                id : body_data.uniqueId
-                            },
-                        },
                     )
-                    console.log("progress start done!");
-                    resolve( { "1" : "done" } );
-                }else{
 
-                    reject( {"1" : "something went wrong","2" : "Error 404"} );
+                    resolve( ["done"] );
+                }else{
+                    reject(userErr);
                 }
-                
             }else{
-                reject( {"1" : "something went wrong","2" : "Error 404"} );
+                reject(userErr);
             }
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject(serverErr);
         }
     });
 }
@@ -130,37 +112,32 @@ let requestforConform = async ( consultId, type, body_data) => {
 
         try{
 
-            let booking = await findbooking(body_data.uniqueId);
+            const bookingData = await findbooking(body_data.uniqueId);
 
-            let data = JSON.stringify(booking);
+            if( bookingData != null ){
 
-            if( data.length > 2 ){
-                let bookingData = booking[0].dataValues;
-
-                if( bookingData.consultantId == consultId && bookingData.consultanttype == type && ( bookingData.status == 2 || bookingData.status == 4 ) ){
+                if( bookingData.consultantId == consultId && bookingData.consultantType == type && ( bookingData.status == 2 || bookingData.status == 4 ) ){
                     
-                    await db.allbooking.update(
-                        { consultantMeassage : body_data.message, status : 3 },
+                    await Booking.findByIdAndUpdate(
                         {
-                            where : {
-                                id : body_data.uniqueId
-                            },
+                            _id : body_data.uniqueId
+                        },
+                        { 
+                            consultantMessage : body_data.message, 
+                            status : 3 
                         },
                     )
-                    console.log("send request for conform done!");
-                    resolve( { "1" : "done!" } );
-                }else{
 
-                    reject( {"1" : "something went wrong","2" : "Error 404"} )
+                    resolve(["done"]);
+                }else{
+                    reject(userErr)
                 }
-                
             }else{
-                reject( {"1" : "something went wrong","2" : "Error 404"} );
+                reject(userErr);
             }
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject(serverErr);
         }
     });
 }
@@ -172,15 +149,12 @@ let CompleteBooking = async ( patientid, type, body_data ) => {
 
         try{
 
-            let booking = await findbooking(body_data.uniqueId);
+            const bookingData = await findbooking(body_data.uniqueId);
 
-            let data = JSON.stringify(booking);
-
-            if( data.length > 2 ){
-                let bookingData = booking[0].dataValues;
+            if( bookingData != null ){
 
                 if( bookingData.patientId != patientid || type != 1 || bookingData.status != 3 ){
-                    reject( {"1" : "something went wrong","2" : "Error 404"} );
+                    return reject(userErr);
                 }
 
                 if( body_data.selection == 1 ){
@@ -190,15 +164,13 @@ let CompleteBooking = async ( patientid, type, body_data ) => {
                     await denied( body_data );
                 }
 
-                return resolve( { "1" : "done" } );
-                
+                return resolve(["done"]);
             }else{
-                return reject( {"1" : "something went wrong","2" : "Error 404"} );
+                return reject(userErr);
             }
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject(serverErr);
         }
     });
 }
@@ -206,23 +178,19 @@ let CompleteBooking = async ( patientid, type, body_data ) => {
 let conformed = async ( body_data ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            await db.allbooking.update(
-                { status : 5 },
+            await Booking.findByIdAndUpdate(
                 {
-                    where : {
-                        id : body_data.uniqueId
-                    },
+                    _id : body_data.uniqueId
                 },
+                { status : 5 },
             )
-            console.log("booking completed successfully!");
+
             resolve();
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject();
         }
     })
 }
@@ -230,23 +198,21 @@ let conformed = async ( body_data ) => {
 let denied = async ( body_data ) => {
     
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            await db.allbooking.update(
-                { patientMeassage : body_data.message, status :4 },
+            await Booking.findByIdAndUpdate(
                 {
-                    where : {
-                        id : body_data.uniqueId
-                    },
+                    _id : body_data.uniqueId
+                },
+                { 
+                    patientMessage : body_data.message, 
+                    status :4 
                 },
             )
-            console.log("booking denied!");
             resolve();
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject();
         }
     })
 }
@@ -255,19 +221,14 @@ let denied = async ( body_data ) => {
 let findbooking = async ( id ) => {
 
     return new Promise( async (resolve,reject) => {
-
         try{
-
-            let booking = await db.allbooking.findAll({
-                where: {
-                    id : id
-                }
+            const booking = await Booking.findOne({
+                _id : id
             })
             resolve(booking);
         }
         catch(err){
-            console.log(err);
-            reject( {"1" : "something went wrong","2" : "Error 502"} );
+            reject();
         }
     });
 }

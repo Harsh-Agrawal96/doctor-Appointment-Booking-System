@@ -1,29 +1,23 @@
-import express from "express";
-import * as pages from "../controller/homepageController.js";
-import * as validate from "../validation/userValidate.js";
-import * as show from "../controller/profile/showProfileController.js"
+
+import { initAllRequestRoutes } from "./addDrRoutes.js";
+import { initBookingRoutes } from "./bookingRoutes.js";
+import { initProfileRoutes } from "./profileRoutes.js";
+import { initAllVerifyRoutes } from "./verifyRoutes.js";
+import { iniAllHomepageRoutes } from "./homeRoutes.js";
+import { unformalRoutes } from "./unformaladdroute.js";
 
 
 
-let routes = express.Router();
+const initAllWebRoutes = (app) => {
 
-let initAllWebRoutes = (app) => { 
+    initAllRequestRoutes(app);
+    initBookingRoutes(app);
+    initProfileRoutes(app);
+    initAllVerifyRoutes(app);
+    iniAllHomepageRoutes(app);
+    unformalRoutes(app);
 
-    // routes.get("/register",checkauth.checkLoggedOut, pages.getRegisterPage);
-    // routes.get("/login", pages.getLoginPage);
-
-    // final routes
-
-    // routes.get("/", checkauth.checkLoggedIn,pages.getHomepage);
-
-    // for check
-    routes.get("/check", show.check);
-
-
-    return app.use("/",routes);
 };
 
-export {
-    initAllWebRoutes,
-}
+export { initAllWebRoutes }
 

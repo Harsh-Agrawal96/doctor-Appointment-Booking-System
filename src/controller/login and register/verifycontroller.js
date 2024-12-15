@@ -1,6 +1,7 @@
 
 import { validationResult } from "express-validator";
 import * as services from "../../services/adduserServices.js";
+import { tryAgainError as tryErr, registrationMsg as registerMsg } from "../../utils/errorMsg.js";
 
 
 
@@ -13,28 +14,24 @@ let handleDoctorRegister = async (req,res) => {
         email : req.body.email,
         password : req.body.password
     }
-
-    let forcheck = checkforValidation(req,res,form);
+    let forcheck = await checkforValidation(req,res,form);
     if( forcheck == true ){
         return res.render("register/register.ejs",{
-            errors : req.flash('errors'),
+            errors : req.flash('formError'),
             form : form
         });
     }
 
     try{
-        console.log("hello")
         let user = req.body;
-
         await services.addNewUser(user,2);
-        
+
+        req.flash("success",registerMsg);
         return res.redirect("/");
 
-
     }catch(err){
-        req.flash("errors",err);
+        req.flash("error",tryErr);
         return res.render("register/register.ejs",{
-            errors : req.flash('errors'),
             form : form
         });
     }
@@ -51,26 +48,24 @@ let handleClinicRegister = async (req,res) => {
         clinicname : req.body.clinicName, 
         password : req.body.password
     }
-
-    let forcheck = checkforValidation(req,res,form);
+    let forcheck = await checkforValidation(req,res,form);
     if( forcheck == true ){
         return res.render("register/clinicRegister.ejs", {
-            errors : req.flash('errors'),
+            errors : req.flash('formError'),
             form : form
         })
     }
 
     try{
         let user = req.body;
-
         await services.addNewUser(user,3);
         
+        req.flash("success",registerMsg);
         return res.redirect("/");
 
     }catch(err){
-        req.flash("errors",err);
+        req.flash("error",tryErr);
         return res.render("register/clinicRegister.ejs",{
-            errors : req.flash('errors'),
             form : form
         });
     }
@@ -86,27 +81,24 @@ let handleUserRegister = async (req,res) => {
         email : req.body.email,
         password : req.body.password
     }
-
-    let forcheck = checkforValidation(req,res, form);
+    let forcheck = await checkforValidation(req,res, form);
     if( forcheck == true ){
         return res.render("register/register.ejs",{
-            errors : req.flash('errors'),
+            errors : req.flash('formError'),
             form : form
         });
     }
 
     try{
         let user = req.body;
-
         await services.addNewUser(user,1);
         
+        req.flash("success",registerMsg);
         return res.redirect("/");
 
-
     }catch(err){
-        req.flash("errors",err);
+        req.flash("error",tryErr);
         return res.render("register/register.ejs",{
-            errors : req.flash('errors'),
             form : form
         });
     }
@@ -114,17 +106,16 @@ let handleUserRegister = async (req,res) => {
 };
 
 // validate input fields
-let checkforValidation = (req,res, form) => {
+let checkforValidation = async (req,res, form) => {
 
     let errorArr = [];// create array to save validation error
-    let validationError = validationResult(req);
-    console.log(validationError)
+    let validationError = await validationResult(req);
     if( !validationError.isEmpty() ){
         let errors = Object.values( validationError.mapped() );
         errors.forEach( ( items ) => {
             errorArr.push(items.msg);
         })
-        req.flash("errors",errorArr);
+        req.flash("formError",errorArr);
         return true;
     }else{
         return false;
@@ -133,7 +124,6 @@ let checkforValidation = (req,res, form) => {
 
 export {
 
-    // forcheck,
     handleUserRegister,
     handleDoctorRegister,
     handleClinicRegister,

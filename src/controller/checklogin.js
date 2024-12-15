@@ -4,9 +4,6 @@ let checkLoggedIn = ( req,res, next ) => {
 
     if( !req.isAuthenticated() ){
         return res.redirect("/login");
-    }else{
-        console.log(req.user);
-        console.log("ok")
     }
     next();
 };

@@ -7,12 +7,11 @@ import * as connections from "../../services/profile/DrCliConnectServices.js";
 let patientProfile = async ( req,res ) => {
 
     try{
-
         const patinetId = req.params.id;
-
         let data = await getUsers.getPatientInfo(patinetId);
 
         if( data == false ){
+            req.flash("error",tryErr);
             res.redirect("/");
         }
         else{
@@ -30,7 +29,7 @@ let patientProfile = async ( req,res ) => {
         }
     }
     catch(err){
-        console.log(err);
+        req.flash("error", tryErr);
         res.redirect("/");
     }
 };
@@ -44,13 +43,14 @@ let doctorProfile = async ( req,res ) => {
         let data = await getUsers.getDoctorInfo(doctorId);
         let connect = await connections.clinics(doctorId);
     
-        let clinics = {};
+        let clinics = [];
         for( let i = 0;i<connect.length;i++ ){
-            let clinic = await getUsers.getClinicInfo( connect[i].dataValues.clinicId );
-            clinics[`${i}`] = clinic;
+            const clinic = await getUsers.getClinicInfo( connect[i].clinicId );
+            clinics.push(clinic);
         }
 
         if( data == false ){
+            req.flash("error", tryErr);
             res.redirect("/");
         }
         else{
@@ -70,7 +70,7 @@ let doctorProfile = async ( req,res ) => {
         }
     }
     catch(err){
-        console.log(err);
+        req.flash("error", tryErr);
         res.redirect("/");
     }
 
@@ -85,18 +85,18 @@ let clinicProfile = async ( req,res ) => {
         let data = await getUsers.getClinicInfo(clinicId);
         let connect = await connections.doctors(clinicId);
 
-        let doctors = {};
+        let doctors = [];
         for( let i = 0;i<connect.length;i++ ){
-            let doctor = await getUsers.getDoctorInfo( connect[i].dataValues.doctorId );
-            doctors[`${i}`] = doctor;
+            const doctor = await getUsers.getDoctorInfo( connect[i].doctorId );
+            doctors.push(doctor);
         }
         
 
         if( data == false ){
+            req.flash("error", tryErr);
             res.redirect("/");
         }
         else{
-            // profile page
             let islog = false;
             let user = 199;
             if( req.isAuthenticated() ){
@@ -113,7 +113,7 @@ let clinicProfile = async ( req,res ) => {
         }
     }
     catch(err){
-        console.log(err);
+        req.flash("error",tryErr);
         res.redirect("/");
     }
 
@@ -123,44 +123,43 @@ let profileEditPage = async ( req,res ) => {
 
     try{
 
-        let id = req.user.maindata.id;
-        let usertype = req.user.type;
+        const id = req.user.maindata.id;
+        const usertype = req.user.type;
 
         if( usertype == 1 ){
 
-            return patientEditPage(id,res);
+            return patientEditPage(id,req,res);
         }
         else if( usertype == 2 ){
 
-            return doctorEditPage( id,res );
+            return doctorEditPage( id,req,res );
         }else if( usertype == 3 ){
 
-            return clinicEditPage( id,res );
+            return clinicEditPage( id,req,res );
         }
 
-        return res.redirect("/");
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
     catch(err){
-        console.log(err);
+        req.flash("error", tryErr);
         res.redirect("/");
     }
 
 }
 
-let doctorEditPage = async ( id,res ) => {
+let doctorEditPage = async ( id,req,res ) => {
 
     try{
         
-        let data = getUsers.getDoctorInfo(id);
+        let data = await getUsers.getDoctorInfo(id);
         let contant = await getdata.dataforDoctor(id);
 
-        console.log("ok now here");
-
         if( data == false ){
-            return res.redirect("/");
+            req.flash("error", tryErr);
+            res.redirect("/");
         }
         else{
-            // profile page
             res.render("profile/editProfile/doctorEdit.ejs",{
                 data : data,
                 appointment : contant.appoint,
@@ -170,12 +169,12 @@ let doctorEditPage = async ( id,res ) => {
 
     }
     catch(err){
-        console.log(err)
-        return res.redirect("/");
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 
-let patientEditPage = async ( id,res ) => {
+let patientEditPage = async ( id,req,res ) => {
 
     try{
 
@@ -183,10 +182,10 @@ let patientEditPage = async ( id,res ) => {
         let data = await getUsers.getPatientInfo(id);
 
         if( data == false ){
-            return res.redirect("/");
+            req.flash("error", tryErr);
+            res.redirect("/");
         }
         else{
-            // profile page=
             res.render("profile/editProfile/patientEdit.ejs",{
                 data : data,
                 appointment : contant.appoint,
@@ -195,12 +194,12 @@ let patientEditPage = async ( id,res ) => {
         }
     }
     catch(err){
-        console.log(err);
-        return res.redirect("/");
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
 }
 
-let clinicEditPage = async ( id,res ) => {
+let clinicEditPage = async ( id,req,res ) => {
 
     try{
 
@@ -208,10 +207,10 @@ let clinicEditPage = async ( id,res ) => {
         let data = await getUsers.getClinicInfo(id);
 
         if( data == false ){
-            return res.redirect("/");
+            req.flash("error", tryErr);
+            res.redirect("/");
         }
         else{
-            // profile page
             res.render("profile/editProfile/clinicEdit.ejs",{
                 data : data,
                 appointment : contant.appoint,
@@ -221,17 +220,9 @@ let clinicEditPage = async ( id,res ) => {
         }
     }
     catch(err){
-        console.log(err);
-        return res.redirect("/");
+        req.flash("error", tryErr);
+        res.redirect("/");
     }
-}
-
-
-// test
-
-let check = async (req,res) => {
-
-    res.render("profile/editProfile/doctorEdit.ejs");
 }
 
 
@@ -241,7 +232,6 @@ export {
     doctorProfile,
     clinicProfile,
     profileEditPage,
-    check,
 
 }
 

@@ -1,91 +1,74 @@
 
+import mongoose from "mongoose";
 
-export function Bookingfun( sequelize, DataTypes ) {
+const bookingSchema = new mongoose.Schema({
+  status: {
+    type: Number,
+    required: true,
+  },
+  dateofStart: {
+    type: Date,
+    required: true,
+  },
+  dateofappointment: {
+    type: Date,
+    required: true,
+  },
+  dateofComform: {
+    type: Date,
+    required: true,
+  },
+  dateofDecline: {
+    type: Date,
+    required: true,
+  },
+  datetoconform: {
+    type: Date,
+    required: true,
+  },
+  patientId: {
+    type: String,
+    required: true,
+  },
+  patientName: {
+    type: String,
+    required: true,
+  },
+  consultantId: {
+    type: String,
+    required: true,
+  },
+  consultantName: {
+    type: String,
+    required: true,
+  },
+  consultantType: {
+    type: Number,
+    required: true,
+  },
+  symtom: {
+    type: String,
+    required: true,
+  },
+  consultantMessage: {
+    type: String,
+  },
+  patientMessage: {
+    type: String,
+  },
+  consultDate: {
+    type: String,
+  },
+  preferredConsultdate: {
+    type: String,
+  },
+  bookingType: {
+    type: Number,
+    required: true,
+  },
+}, {
+  collection: 'allBooking',
+});
 
-    const Booking = sequelize.define('bookings', {
-
-      // Model attributes are defined here
-
-      status : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      dateofStart : {
-        type : DataTypes.DATE,
-        allowNull : false
-      },
-      dateofappointment : {
-        type : DataTypes.DATE,
-        allowNull : false
-      },
-      dateofComform : {
-        type : DataTypes.DATE,
-        allowNull : false
-      },
-      dateofDecline : {
-        type : DataTypes.DATE,
-        allowNull : false
-      },
-      datetoconform : {
-        type : DataTypes.DATE,
-        allowNull : false
-      },
-      patientId : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      patientName : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      consultantId : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      consultantName : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      consultanttype : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      symtom : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      consultantMeassage : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      patientMeassage : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      consultDate : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      preferredConsultdate : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      bookingtype : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      }
-
-
-    }, {
-
-      // Other model options go here
-      tableName: 'allBooking'
-    });
-    
-    // `sequelize.define` also returns the model
-    console.log(Booking === sequelize.models.bookings); // true
-
-    return Booking;
-    
-    
-    }
+const Booking = mongoose.model('Booking', bookingSchema);
+export default Booking

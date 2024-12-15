@@ -1,21 +1,22 @@
-import { db } from "../models/index.js";
+
+import User from "../models/alluser.js";
+import Patient from "../models/patient.js";
+import Doctor from "../models/doctor.js";
+import Clinic from "../models/clinic.js";
 
 
 let findUserbyEmail = (email) => {
+
     return new Promise ( async( resolve,reject ) => {
-
         try{
-
-            let user = await db.users.findAll({
-                where : {
-                    useremail : email
-                }
+            
+            const user = await User.findOne({
+                useremail : email
             });
-            let data = JSON.stringify(user);
-            if( data.length > 2) {
-                resolve(user);
-            }else{
+            if( user == null ) {
                 reject( `Email is not found`);
+            }else{
+                resolve(user);
             }
         }
         catch(err){
@@ -29,52 +30,43 @@ let comparePassword = ( password, user ) => {
     return new Promise( async ( resolve,reject ) => {
         try{
 
-            let type = user[0].dataValues.usertype;
+            let type = user.usertype;
             if( type == 1 ){
-                let patients = await db.patient.findAll({
-                    where : {
-                        email : user[0].dataValues.useremail
-                    }
+                const patient = await Patient.findOne({
+                    email : user.useremail
                 })
 
-                let data = JSON.stringify(patients);
-                if( data.length > 2 ){
-                    if( password === patients[0].dataValues.password ){
-                        resolve(true);
+                if( patient != null ){
+                    if( password === patient.password ){
+                        return resolve(true);
                     }else{
-                        resolve(" Password is incorrect! ");
+                        return reject(false);
                     }
                 }
             }
             if( type == 2 ){
-                let doctors = await db.doctor.findAll({
-                    where : {
-                        email : user[0].dataValues.useremail
-                    }
+                const doctor = await Doctor.findOne({
+                    email : user.useremail
                 })
 
-                let data = JSON.stringify(doctors);
-                if( data.length > 2 ){
-                    if( password === doctors[0].dataValues.password ){
-                        resolve(true);
+                if( doctor != null ){
+                    if( password === doctor.password ){
+                        return resolve(true);
                     }else{
-                        resolve(" Password is incorrect! ");
+                        return reject(false);
                     }
                 }
             }
             if( type == 3 ){
-                let clinics = await db.clinic.findAll({
-                    where : {
-                        email : user[0].dataValues.useremail
-                    }
+                const clinic = await Clinic.findOne({
+                    email : user.useremail
                 })
 
-                let data = JSON.stringify(clinics);
-                if( data.length > 2 ){
-                    if( password === clinics[0].dataValues.password ){
-                        resolve(true);
+                if( clinic != null ){
+                    if( password === clinic.password ){
+                        return resolve(true);
                     }else{
-                        resolve(" Password is incorrect! ");
+                        return reject(false);
                     }
                 }
             }
@@ -90,17 +82,13 @@ let findUserbyid = (idInput) => {
     return new Promise( async (resolve, reject) =>{
 
         try{
-            let user = await db.users.findAll({
-                where : {
-                    id : idInput
-                }
+            const user = await User.findOne({
+                _id : idInput
             });
-
-            let data = JSON.stringify(user);
-            if( data.length > 2){
-                resolve(user);
+            if( user == null ) {
+                return reject(`user not found by id : ${idInput} `);
             }
-            reject(`user not found by id : ${idInput} `);
+            resolve(user);
         }catch( err ){
             reject(err);
         }
@@ -110,45 +98,40 @@ let findUserbyid = (idInput) => {
 
 let findRealUser = async (usertype, email) => {
 
-    console.log(
-        "main"
-    );
-    if( usertype == 1 ){
-        let patients = await db.patient.findAll({
-            where : {
-                email : email
-            }
-        })
+    return new Promise ( async ( resolve, reject ) => {
+        try{
 
-        let data = JSON.stringify(patients);
-        if( data.length > 2 ){
-            return patients[0].dataValues;
-        }
-    }
-    if( usertype == 2 ){
-        let doctors = await db.doctor.findAll({
-            where : {
-                email : email
+            if( usertype == 1 ){
+                const patient = await Patient.findOne({
+                    email : email
+                })
+                if( patient != null ){
+                    return resolve(patient);
+                }
             }
-        })
-
-        let data = JSON.stringify(doctors);
-        if( data.length > 2 ){
-            return doctors[0].dataValues;
-        }
-    }
-    if( usertype == 3 ){
-        let clinics = await db.clinic.findAll({
-            where : {
-                email : email
+            if( usertype == 2 ){
+                const doctor = await Doctor.findOne({
+                    email : email
+                })
+                if( doctor != null ){
+                    return resolve(doctor);
+                }
             }
-        })
+            if( usertype == 3 ){
+                const clinic = await Clinic.findOne({
+                    email : email
+                })
+                if( clinic != null ){
+                    return resolve(clinic);
+                }
+            }
 
-        let data = JSON.stringify(clinics);
-        if( data.length > 2 ){
-            return clinics[0].dataValues;
+            reject(`something went wrong`);
         }
-    }
+        catch(err){
+            reject(err);
+        }
+    });
 }
 
 

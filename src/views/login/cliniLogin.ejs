@@ -13,6 +13,13 @@
 </head>
 <body>
 
+    <% if( messages.error){ %>
+        <%= messages.error %>
+        <% } %>
+        <% if( messages.success){ %>
+            <%= messages.success %>
+            <% } %>
+
 
     <%- include("../partials/header") %>
 

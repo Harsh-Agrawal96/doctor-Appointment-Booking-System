@@ -1,23 +1,19 @@
-import { db } from "../../models/index.js";
 
-let getPatientInfo = async (idName) => {
+import Patient from "../../models/patient.js";
+import Doctor from "../../models/doctor.js";
+import Clinic from "../../models/clinic.js";
+
+
+let getPatientInfo = async ( id ) => {
 
     return new Promise( async ( resolve, reject ) => {
 
         try{
-
-            let Patient = db.patient;
-            let patientInfo = await Patient.findAll({
-    
-                where : {
-                    id : idName
-                }
-
+            const patientInfo = await Patient.findOne({
+                _id : id
             });
-    
-            let finalData = JSON.stringify(patientInfo);
-            if( finalData.length > 2 ){
-                return resolve(patientInfo[0].dataValues);
+            if( patientInfo != null ){
+                return resolve(patientInfo );
             }
             // patient not found
             resolve(false);
@@ -34,19 +30,11 @@ let getDoctorInfo = async ( id ) => {
     return new Promise( async ( resolve, reject ) => {
 
         try{
-
-            let Doctor = db.doctor;
-            let DoctorInfo = await Doctor.findAll({
-    
-                where : {
-                    id : id
-                }
-            
+            const doctorInfo = await Doctor.findOne({
+                _id : id
             });
-    
-            let finalData = JSON.stringify(DoctorInfo);
-            if( finalData.length > 2 ){
-                return resolve(DoctorInfo[0].dataValues);
+            if( doctorInfo != null ){
+                return resolve( doctorInfo );
             }
             // patient not found
             resolve(false);
@@ -63,19 +51,11 @@ let getClinicInfo = async ( id ) => {
     return new Promise( async ( resolve, reject ) => {
 
         try{
-
-            let Clinic = db.clinic;
-            let ClinicInfo = await Clinic.findAll({
-    
-                where : {
-                    id : id
-                }
-            
+            const clinicInfo = await Clinic.findOne({
+                _id : id
             });
-    
-            let finalData = JSON.stringify(ClinicInfo);
-            if( finalData.length > 2 ){
-                return resolve(ClinicInfo[0].dataValues);
+            if( clinicInfo != null ){
+                return resolve( clinicInfo );
             }
             // patient not found
             resolve(false);

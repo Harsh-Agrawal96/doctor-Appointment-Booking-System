@@ -1,38 +1,26 @@
 
-export function doctor_clinicfun( sequelize, DataTypes ) {
+import mongoose from "mongoose";
 
-    const connection = sequelize.define('doctor_clinics', {
+const doctorClinicConnectSchema = new mongoose.Schema({
+  clinicId: {
+    type: String,
+    required: true,
+  },
+  doctorId: {
+    type: String,
+    required: true,
+  },
+  workingDays: {
+    type: String,
+    required: true,
+  },
+  workingTime: {
+    type: String,
+    required: true,
+  },
+}, {
+  collection: 'connectionDoctorClinic',
+});
 
-      // Model attributes are defined here
-
-      clinicId : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      doctorId : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      workingDays : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      workingTime : {
-        type : DataTypes.STRING,
-        allowNull : false
-      }
-
-
-    }, {
-
-      // Other model options go here
-      tableName: 'connectionDoctorClinic'
-    });
-    
-    // `sequelize.define` also returns the model
-    console.log(connection === sequelize.models.doctor_clinics); // true
-
-    return connection;
-    
-    
-}
+const DoctorClinicConnect = mongoose.model('DoctorClinicConnect', doctorClinicConnectSchema);
+export default DoctorClinicConnect

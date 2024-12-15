@@ -1,57 +1,41 @@
 
-export function patientfun( sequelize, DataTypes ) {
+import mongoose from "mongoose";
 
-const Patient = sequelize.define('Patients', {
-
-  // Model attributes are defined here
-
+const patientSchema = new mongoose.Schema({
   fullName: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
+    required: true,
   },
   email: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
+    required: true,
   },
   phoneNumber: {
-    type: DataTypes.BIGINT,
-    allowNull : false
+    type: Number,
+    required: true,
   },
   password: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
+    required: true,
   },
   Country: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
   },
   State: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
   },
   city: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
   },
   address: {
-    type: DataTypes.STRING,
-    allowNull : false
+    type: String,
   },
   DOB: {
-    type: DataTypes.DATEONLY,
-    allowNull : false
-  }
-
-
+    type: Date,
+  },
 }, {
-
-  // Other model options go here
-  tableName: 'patients'
+  collection: 'patients',
 });
 
-// `sequelize.define` also returns the model
-console.log(Patient === sequelize.models.Patients); // true
-
-return Patient;
-
-}
+const Patient = mongoose.model('Patient', patientSchema);
+export default Patient

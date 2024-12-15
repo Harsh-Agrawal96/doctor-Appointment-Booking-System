@@ -1,48 +1,54 @@
 
 import * as requestCrud from "../services/clinicAddDrServices.js";
+import { userErrorController as userErr, serverErrorController as serverErr } from "../utils/errorMsg.js";
 
 
 let newRequest = async ( req,res ) => {
 
     try{
-
         if( req.user.type == 3 ){
-            console.log(req.body);
+
+            let data = await requestCrud.createRequest( req.user.maindata.id,req.body );
     
-            // send clinic and doctorid two check request
-            await requestCrud.createRequest( req.user.maindata.id,req.body );
-    
-            return res.redirect("/");
+            req.flash( "success", data);
+            return res.redirect("/profile/edit/");
         }
         else{
-    
+            req.flash( "error", userErr)
             return res.redirect("/");
         }
     }
     catch(err){
-        console.log(err)
-        console.log("fail");
-        return res.redirect("/")
+        if( err.check === undefined || err.check != "1" )
+            req.flash("error", err.msg);
+        else 
+            req.flash( "error", serverErr)
+        
+        return res.redirect("/");
     }
 }
 
 let updateRequest = async ( req,res ) => {
 
     try{
-
         if( req.user.type == 3 ){
 
-            await requestCrud.clinicUpdate( req.user.maindata.id,req.body );
+            let data = await requestCrud.clinicUpdate( req.user.maindata.id,req.body );
     
-            return res.redirect("/");
+            req.flash( "success", data);
+            return res.redirect("/profile/edit/");
         }
         else{
-    
+            req.flash( "error", userErr)
             return res.redirect("/");
         }
     }
     catch(err){
-        console.log(err)
+        if( err.check === undefined || err.check != "1" )
+            req.flash("error", err.msg);
+        else 
+            req.flash( "error", serverErr)
+        
         return res.redirect("/");
     }
 }
@@ -50,21 +56,24 @@ let updateRequest = async ( req,res ) => {
 let doctorResponse = async ( req,res ) => {
 
     try{
-
         if( req.user.type == 2 ){
 
-            // update request
-            await requestCrud.doctorResponce( req.user.maindata.id,req.body );
+            let data = await requestCrud.doctorResponce( req.user.maindata.id,req.body );
     
-            return res.redirect("/");
+            req.flash( "success", data);
+            return res.redirect("/profile/edit/");
         }
         else{
-    
+            req.flash( "error", userErr)
             return res.redirect("/");
         }
     }
     catch(err){
-        console.log(err)
+        if( err.check === undefined || err.check != "1" )
+            req.flash("error", err.msg);
+        else 
+            req.flash( "error", serverErr)
+        
         return res.redirect("/");
     }
 }

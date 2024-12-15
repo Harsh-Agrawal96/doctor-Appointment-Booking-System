@@ -1,21 +1,19 @@
 
-import { db } from "../models/index.js";
+import Doctor from "../models/doctor.js";
+import Clinic from "../models/clinic.js";
 
 
 let findtopdoctor = async (  ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            let doctors = await db.doctor.findAll({
+            const doctors = await Doctor.find({
                 limit : 10
             })
-
             resolve(doctors);
         }
         catch(err){
-            console.log(err);
             reject(err);
         }
     })
@@ -25,17 +23,14 @@ let findtopdoctor = async (  ) => {
 let findtopclinic = async (  ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            let clinic = db.clinic.findAll({
+            const clinics = await Clinic.find({
                 limit : 10
             })
-
-            resolve(clinic);
+            resolve(clinics);
         }
         catch(err){
-            console.log(err);
             reject(err);
         }
     })

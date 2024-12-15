@@ -1,29 +1,18 @@
 
-export function alluserfun( sequelize, DataTypes ) {
+import mongoose from "mongoose";
 
-    const user = sequelize.define('Users', {
-    
-      // Model attributes are defined here
-    
-      usertype : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-      },
-      useremail : {
-        type : DataTypes.STRING,
-        allowNull : false
-      }
-    
-    
-    }, {
-    
-      // Other model options go here
-      tableName: 'allUser'
-    });
-    
-    // `sequelize.define` also returns the model
-    console.log(user === sequelize.models.Users); // true
-    
-    return user;
-    
-    }
+const allUserSchema = new mongoose.Schema({
+  usertype: {
+    type: Number,
+    required: true,
+  },
+  useremail: {
+    type: String,
+    required: true,
+  },
+}, {
+  collection: 'allUser',
+});
+
+const User = mongoose.model('User', allUserSchema);
+export default User;

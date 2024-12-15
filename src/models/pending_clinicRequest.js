@@ -1,35 +1,26 @@
-export function pendingClinicfun( sequelize, DataTypes ) {
 
-    const pendingClinic = sequelize.define('pendingClinicReq', {
+import mongoose from "mongoose";
 
-      // Model attributes are defined here
+const pendingClinicSchema = new mongoose.Schema({
+  doctorEmail: {
+    type: String,
+    required: true,
+  },
+  doctorName: {
+    type: String,
+    required: true,
+  },
+  clinicName: {
+    type: String,
+    required: true,
+  },
+  clinicEmail: {
+    type: String,
+    required: true,
+  },
+}, {
+  collection: 'newClinicRequest',
+});
 
-      doctorEmail : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      doctorName : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      clinicName : {
-        type : DataTypes.STRING,
-        allowNull : false
-      },
-      clinicEmail : {
-        type : DataTypes.STRING,
-        allowNull : false
-      }
-
-    }, {
-
-      // Other model options go here
-      tableName: 'newClinicRequest'
-    });
-    
-    // `sequelize.define` also returns the model
-    console.log(pendingClinic === sequelize.models.pendingClinicReq); // true
-
-    return pendingClinic;
-    
-    }
+const PendingClinic = mongoose.model('PendingClinic', pendingClinicSchema);
+export default PendingClinic

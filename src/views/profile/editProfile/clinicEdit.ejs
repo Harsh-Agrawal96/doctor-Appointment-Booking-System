@@ -131,7 +131,7 @@
                                 <div class="user_input1s" >
                                     <label for="doctorid">Doctor id : </label>
                                     <br>
-                                    <input type="number" placeholder="enter doctor id" name="id" required>
+                                    <input type="text" placeholder="enter doctor id" name="id" required>
                                 </div>
                                 <div class="user_input1s" >
                                     <label for="doctorname">Doctor name : </label>
@@ -186,11 +186,7 @@
                                     <div class="multi_data" >
                                         
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( appointment[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
 
                                                 <% if( appointment[i].status == 1 ){ %>
                                                     <% count++; %>
@@ -251,11 +247,7 @@
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( appointment[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
 
                                                 <% if( appointment[i].status == 2 ){ %>
                                                     <% count++; %>
@@ -312,11 +304,7 @@
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( appointment[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
 
                                                 <% if( appointment[i].status == 4 ){ %>
                                                     <% count++; %>
@@ -384,11 +372,7 @@
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( appointment[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
 
                                                 <% if( appointment[i].status == 5 ){ %>
                                                     <% count++; %>
@@ -459,11 +443,7 @@
                             <div class="bookdata" >
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( sergery[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
 
                                                 <% if( sergery[i].status == 1 ){ %>
                                                     <% count++; %>
@@ -524,11 +504,7 @@
                                 </div>
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( sergery[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
 
                                                 <% if( sergery[i].status == 2 ){ %>
                                                     <% count++; %>
@@ -585,11 +561,7 @@
                                 </div>
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( sergery[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
 
                                                 <% if( sergery[i].status == 4 ){ %>
                                                     <% count++; %>
@@ -657,11 +629,7 @@
                                 </div>
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( sergery[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
 
                                                 <% if( sergery[i].status == 5 ){ %>
                                                     <% count++; %>
@@ -729,11 +697,7 @@
                             <div class="bookdata" >
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( requ[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<requ.length;i++ ){ %>
 
                                                 <% if( requ[i].status == 1 ){ %>
                                                     <% count++; %>
@@ -776,11 +740,7 @@
                                 </div>
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                    <% for( let i = 0;i<100000;i++ ){ %>
-
-                                        <% if( requ[i] == undefined ){ %>
-                                            <% break; %>
-                                        <% } %>
+                                    <% for( let i = 0;i<requ.length;i++ ){ %>
 
                                         <% if( requ[i].status == 2 ){ %>
                                             <% count++; %>
@@ -845,11 +805,7 @@
                                 </div>
                                 <div class="multi_data" >
                                     <% count = 0; %>
-                                            <% for( let i = 0;i<100000;i++ ){ %>
-
-                                                <% if( requ[i] == undefined ){ %>
-                                                    <% break; %>
-                                                <% } %>
+                                            <% for( let i = 0;i<requ.length;i++ ){ %>
 
                                                 <% if( requ[i].status == 3 ){ %>
                                                     <% count++; %>

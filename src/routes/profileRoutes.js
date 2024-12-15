@@ -14,14 +14,11 @@ let initProfileRoutes = (app) => {
     routes.get( "/doctor/profile/:id", profilePages.doctorProfile );
     routes.get( "/clinic/profile/:id", profilePages.clinicProfile );
 
-    // auth
-
-    // not done yet
+    
     routes.get( "/profile/edit/", checkAuth.checkLoggedIn, profilePages.profileEditPage ); //checkAuth.checkLoggedIn
 
     
     // post for update profile
-
     routes.post("/doctor/personal", editData.doctorPU_personal );
     routes.post("/doctor/work", editData.doctorPU_work);
     routes.post("/doctor/profession", editData.doctorPU_profession );

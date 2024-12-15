@@ -1,23 +1,18 @@
 
-import { db } from "../../models/index.js";
+import DoctorClinicConnection from "../../models/doctor_clinic_connection.js";
 
 
 let clinics = async ( id ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            let clinicsOfDoctor = await db.doctorCLinicConnect.findAll({
-                where : {
-                    doctorId : id
-                }
-            })
-
+            const clinicsOfDoctor = await DoctorClinicConnection.find({
+                doctorId: id 
+            });
             return resolve(clinicsOfDoctor);
         }
         catch(err){
-            console.log(err)
             reject(err);
         }
     })
@@ -27,19 +22,14 @@ let clinics = async ( id ) => {
 let doctors = async ( id ) => {
 
     return new Promise ( async ( resolve,reject ) => {
-
         try{
 
-            let doctorsOfClinic = await db.doctorCLinicConnect.findAll({
-                where : {
-                    clinicId : id
-                }
-            })
-
+            const doctorsOfClinic = await DoctorClinicConnection.find({
+                clinicId: id 
+            });
             return resolve(doctorsOfClinic);
         }
         catch(err){
-            console.log(err)
             reject(err);
         }
     })

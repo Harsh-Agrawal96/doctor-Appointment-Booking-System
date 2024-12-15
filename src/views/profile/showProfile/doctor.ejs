@@ -172,8 +172,8 @@
                                     <div class="rights_info">
                                         <div class="rights_datainfo" >
                                             <div>
-                                                <p> <%= connection[i].dataValues.workingDays %> </p>
-                                                <p> <%= connection[i].dataValues.workingTime %> </p>
+                                                <p> <%= connection[i].workingDays %> </p>
+                                                <p> <%= connection[i].workingTime %> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -188,132 +188,107 @@
                     <div class="sec2">
                         <!-- experience and skills -->
                         
-                        <% if( data.Services.length > 2 ) { %>
-                            <% let val = JSON.parse(data.Services) %>
+                        <% if( data.Services.length > 0 ) { %>
                         <div class="work w1w" >
                             <div class="heading" >
                                 <p>Services</p>
                             </div>
                             <div class="show_data">
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.Services.length;j++){ %>
+                                    <li>
+                                        <%= data.Services[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.specializations.length > 2 ) { %>
-                            <% val = JSON.parse(data.specializations) %>
+                        <% if( data.specializations.length > 0 ) { %>
                         <div class="work w2w" >
                             <div class="heading" >
                                 <p>Specialization</p>
                             </div>
                             <div class="show_data">
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.specializations.length;j++){ %>
+                                    <li>
+                                        <%= data.specializations[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.awards.length > 2 ) { %>
-                            <% val = JSON.parse(data.awards) %>
+                        <% if( data.awards.length > 0 ) { %>
                         <div class="work w3w" >
                             <div class="heading" >
                                 <p>Awards</p>
                             </div>
                             <div class="show_data">
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.awards.length;j++){ %>
+                                    <li>
+                                        <%= data.awards[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.education.length > 2 ) { %>
-                            <% val = JSON.parse(data.education) %>
+                        <% if( data.education.length > 0 ) { %>
                         <div class="work w4w" >
                             <div class="heading" >
                                 <p>Education</p>
                             </div>
                             <div class="show_data">
-                                
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.education.length;j++){ %>
+                                    <li>
+                                        <%= data.education[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.membership.length > 2 ) { %>
-                            <% val = JSON.parse(data.membership) %>
+                        <% if( data.membership.length > 0 ) { %>
                         <div class="work w5w" >
                             <div class="heading" >
                                 <p>Membership</p>
                             </div>
                             <div class="show_data">
-                                
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.membership.length;j++){ %>
+                                    <li>
+                                        <%= data.membership[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.experience.length > 2 ) { %>
-                            <% val = JSON.parse(data.experience) %>
+                        <% if( data.experience.length > 0 ) { %>
                         <div class="work w6w" >
                             <div class="heading" >
                                 <p>Experiences</p>
                             </div>
                             <div class="show_data">
-                                
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.experience.length;j++){ %>
+                                    <li>
+                                        <%= data.experience[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>
 
-                        <% if( data.Registration.length > 2 ) { %>
-                            <% val = JSON.parse(data.Registration) %>
+                        <% if( data.Registration.length > 0 ) { %>
                         <div  class="work w7w" >
                             <div class="heading" >
                                 <p>Registrations</p>
                             </div>
                             <div class="show_data">
-                                
-                                <% for (let key in val) { %>
-                                    <%  if (val.hasOwnProperty(key)) {   %>
-                                      <li>
-                                        <%= val[key] %>
+                                <% for( let j= 0;j<data.Registration.length;j++){ %>
+                                    <li>
+                                        <%= data.Registration[j] %>
                                       </li>
-                                    <%  }  %>
-                                <%  }  %>
+                                <% } %>
                             </div>
                         </div>
                         <% } %>

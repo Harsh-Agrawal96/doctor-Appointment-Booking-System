@@ -1,9 +1,4 @@
 
-let getHOMepage = (req,res) => {
-
-    return res.render( "homePage.ejs" );
-}
-
 let getLoginPage = ( req,res ) => {
 
     return res.render( "login/login.ejs" );
@@ -31,6 +26,5 @@ export {
     getRegisterPage,
     getclinicLoginPage,
     getclinicRegisPage,
-    getHOMepage,
     
 }

@@ -1,59 +1,20 @@
-
+import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-import { DataTypes, Sequelize, Model } from "sequelize";
-
 dotenv.config();
 
-const DB_name = process.env.DB_NAME;
-const DB_username = process.env.DB_usernamE;
-const DB_password = process.env.DB_PASSWORD;
-const DB_host = process.env.DB_HOST;
+const connectDB = async () => {
+  try{
+    const DB_URI = process.env.DB_URI;
+    mongoose.connect(DB_URI)
+    .then(() => console.log("Connected to MongoDB Atlas successfully."))
+    .catch(err =>{
+       console.error("Connection error:", err);
+      } );
 
-const sequelize = new Sequelize(DB_name, DB_username, DB_password, {
-  host: DB_host,
-  logging:false,
-  dialect: 'mysql'
-});
-
-// let connectDatabase = async () => {
-
-    try {
-        sequelize.authenticate();
-        console.log('Database Connection has been established successfully.');
-      } catch (error) {
-        console.error('Unable to connect to the database:', error);
-      }
-
-// }
-
-const db = {};
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-import { alluserfun } from "./alluser.js";
-db.users = alluserfun(sequelize,DataTypes);
-import { patientfun } from "./patient.js";
-db.patient = patientfun(sequelize,DataTypes);
-import { doctorfun } from "./doctor.js";
-db.doctor = doctorfun(sequelize,DataTypes);
-import { pendingClinicfun } from "./pending_clinicRequest.js";
-db.pendingclinic = pendingClinicfun(sequelize,DataTypes);
-import { Clinicfun } from "./clinic.js";
-db.clinic = Clinicfun(sequelize,DataTypes);
-import { Bookingfun } from "./Booking.js";
-db.allbooking = Bookingfun(sequelize,DataTypes);
-import { doctor_clinicfun } from "./doctor_clinic_connection.js";
-db.doctorCLinicConnect = doctor_clinicfun(sequelize,DataTypes);
-import { doctor_clinicRequestfun } from "./doctor_clinic_request.js";
-db.doctorClinicRequest = doctor_clinicRequestfun(sequelize,DataTypes);
-import { contactfun } from "./contacts.js";
-db.contact = contactfun(sequelize,DataTypes);
-import { feedbackfun } from "./feedbacks.js";
-db.feedback = feedbackfun(sequelize,DataTypes);
-
-db.sequelize.sync({ alter : true });
-
-export {
-    db,
+  }catch(err){
+    console.error('Error connecting to MongoDB:', err.message);
+  }
 }
+
+
+export default connectDB;
