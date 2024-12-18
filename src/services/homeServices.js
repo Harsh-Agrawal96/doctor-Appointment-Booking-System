@@ -3,14 +3,14 @@ import Doctor from "../models/doctor.js";
 import Clinic from "../models/clinic.js";
 
 
-let findtopdoctor = async (  ) => {
+let findtopdoctor = async (limit, alreadyFetchedIds = []) => {
 
     return new Promise ( async ( resolve,reject ) => {
         try{
 
-            const doctors = await Doctor.find({
-                limit : 10
-            })
+            const doctors = await Doctor.find({ _id: { $nin: alreadyFetchedIds } })
+            .limit(limit);
+            console.log(doctors)
             resolve(doctors);
         }
         catch(err){
@@ -20,14 +20,14 @@ let findtopdoctor = async (  ) => {
 
 }
 
-let findtopclinic = async (  ) => {
+let findtopclinic = async (limit, alreadyFetchedIds = []) => {
 
     return new Promise ( async ( resolve,reject ) => {
         try{
 
-            const clinics = await Clinic.find({
-                limit : 10
-            })
+            const clinics = await Doctor.find({ _id: { $nin: alreadyFetchedIds } })
+            .limit(limit);
+            console.log(clinics)
             resolve(clinics);
         }
         catch(err){

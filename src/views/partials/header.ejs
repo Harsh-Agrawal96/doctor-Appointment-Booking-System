@@ -11,26 +11,36 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Find Doctor</a>
+                <a class="nav-link active" aria-current="page" href="/doctor">Find Doctor</a>
               </li>
             </ul>
 
             <% if( locals.islog && islog == true ){ %>
               
-              <form class="d-flex" role="search">
-                <button class="btn btn-outline-success" type="submit">Signup</button>
-            </form>
+              <div class="d-flex align-items-center padd" style="padding-right: 15px; position: relative; " >
+                <img src="/path/to/profile-icon.png" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; cursor: pointer; " onclick="toggleProfileMenu()" >
+                  <div id="profileMenu" style="display: none; position: absolute; top: 45px; left: 0; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); width: max-content; padding: 10px; z-index: 1000;">
+                    <% if( locals.type && ( type == 2 || type == 3 ) ){ %>
+                      <a href="/edit-profile" class="d-block text-decoration-none mb-2" style="color: #0056b3; text-align: center; ">Show Profile</a>
+                    <% } %>
+                    <a href="/show-profile" class="d-block text-decoration-none mb-2" style="color: #0056b3; text-align: center; ">Edit Profile</a>
+                    <a href="/logout" class="d-block text-decoration-none" style="color: #ff4d4d; text-align: center; ">Logout</a>
+                  </div>
+              </div>
+              <div class="d-flex align-items-center" style="padding-right: 10px;" >
+                <a href="/contact" class="btn me-2" style="background-color: #d0f0ff; color: #0056b3;">Contact</a>
+              </div>
 
-              <% }else{ %>
+            <% }else{ %>
 
-                <form class="d-flex navbtn" role="search">
-                  <button class="btn btn-outline-success" type="submit">Login</button>
-                </form>
-                <form class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="submit">Signup</button>
-                </form>
+              <div class="d-flex align-items-center padd" style="padding-right: 16px;" >
+                <a href="/login" class="btn me-2" style="background-color: #d0f0ff; color: #0056b3;">Login</a>
+              </div>
+              <div class="d-flex align-items-center" style="padding-right: 10px;" >
+                <a href="/register" class="btn" style="background-color: #d0f0ff; color: #0056b3;">Signup</a>
+              </div>
               
-              <% } %>
+            <% } %>
             
           </div>
         </div>

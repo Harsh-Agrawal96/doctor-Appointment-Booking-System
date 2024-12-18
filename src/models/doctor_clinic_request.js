@@ -36,6 +36,7 @@ const doctorClinicRequestSchema = new mongoose.Schema({
   },
   doctorMessage: {
     type: String,
+    default : "Not updated"
   },
 }, {
   collection: 'doctorClinicRequest',

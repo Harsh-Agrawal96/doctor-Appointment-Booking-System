@@ -1,23 +1,53 @@
 
 import * as homework from "../services/homeServices.js";
-import { serverErrorController as serverErr } from "../utils/errorMsg.js";
+import { serverErrorController as serverErr, tryAgainError as tryErr } from "../utils/errorMsg.js";
+import { postLogout } from "./checklogin.js";
 
 
 let gethomepage = async ( req,res ) => {
 
-    res.render("home pages/home.ejs");
+    try{
+        let islog = false;
+        let Utype = -1;
+        if( req.isAuthenticated() ){
+            islog = true;
+            Utype = req.user.type;
+        }
+
+        return res.render("home pages/home.ejs",{
+            islog : islog,
+            type : Utype
+        });
+    }
+    catch(err){
+        return postLogout(req,res);
+    }
+
 }
 
 let getdoctorPage = async ( req,res ) => {
 
     try{
-        let doctors = await homework.findtopdoctor();
+        const limit = 10;
+        let fetchedDoctorId = [];
+        let doctors = await homework.findtopdoctor(limit,fetchedDoctorId);
+
+        fetchedDoctorId = [...fetchedDoctorId, ...doctors.map(doc => doc._id)];
+        console.log(doctors);
+
+        let fetchedClinicId = [];
+        let clinics = await homework.findtopdoctor(limit,fetchedClinicId);
+
+        fetchedClinicId = [...fetchedClinicId, ...clinics.map(doc => doc._id)];
+        console.log(clinics);
 
         res.render("home pages/findDoctor.ejs",{
-            data : doctors
+            data : doctors,
+            clinic : clinics
         });
     }
     catch(err){
+        console.log(err)
         req.flash( "error", serverErr);
         res.redirect("/");
     }

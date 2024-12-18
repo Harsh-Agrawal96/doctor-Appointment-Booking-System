@@ -113,10 +113,10 @@
                                         <p>In Progress</p>
                                     </div>
                                     <div class="multi_head" >
-                                        <p>complition rejected</p>
+                                        <p>Need response</p>
                                     </div>
                                     <div class="multi_head" >
-                                        <p>completed</p>
+                                        <p>Completed</p>
                                     </div>
                                 </div>
                                 <div class="bookdata" >
@@ -131,26 +131,32 @@
                                                     <div  class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>doctor</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -174,26 +180,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>doctor</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -217,26 +229,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>doctor</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                         <div class="main_work">
@@ -245,19 +263,19 @@
                                                                 <br>
                                                                 <input type="text" placeholder="enter message" name="message" required>
                                                                 <br>
-                                                                <label for="">Choose options conform completion or denied completion( if you have any problem ) :</label>
+                                                                <label for="">Choose options conform completion or denied completion(if you have any problem):</label>
                                                                 <br>
                                                                 <select name="selection" required>
                                                                     <option value="1">conform completion</option>
                                                                     <option value="2">denied completion </option>
                                                                 </select>
                                                                 <br>
-    
+
                                                             <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
-                                                                <button type="submit">Appoint it</button>
+                                                                <button type="submit">Send</button>
                                                             </form>
                                                             <div >
-                                                                <button type="submit">Appoint</button>
+                                                                <button type="submit">Respond</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -281,26 +299,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>doctor</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -329,16 +353,16 @@
                         <div class="main_feature" >
                             <div class="bookhead" >
                                 <div class="multi_head" >
-                                    <p>new requests</p>
+                                    <p>New requests</p>
                                 </div>
                                 <div class="multi_head" >
-                                    <p>sergery progress</p>
+                                    <p>In progress</p>
                                 </div>
                                 <div class="multi_head" >
-                                    <p>complition denied</p>
+                                    <p>Need response</p>
                                 </div>
                                 <div class="multi_head" >
-                                    <p>completed</p>
+                                    <p>Completed</p>
                                 </div>
                             </div>
                             <div class="bookdata" >
@@ -352,26 +376,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
                                                                 <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -395,26 +425,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
                                                                 <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -438,26 +474,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
                                                                 <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                         <div class="main_work">
@@ -475,10 +517,10 @@
                                                                 <br>
     
                                                             <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
-                                                                <button type="submit">Appoint it</button>
+                                                                <button type="submit">Send</button>
                                                             </form>
                                                             <div >
-                                                                <button type="submit">Appoint</button>
+                                                                <button type="submit">Respond</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -502,26 +544,32 @@
                                                     <div class="queue">
                                                         <div class="main_info">
                                                             <div class="info_show">
-                                                                <p>form user</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p>patient</p>
+                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
                                                             </div>
                                                             <div  class="info_show">
                                                                 <p>to</p>
                                                             </div>
                                                             <div class="info_show">
                                                                 <p>clinic</p>
-                                                                <p class="p_head2">name</p>
+                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
                                                             </div>
                                                         </div>
                                                         <div class="all_info">
                                                             <div>
-                                                                <p class="p_head"> data head1 :</p> <p>value1</p>
+                                                                <p class="p_head">symtom:</p> <p><%= appointment[i].symtom %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head"> data head2 : </p> <p>value2</p>
+                                                                <p class="p_head">preferred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
                                                             </div>
                                                             <div>
-                                                                <p class="p_head">  data head3 :</p> <p>value3</p>
+                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">patient message: </p> <p><%= appointment[i].patientMessage %></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
                                                             </div>
                                                         </div>
                                                     </div>

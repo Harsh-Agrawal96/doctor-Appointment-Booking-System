@@ -13,13 +13,6 @@
 </head>
 <body>
 
-    <% if( messages.error){ %>
-        <%= messages.error %>
-        <% } %>
-        <% if( messages.success){ %>
-            <%= messages.success %>
-            <% } %>
-
 
     <%- include("../partials/header") %>
 
@@ -42,11 +35,11 @@
                         <br>
                         <input type="text" placeholder="enter Password" name="password" required>
                         <br>
-                        <button> Signup </button>
+                        <button> Login </button>
                     </form>
                 </div>
                 <div class="notsave">
-                    already have a account? <a href="">Login</a>
+                    already have a account? <a href="/clinic/register">Signup</a>
                 </div>
                 <div class="condition">
                     By clicking to Signup, you are agree to our <a href="">terms and conditions </a> and accept all <a href="">cookies</a>

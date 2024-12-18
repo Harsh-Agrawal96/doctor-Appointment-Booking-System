@@ -63,13 +63,13 @@
                         <a href=""></a>
 
                         <% for( let i = 0;i<data.length;i++){  %>
-                            <a href="/doctor/profile/<%= data[i].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[i].id %>">
                                 <div class="child">
                                     <div class="forimg">
                                         <img src="https://www.practostatic.com/consult/consult-home/symptoms_icon/irregular-painful+period.png" alt="jjbnk">
                                     </div>
                                     <div class="consult_name">
-                                        <p> <%= data[i].dataValues.fullName  %> </p>
+                                        <p> <%= data[i].fullName  %> </p>
                                         <!-- doctor work -->
                                         <!-- consult number of doctor -->
                                     </div>
@@ -99,7 +99,7 @@
                     <div class="parent listtwo" >
 
                         <% if( data.length >= 1 ){ %>
-                        <a href="/doctor/profile/<%= data[data.length - 1].dataValues.id %>">
+                        <a href="/doctor/profile/<%= data[data.length - 1].id %>">
                             <div class="subdiv">
                                 <div class="showimg">
                                     <img src="/images/doctorHomeImages/box/img1.jpg" alt="jjbnk">
@@ -115,7 +115,7 @@
                         <% } %>
 
                         <% if( data.length >= 2 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 2].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 2].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img2.jpg" alt="jjbnk">
@@ -131,7 +131,7 @@
                         <% } %>
 
                         <% if( data.length >= 3 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 3].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 3].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img3.jpg" alt="jjbnk">
@@ -147,7 +147,7 @@
                         <% } %>
 
                         <% if( data.length >= 4 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 4].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 4].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img4.jpg" alt="jjbnk">
@@ -163,7 +163,7 @@
                         <% } %>
 
                         <% if( data.length >= 5 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 5].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 5].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img5.jpg" alt="jjbnk">
@@ -179,7 +179,7 @@
                         <% } %>
 
                         <% if( data.length >= 6 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 6].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 6].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img6.jpg" alt="jjbnk">
@@ -195,7 +195,7 @@
                         <% } %>
 
                         <% if( data.length >= 7 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 7].dataValues.id %>">
+                            <a href="/doctor/profile/<%= data[data.length - 7].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
                                         <img src="/images/doctorHomeImages/box/img7.jpg" alt="jjbnk">
@@ -217,6 +217,8 @@
                 <button class="scroll-btn scroll-right">&gt;</button>
             </div>
         </div>
+
+        
 
         <hr class="line1">
 

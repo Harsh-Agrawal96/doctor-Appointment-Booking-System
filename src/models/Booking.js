@@ -52,15 +52,19 @@ const bookingSchema = new mongoose.Schema({
   },
   consultantMessage: {
     type: String,
+    default : "Not updated"
   },
   patientMessage: {
     type: String,
+    default : "Not updated"
   },
   consultDate: {
     type: String,
+    default : "Not updated"
   },
   preferredConsultdate: {
     type: String,
+    default : "Not updated"
   },
   bookingType: {
     type: Number,

@@ -10,7 +10,7 @@ let intiBooking = async ( req,res ) => {
         let data = await booking.createbooking(req.user.maindata.id, req.body );
 
         req.flash( "success", data);
-        return res.redirect("/profile/edit/");
+        return res.redirect("/");
     }
     catch(err){
         if( err.check === undefined || err.check != "1" )

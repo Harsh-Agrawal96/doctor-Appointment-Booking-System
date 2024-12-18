@@ -31,16 +31,8 @@
     font-weight: 600;
     color: black;
 }
-@media screen and ( min-width : 1000px) {
-    .navbtn{
-        padding-right: 1.5em;
-    }
-    .collapse ul{
-        padding-left: 3em;
-    }
-}
-@media screen and ( max-width : 1000px) {
-    .navbtn{
+@media screen and ( max-width : 991px) {
+    .padd{
         padding-bottom: 1em;
     }
 }
