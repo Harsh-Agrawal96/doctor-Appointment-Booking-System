@@ -6,7 +6,7 @@ let getLoginPage = ( req,res ) => {
 
 let getRegisterPage = ( req,res ) => {
 
-    return res.render( "register/register.ejs" );
+    res.render( "register/register.ejs");
 };
 
 let getclinicLoginPage = ( req,res ) => {
@@ -16,7 +16,7 @@ let getclinicLoginPage = ( req,res ) => {
 
 let getclinicRegisPage = ( req,res ) => {
 
-    return res.render( "register/clinicRegister.ejs" );
+    return res.render( "register/clinicRegister.ejs");
 };
 
 

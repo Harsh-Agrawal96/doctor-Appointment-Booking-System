@@ -42,9 +42,9 @@ let initAllVerifyRoutes = (app) => {
     })  );
 
 
-    routes.post( "/doctor/register", validate.validateRegister, verifyPost.handleDoctorRegister );
-    routes.post( "/user/register", validate.validateRegister, verifyPost.handleUserRegister );
-    routes.post( "/clinic/register", validate.validateRegister2, verifyPost.handleClinicRegister );
+    routes.post( "/doctor/register", validate.registerValid, verifyPost.handleDoctorRegister );
+    routes.post( "/user/register", validate.registerValid, verifyPost.handleUserRegister );
+    routes.post( "/clinic/register", validate.clinicRegisterValid, verifyPost.handleClinicRegister );
 
 
     return app.use("/",routes);

@@ -1,21 +1,39 @@
-import { check } from "express-validator";
+import { body } from "express-validator";
 
-let validateRegister = [
-    check("email", "Invalid email!").isEmail().trim(),
-    check("password","Invalid password. password must contain atleast 5 character ").isLength({min:5})
 
-];
+let registerValid = [
+    body('email').isEmail().withMessage('Please enter a valid email.'),
 
-let validateRegister2 = [
-    check( "clinicEmail" , "Invalid email!" ).isEmail().trim(),
-    check( "doctorEmail" , "Invalid email!" ).isEmail().trim(),
-    check("password","Invalid password. password must contain atleast 5 character ").isLength({min:5})
+    body('password')
+      .isLength({ min: 5 }).withMessage('Password must be at least 5 characters long.')
+      .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter.')
+      .matches(/[A-Z]/).withMessage('Password must contain at least one uppercase letter.')
+      .matches(/\d/).withMessage('Password must contain at least one number.'),
 
-];
+    body('repassword')
+      .custom((value, { req }) => {
+        if (value !== req.body.password) {
+          throw new Error('Passwords do not match.');
+        }
+        return true;
+      }),
+  ];
 
-export {
-    validateRegister,
-    validateRegister2
+  let clinicRegisterValid = [
 
-}
+    body('doctorEmail').isEmail().withMessage('Please enter a valid email.'),
+    body('clinicEmail').isEmail().withMessage('Please enter a valid email.'),
+
+    body('password')
+      .isLength({ min: 5 }).withMessage('Password must be at least 5 characters long.')
+      .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter.')
+      .matches(/[A-Z]/).withMessage('Password must contain at least one uppercase letter.')
+      .matches(/\d/).withMessage('Password must contain at least one number.'),
+
+  ];
+
+  export {
+    registerValid,
+    clinicRegisterValid
+  }
 

@@ -35,5 +35,5 @@ export const profileUpdateMsg = [
 ];
 
 export const registrationMsg = [
-    "Registration successful"
+    "Signup successful"
 ];

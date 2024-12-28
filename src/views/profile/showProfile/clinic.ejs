@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/partials/header.css">
+    <link rel="stylesheet" href="/css/partials/messages.css">
     <link rel="stylesheet" href="/css/profile/show profile/common.css">
     <link rel="stylesheet" href="/css/profile/show profile/clinic.css">
     <link rel="stylesheet" href="/css/partials/footer.css">
@@ -17,99 +18,119 @@
     <% if( islog == true && usertype == 1 ){ %>
 
         <div class="hidden centeredBox">
-            <form action="/start/book" method="post">
+            <div class="form-container">
+                <form action="/start/book" method="post" >
+                    <div>
+                        <label for="">From patinet:</label>
+                        <br>
+                        <input type="text" name="patinetName" required>
+                    </div>
 
-                <div class="arrange">
-                <div>
-                    <label for="">From patinet : </label>
-                    <br>
-                    <input type="text" name="patinetName" required>
-                </div>
-                <div>
-                    <label for="">to clinic : </label>
-                    <br>
-                    <input type="text" name="consultName" required>
-                </div>
-                <div>
-                    <label for="symtom">Enter your symtoms : </label>
-                    <br>
-                    <input type="text" name="symtom" required>
-                </div>
-                <div>
-                    <label for="message"> Enter message to doctor : </label>
-                    
-                    <br>
-                    <input type="text" name="message" required>
-                </div>
-                <div>
-                    <label for="data">Enter your preferred date : </label>
-                    <br>
-                    <input type="date" name="preferredate" required>
-                </div>
-                </div>
+                    <div>
+                        <label for="">to clinic:</label>
+                        <br>
+                        <input type="text" name="consultName" required>
+                    </div>
 
-                <input type="hidden" name="constid" value= "<%= data.id %>">
-                <input type="hidden" name="consttype" value="3">
-                <input type="hidden" name="type" value="2">
+                    <div>
+                        <label for="message">Enter your symtoms :</label>
+                        <br>
+                        <textarea name="symtom" required></textarea>
+                    </div>
 
-                <button type="submit">Book</button>
-            </form>
+                    <div>
+                        <label for="details">Enter message to clinic:</label>
+                        <br>
+                        <textarea name="message" required ></textarea>
+                    </div>
+
+                    <div>
+                        <label for="data">Enter your preferred date: </label>
+                        <br>
+                        <input type="date" name="preferredate" required>
+                    </div>
+
+                    <input type="hidden" name="constid" value= "<%= data.id %>">
+                    <input type="hidden" name="consttype" value="3">
+                    <input type="hidden" name="type" value="2">
+
+                    <div class="lastdiv">
+                        <button type="submit">Book</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="hidden centeredBox">
-            <form action="/start/book" method="post">
+            <div class="form-container">
+                <form action="/start/book" method="post" >
+                    <div>
+                        <label for="">From patinet:</label>
+                        <br>
+                        <input type="text" name="patinetName" required>
+                    </div>
 
-                <div class="arrange">
-                <div>
-                    <label for="">From patinet : </label>
-                    <br>
-                    <input type="text" name="patinetName" required>
-                </div>
-                <div>
-                    <label for="">to doctor : </label>
-                    <br>
-                    <input type="text" name="consultName" required>
-                </div>
-                <div>
-                    <label for="symtom">Enter your symtoms : </label>
-                    <br>
-                    <input type="text" name="symtom" required>
-                </div>
-                <div>
-                    <label for="message"> Enter message to doctor : </label>
-                    
-                    <br>
-                    <input type="text" name="message" required>
-                </div>
-                <div>
-                    <label for="data">Enter your preferred date : </label>
-                    <br>
-                    <input type="date" name="preferredate" required>
-                </div>
-                </div>
+                    <div>
+                        <label for="">to clinic:</label>
+                        <br>
+                        <input type="text" name="consultName" required>
+                    </div>
 
-                <input type="hidden" name="constid" value= "<%= data.id %>">
-                <input type="hidden" name="consttype" value="3">
-                <input type="hidden" name="type" value="1">
+                    <div>
+                        <label for="message">Enter your symtoms :</label>
+                        <br>
+                        <textarea name="symtom" required></textarea>
+                    </div>
 
-                <button type="submit">Book</button>
-            </form>
+                    <div>
+                        <label for="details">Enter message to clinic:</label>
+                        <br>
+                        <textarea name="message" required ></textarea>
+                    </div>
+
+                    <div>
+                        <label for="data">Enter your preferred date: </label>
+                        <br>
+                        <input type="date" name="preferredate" required>
+                    </div>
+
+                    <input type="hidden" name="constid" value= "<%= data.id %>">
+                    <input type="hidden" name="consttype" value="3">
+                    <input type="hidden" name="type" value="1">
+
+                    <div class="lastdiv">
+                        <button type="submit">Book</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
     <% }else{ %>
 
         <div class="hidden centeredBox">
-            <p>Please Log as patient for Booking</p>
+            <div class="msgclient" >
+                <p>Please Log as patient for Booking</p>
+            </div>
         </div>
         <div class="hidden centeredBox">
-            <p>Please Log as patient for Booking</p>
+            <div class="msgclient" >
+                <p>Please Log as patient for Booking</p>
+            </div>
         </div>
 
     <% } %>
 
+    <!-- responses -->
+
+        <%- include("../../partials/messages") %>
+
     <!-- navbar -->
 
-        <%- include("../../partials/header") %>
+        <%- include("../../partials/header",{
+            islog : islog,
+            type : usertype,
+            userid : data.id
+        }) %>
 
 
     <div class="middle">
@@ -126,10 +147,10 @@
                         </div>
                         <div class="info">
                             <div class="main_data">
-                                <p>
+                                <p class="mainhead">
                                     <%= data.fullName %>
                                 </p>
-                                <p>
+                                <p id="smhead" >
                                     <%= data.nickName %>
                                 </p>
                             </div>
@@ -140,7 +161,12 @@
                             </div>
                             <div>
                                 <p>
-                                    0
+                                    <%= data.reviewNumber %> (people reviwed)
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= data.reviewPercent %>% reach
                                 </p>
                             </div>
                             <div>
@@ -159,46 +185,54 @@
                         <div class="book_left">
                             <div>
                                 <div>
-                                    <p class="glow"> Doctor Consultant </p>
+                                    <p class="glow">Clinic Sergery </p>
                                 </div>
                                 <div>
-                                    <p> Rs. 400 </p>
+                                    <% if( data.sergeryFee == 0 ){ %>
+                                        <p>free</p>
+                                    <% }else{ %>
+                                        <p>Rs. <%= data.sergeryFee %> </p>
+                                    <% } %>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <p class="glow"> Doctor Appointment </p>
+                                    <p class="glow"> Clinic Appointment </p>
                                 </div>
                                 <div>
-                                    <p> Rs. 600 </p>
+                                    <% if( data.appointmentFee == 0 ){ %>
+                                        <p>free</p>
+                                    <% }else{ %>
+                                        <p>Rs. <%= data.appointmentFee %> </p>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
                         <div class="book_right">
                             <div>
                                 <div>
-                                    <p class="glow"> Dr. Hemant gupta </p>
+                                    <p class="glow"> <%= data.nickName %> </p>
                                 </div>
                                 <div>
                                     <% if( islog == true ){ %>
                                 
                                         <% if( usertype == 1 ){ %>
-                                            <button class="showBoxBtn">Book Appointment</button>
+                                            <button class="showBoxBtn">Book Sergery</button>
                                         <% }else{ %>
-                                            <button class="showBoxBtn">Book Appointment</button>
+                                            <button class="showBoxBtn">Book Sergery</button>
                                         <% } %>
         
                                     <% }else{ %>
         
                                         <a href="/login">
-                                            <button>Book Appointment</button>
+                                            <button>Book Sergery</button>
                                         </a>
                                     <% } %>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <p class="glow"> Dr. Hemant gupta </p>
+                                    <p class="glow"> <%= data.nickName %> </p>
                                 </div>
                                 <div>
                                     <% if( islog == true ){ %>
@@ -239,29 +273,20 @@
                                             <div>
                                                 <p> <%= doctors[i].work %> </p>
                                             </div>
-                                            <div>
-                                                <p>small info</p>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="rights_info">
                                         <div class="rights_datainfo" >
                                             <div>
-                                                <p>vote percentage</p>
+                                                <p> <%= doctors[i].reviewPercent %>% popular </p>
                                             </div>
                                             <div>
-                                                <p>stories</p>
-                                            </div>
-                                            <div>
-                                                <p>price</p>
+                                                <p> <%= doctors[i].reviewNumber %> reviews </p>
                                             </div>
                                             <div>
                                                 <p> <%= connection[i].workingDays %> </p>
                                                 <p> <%= connection[i].workingTime %> </p>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <button> Contact doctor</button>
                                         </div>
                                     </div>
         
@@ -291,10 +316,14 @@
                     <div class="booking_part">
                         <div class="above">
                             <div>
-                                <p>Doctor Sergery</p>
+                                <p>Clinic Sergery</p>
                             </div>
                             <div>
-                                <p>Rs. 400</p>
+                                <% if( data.sergeryFee == 0 ){ %>
+                                    <p>free</p>
+                                <% }else{ %>
+                                    <p>Rs. <%= data.sergeryFee %> </p>
+                                <% } %>
                             </div>
                         </div>
                         <div class="mid">
@@ -302,7 +331,7 @@
                                 <p><%= data.fullName %></p>
                             </div>
                             <div>
-                                <p>fees</p>
+                                fees
                             </div>
                             <!-- <div>
                                 <p>vedio consultant</p>
@@ -312,15 +341,15 @@
                             <% if( islog == true ){ %>
                                 
                                 <% if( usertype == 1 ){ %>
-                                    <button class="showBoxBtn">Book Appointment</button>
+                                    <button class="showBoxBtn">Book Sergery</button>
                                 <% }else{ %>
-                                    <button class="showBoxBtn">Book Appointment</button>
+                                    <button class="showBoxBtn">Book Sergery</button>
                                 <% } %>
 
                             <% }else{ %>
 
                                 <a href="/login">
-                                    <button>Book Appointment</button>
+                                    <button>Book Sergery</button>
                                 </a>
                             <% } %>
                         </div>
@@ -328,10 +357,14 @@
                     <div class="booking_part">
                         <div class="above">
                             <div>
-                                <p>Doctor Appointment</p>
+                                <p>Clinic Appointment</p>
                             </div>
                             <div>
-                                <p>Rs. 400</p>
+                                <% if( data.appointmentFee == 0 ){ %>
+                                    <p>free</p>
+                                <% }else{ %>
+                                    <p>Rs. <%= data.appointmentFee %> </p>
+                                <% } %>
                             </div>
                             <!-- <div>
                                 <p>appointment</p>
@@ -377,6 +410,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="/js/profile/show profile/common.js"></script>
+    <script src="/js/partials/messages.js"></script>
+    <script src="/js/partials/header.js"></script>
 
 </body>
 </html>

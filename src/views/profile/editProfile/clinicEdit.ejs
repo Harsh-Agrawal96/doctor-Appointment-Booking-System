@@ -7,13 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/partials/header.css">
+    
     <link rel="stylesheet" href="/css/profile/edit profile/cliniceditStyle.css">
     <link rel="stylesheet" href="/css/partials/footer.css">
+    <link rel="stylesheet" href="/css/partials/messages.css">
 
 </head>
 <body>
 
-    <%- include("../../partials/header") %>
+    <%- include("../../partials/messages") %>
+    <%- include("../../partials/header",{
+        islog : islog,
+        type : usertype,
+        userid : data.id
+    }) %>
 
 
     <!-- content -->
@@ -21,159 +28,441 @@
     <% let count = 0; %>
     
     <div class="middle">
-    <div class="contain">
-        <div class="inner_contain">
-            <div class="left_section"> 
-                <div class="diff_sec lesec1">
-                    <div class="small_sec" >
-                        <p>Info.</p>
-                    </div>
-                    <div class="small_sec" >
-                        <p>Dr. add</p>
-                    </div>
-                    <div class="small_sec" >
-                        <p>Appoint.</p>
-                    </div>
-                    <div class="small_sec" >
-                        <p>Sergery</p>
-                    </div>
-                    <div class="small_sec" >
-                        <p>Dr. Req.</p>
-                    </div>
-                </div>
-                <div class="diff_sec lesec2">
-                    <div class="section">
-                        <p>Personal</p>
-                    </div>
-                    <div class="section">
-                        <p>Add doctor</p>
-                    </div>
-                    <div class="section">
-                        <p>Appointment Booking</p>
-                    </div>
-                    <div class="section">
-                        <p>sergery Booking</p>
-                    </div>
-                    <div class="section">
-                        <p>doctor requests</p>
-                    </div>
-                    <!-- add section as many as you want -->
-                </div>
-            </div>
-            <div class="right_section">
-                <div class="diff_cont">
-                    <div class="content" >
-                        
-                        <div class="content_head">
-                            <p>General Information</p>
+        <div class="contain">
+            <div class="inner_contain">
+                <div class="left_section"> 
+                    <div class="diff_sec lesec1">
+                        <div class="small_sec" >
+                            <p>Info.</p>
                         </div>
-
-                        <hr>
-
-                            <form class="firstform" action="/clinic/personal" method="post">
-                                <div class="formInner inner1s" >
-                                    <div class="user_input1s" >
-                                        <label for="">Clinic name : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="fullname">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">Nick name : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="shortname">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">Country : </label>
-                                        <br>
-                                        <input type="text"  placeholder="" name="country">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">State : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="state" >
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">City : </label>
-                                        <br>
-                                        <input type="text"  placeholder="" name="city">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">address : </label>
-                                        <br>
-                                        <input type="text" placeholder="" name="address">
-                                    </div>
-                                    <div class="user_input1s" >
-                                        <label for="">Established date : </label>
-                                        <br>
-                                        <input type="date"  placeholder="" name="establishDate">
-                                    </div>
-                                </div>
-
-                                <button type="submit">save changes</button>
-                            </form>
+                        <div class="small_sec" >
+                            <p>Dr. add</p>
+                        </div>
+                        <div class="small_sec" >
+                            <p>Appoint.</p>
+                        </div>
+                        <div class="small_sec" >
+                            <p>Sergery</p>
+                        </div>
+                        <div class="small_sec" >
+                            <p>Dr. Req.</p>
+                        </div>
+                    </div>
+                    <div class="diff_sec lesec2">
+                        <div class="section">
+                            <p>Personal</p>
+                        </div>
+                        <div class="section">
+                            <p>Add doctor</p>
+                        </div>
+                        <div class="section">
+                            <p>Appointment Booking</p>
+                        </div>
+                        <div class="section">
+                            <p>sergery Booking</p>
+                        </div>
+                        <div class="section">
+                            <p>doctor requests</p>
+                        </div>
+                        <!-- add section as many as you want -->
+                    </div>
+                </div>
+                <div class="right_section">
+                    <div class="diff_cont">
+                        <div class="content" >
                             
-                    </div>
-                    <div class="content" >
-
-                        <div class="content_head">
-                            <p>Add doctor to your clinic</p>
-                        </div>
-
-                        <hr>
-
-                        <form class="firstform"  action="/clinic/add/doctor" method="post">
-                            <div class="formInner inner1s" >
-                                <div class="user_input1s" >
-                                    <label for="clinicname">Clinic name : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter clinic name" name="clinicN" value=" <%= data.fullName %> " required>
-                                </div>
-                                <div class="user_input1s" >
-                                    <label for="doctorid">Doctor id : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter doctor id" name="id" required>
-                                </div>
-                                <div class="user_input1s" >
-                                    <label for="doctorname">Doctor name : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter doctor name" name="doctorN" required>
-                                </div>
-                                <div class="user_input1s" >
-                                    <label for="day">Working days : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter working days in a week" name="workday" required>
-                                </div>
-                                <div class="user_input1s" >
-                                    <label for="worktime">Working time : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter working time in a day" name="worktime" required>
-                                </div>
-                                <div class="user_input1s" >
-                                    <label for="message">Message : </label>
-                                    <br>
-                                    <input type="text" placeholder="enter message for doctor" name="message" required>
-                                </div>
+                            <div class="content_head">
+                                <p>General Information</p>
                             </div>
 
-                            <button type="submit">Add now</button>
-                        </form>
+                            <hr>
 
-                    </div>
-                    <div class="content" >
+                                <form class="firstform" action="/clinic/personal" method="post">
+                                    <div class="formInner inner1s" >
+                                        <div class="user_input1s" >
+                                            <label for="">Clinic name : </label>
+                                            <br>
+                                            <input value=" <%= data.fullName %> " type="text" placeholder="" name="fullname">
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">Nick name : </label>
+                                            <br>
+                                            <input value=" <%= data.nickName %> " type="text" placeholder="" name="shortname">
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">Country : </label>
+                                            <br>
+                                            <input value=" <%= data.Country %> " type="text"  placeholder="" name="country">
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">State : </label>
+                                            <br>
+                                            <input value=" <%= data.State %> " type="text" placeholder="" name="state" >
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">City : </label>
+                                            <br>
+                                            <input value=" <%= data.city %> " type="text"  placeholder="" name="city">
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">address : </label>
+                                            <br>
+                                            <input value=" <%= data.address %> " type="text" placeholder="" name="address">
+                                        </div>
+                                        <div class="user_input1s" >
+                                            <label for="">Established date : </label>
+                                            <br>
+                                            <input value=" <%= data.establishedDate %> " type="date"  placeholder="" name="establishDate">
+                                        </div>
+                                    </div>
 
-                        <div class="content_head">
-                            <p>Appointments related to your clinic</p>
+                                    <button type="submit">save changes</button>
+                                </form>
+                                
                         </div>
+                        <div class="content" >
 
-                        <hr>
+                            <div class="content_head">
+                                <p>Add doctor to your clinic</p>
+                            </div>
+
+                            <hr>
+
+                            <form class="firstform"  action="/clinic/add/doctor" method="post">
+                                <div class="formInner inner1s" >
+                                    <div class="user_input1s" >
+                                        <label for="clinicname">Clinic name : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter clinic name" name="clinicN" value=" <%= data.fullName %> " required>
+                                    </div>
+                                    <div class="user_input1s" >
+                                        <label for="doctorid">Doctor id : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter doctor id" name="id" required>
+                                    </div>
+                                    <div class="user_input1s" >
+                                        <label for="doctorname">Doctor name : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter doctor name" name="doctorN" required>
+                                    </div>
+                                    <div class="user_input1s" >
+                                        <label for="day">Working days : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter working days in a week" name="workday" required>
+                                    </div>
+                                    <div class="user_input1s" >
+                                        <label for="worktime">Working time : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter working time in a day" name="worktime" required>
+                                    </div>
+                                    <div class="user_input1s" >
+                                        <label for="message">Message : </label>
+                                        <br>
+                                        <input type="text" placeholder="enter message for doctor" name="message" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit">Add now</button>
+                            </form>
+
+                        </div>
+                        <div class="content" >
+
+                            <div class="content_head">
+                                <p>Appointments related to your clinic</p>
+                            </div>
+
+                            <hr>
+
+                                <div class="main_feature" >
+                                    <div class="bookhead" >
+                                        <div class="multi_head" >
+                                            <p>New appointments</p>
+                                        </div>
+                                        <div class="multi_head" >
+                                            <p>In progress</p>
+                                        </div>
+                                        <div class="multi_head" >
+                                            <p>Rejected</p>
+                                        </div>
+                                        <div class="multi_head" >
+                                            <p>Completed</p>
+                                        </div>
+                                    </div>
+                                    <div class="bookdata" >
+                                        <div class="multi_data" >
+                                            
+                                            <% count = 0; %>
+                                                <% for( let i = 0;i<appointment.length;i++ ){ %>
+
+                                                    <% if( appointment[i].status == 1 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div  class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main_work">
+                                                                <form action="/for/progress" method="post">
+                                                                        <label for="">Date and time of appointment: </label>
+                                                                        <br>
+                                                                        <input type="text" placeholder="enter above details" name="date" required>
+                                                                        <br>
+                                                                        <label for="">Message to patient:</label>
+                                                                        <br>
+                                                                        <input type="text" placeholder="enter message" name="message" required>
+                                                                        <br>
+            
+                                                                    <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
+                                                                        <button type="submit">send</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
+                                                    
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div>
+                                                <% } %>
+                                        </div>
+                                        <div class="multi_data" >
+                                            <% count = 0; %>
+                                                <% for( let i = 0;i<appointment.length;i++ ){ %>
+
+                                                    <% if( appointment[i].status == 2 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main_work">
+                                                                <form action="/for/comformed" method="post">
+                                                                    <label for="">Message to patient :</label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter message" name="message" required>
+                                                                    <br>
+        
+                                                                <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
+                                                                    <button type="submit">send</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
+                                                    
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div>
+                                                <% } %>
+                                        </div>
+                                        <div class="multi_data" >
+                                            <% count = 0; %>
+                                                <% for( let i = 0;i<appointment.length;i++ ){ %>
+
+                                                    <% if( appointment[i].status == 4 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main_work">
+                                                                <form action="/denied/response" method="post">
+                                                                    <label for="">Message to patient:</label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter message" name="message" required>
+                                                                    <br>
+                                                                    <label for="">Date and time of appointment(if option is for appoint patient): </label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter date" name="date" required>
+                                                                    <br>
+                                                                    <label for="">Choose options for appoint patient again or for completion conform :</label>
+                                                                    <br>
+                                                                    <select name="selection" required>
+                                                                        <option value="1">Appoint Patient again</option>
+                                                                        <option value="2">completion conform</option>
+                                                                    </select>
+                                                                    <br>
+        
+                                                                <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
+                                                                    <button type="submit">send</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
+                                                    
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div>
+                                                <% } %>
+                                        </div>
+                                        <div class="multi_data" >
+                                            <% count = 0; %>
+                                                <% for( let i = 0;i<appointment.length;i++ ){ %>
+
+                                                    <% if( appointment[i].status == 5 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
+                                                    
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="content" >
+
+                            <div class="content_head">
+                                <p>Sergeries related to your clinic</p>
+                            </div>
+
+                            <hr>
 
                             <div class="main_feature" >
                                 <div class="bookhead" >
                                     <div class="multi_head" >
-                                        <p>New appointments</p>
+                                        <p>New requests</p>
                                     </div>
                                     <div class="multi_head" >
-                                        <p>In progress</p>
+                                        <p>Sergery progress</p>
                                     </div>
                                     <div class="multi_head" >
                                         <p>Rejected</p>
@@ -184,46 +473,45 @@
                                 </div>
                                 <div class="bookdata" >
                                     <div class="multi_data" >
-                                        
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
+                                                <% for( let i = 0;i<sergery.length;i++ ){ %>
 
-                                                <% if( appointment[i].status == 1 ){ %>
-                                                    <% count++; %>
-                                                    
-                                                    <div  class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                    <% if( sergery[i].status == 1 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
                                                             </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
                                                             </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/for/progress" method="post">
+                                                            <div class="main_work">
+                                                                <form action="/for/progress" method="post">
                                                                     <label for="">Date and time of appointment: </label>
                                                                     <br>
                                                                     <input type="text" placeholder="enter above details" name="date" required>
@@ -233,686 +521,408 @@
                                                                     <input type="text" placeholder="enter message" name="message" required>
                                                                     <br>
         
-                                                                <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
+                                                                <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
                                                                     <button type="submit">send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                    <% } %>
+                                                    
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
                                                     </div>
                                                 <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
+                                                <% for( let i = 0;i<sergery.length;i++ ){ %>
 
-                                                <% if( appointment[i].status == 2 ){ %>
-                                                    <% count++; %>
+                                                    <% if( sergery[i].status == 2 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main_work">
+                                                                <form action="/for/comformed" method="post">
+                                                                    <label for="">Message to patient :</label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter message" name="message" required>
+                                                                    <br>
+        
+                                                                <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
+                                                                    <button type="submit">Send</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
                                                     
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/for/comformed" method="post">
-                                                                <label for="">Message to patient :</label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter message" name="message" required>
-                                                                <br>
-    
-                                                            <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
-                                                                <button type="submit">send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 <% } %>
-                                                
-                                            <% } %>
 
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div> 
+                                                <% } %>
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
+                                                <% for( let i = 0;i<sergery.length;i++ ){ %>
 
-                                                <% if( appointment[i].status == 4 ){ %>
-                                                    <% count++; %>
+                                                    <% if( sergery[i].status == 4 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main_work">
+                                                                <form action="/denied/response" method="post">
+                                                                    <label for="">Message to patient:</label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter message" name="message" required>
+                                                                    <br>
+                                                                    <label for="">Date and time of Sergery(if option is for appoint sergery): </label>
+                                                                    <br>
+                                                                    <input type="text" placeholder="enter date" name="date" required>
+                                                                    <br>
+                                                                    <label for="">Choose options for appoint sergery again or for completion conform:</label>
+                                                                    <br>
+                                                                    <select name="selection" required>
+                                                                        <option value="1">appoint sergery again</option>
+                                                                        <option value="2">completion conform</option>
+                                                                    </select>
+                                                                    <br>
+        
+                                                                <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
+                                                                    <button type="submit">send</button>
+                                                                </form>
+                                                                <div >
+                                                                    <button type="submit">Respond</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
                                                     
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/denied/response" method="post">
-                                                                <label for="">Message to patient:</label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter message" name="message" required>
-                                                                <br>
-                                                                <label for="">Date and time of appointment(if option is for appoint patient): </label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter date" name="date" required>
-                                                                <br>
-                                                                <label for="">Choose options for appoint patient again or for completion conform :</label>
-                                                                <br>
-                                                                <select name="selection" required>
-                                                                    <option value="1">Appoint Patient again</option>
-                                                                    <option value="2">completion conform</option>
-                                                                </select>
-                                                                <br>
-    
-                                                            <input type="hidden" name="uniqueId" value="<%= appointment[i].id %>" required >
-                                                                <button type="submit">send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
-                                                            </div>
-                                                        </div>
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
                                                     </div>
                                                 <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
                                     </div>
                                     <div class="multi_data" >
                                         <% count = 0; %>
-                                            <% for( let i = 0;i<appointment.length;i++ ){ %>
+                                                <% for( let i = 0;i<sergery.length;i++ ){ %>
 
-                                                <% if( appointment[i].status == 5 ){ %>
-                                                    <% count++; %>
+                                                    <% if( sergery[i].status == 5 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>patient</p>
+                                                                    <p class="p_head2"><%= appointment[i].patientName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= appointment[i].consultantName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
                                                     
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
                                                     </div>
                                                 <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
                                     </div>
                                 </div>
                             </div>
 
-                    </div>
-                    <div class="content" >
-
-                        <div class="content_head">
-                            <p>Sergeries related to your clinic</p>
                         </div>
+                        <div class="content" >
 
-                        <hr>
-
-                        <div class="main_feature" >
-                            <div class="bookhead" >
-                                <div class="multi_head" >
-                                    <p>New requests</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>Sergery progress</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>Rejected</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>Completed</p>
-                                </div>
+                            <div class="content_head">
+                                <p>Doctor addition requests of your clinic</p>
                             </div>
-                            <div class="bookdata" >
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
 
-                                                <% if( sergery[i].status == 1 ){ %>
-                                                    <% count++; %>
+                            <hr>
+
+                            <div class="main_feature" >
+                                <div class="bookhead" >
+                                    <div class="multi_head" >
+                                        <p>Requests</p>
+                                    </div>
+                                    <div class="multi_head" >
+                                        <p>Rejected</p>
+                                    </div>
+                                    <div class="multi_head" >
+                                        <p>Accepted</p>
+                                    </div>
+                                </div>
+                                <div class="bookdata" >
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                                <% for( let i = 0;i<requ.length;i++ ){ %>
+
+                                                    <% if( requ[i].status == 1 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= requ[i].clinicName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>doctor</p>
+                                                                    <p class="p_head2"><%= requ[i].doctorName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
                                                     
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/for/progress" method="post">
-                                                                <label for="">Date and time of appointment: </label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter above details" name="date" required>
-                                                                <br>
-                                                                <label for="">Message to patient:</label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter message" name="message" required>
-                                                                <br>
-    
-                                                            <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
-                                                                <button type="submit">send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
-                                                            </div>
-                                                        </div>
+                                                <% } %>
+
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
                                                     </div>
                                                 <% } %>
-                                                
-                                            <% } %>
+                                    </div>
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                        <% for( let i = 0;i<requ.length;i++ ){ %>
 
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
+                                            <% if( requ[i].status == 2 ){ %>
+                                                <% count++; %>
+                                                
+                                                <div class="queue">
+                                                    <div class="main_info">
+                                                        <div class="info_show">
+                                                            <p>clinic</p>
+                                                            <p class="p_head2"><%= requ[i].clinicName %></p>
+                                                        </div>
+                                                        <div  class="info_show">
+                                                            <p>to</p>
+                                                        </div>
+                                                        <div class="info_show">
+                                                            <p>doctor</p>
+                                                            <p class="p_head2"><%= requ[i].doctorName %></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="all_info">
+                                                        <div>
+                                                            <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_work">
+                                                        <form action="/clinic/update" method="post">
+                                                            <label for="">Message to doctor :</label>
+                                                            <br>
+                                                            <input type="text" placeholder="enter message" name="message" required>
+                                                            <br>
+                                                            <label for="">Working time for doctor :</label>
+                                                            <br>
+                                                            <input type="text" placeholder="enter message" name="time" required>
+                                                            <br>
+                                                            <label for="">Working days in a week :</label>
+                                                            <br>
+                                                            <input type="text" placeholder="enter message" name="days" required>
+                                                            <br>
+
+                                                        <input type="hidden" name="uniqueId" value="<%= requ[i].id %>" required >
+                                                            <button type="submit">send</button>
+                                                        </form>
+                                                        <div >
+                                                            <button type="submit">Respond</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             <% } %>
-                                </div>
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
-
-                                                <% if( sergery[i].status == 2 ){ %>
-                                                    <% count++; %>
-                                                    
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/for/comformed" method="post">
-                                                                <label for="">Message to patient :</label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter message" name="message" required>
-                                                                <br>
-    
-                                                            <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
-                                                                <button type="submit">Send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div> 
-                                            <% } %>
-                                </div>
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
-
-                                                <% if( sergery[i].status == 4 ){ %>
-                                                    <% count++; %>
-                                                    
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main_work">
-                                                            <form action="/denied/response" method="post">
-                                                                <label for="">Message to patient:</label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter message" name="message" required>
-                                                                <br>
-                                                                <label for="">Date and time of Sergery(if option is for appoint sergery): </label>
-                                                                <br>
-                                                                <input type="text" placeholder="enter date" name="date" required>
-                                                                <br>
-                                                                <label for="">Choose options for appoint sergery again or for completion conform:</label>
-                                                                <br>
-                                                                <select name="selection" required>
-                                                                    <option value="1">appoint sergery again</option>
-                                                                    <option value="2">completion conform</option>
-                                                                </select>
-                                                                <br>
-    
-                                                            <input type="hidden" name="uniqueId" value="<%= sergery[i].id %>" required >
-                                                                <button type="submit">send</button>
-                                                            </form>
-                                                            <div >
-                                                                <button type="submit">Respond</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
-                                </div>
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<sergery.length;i++ ){ %>
-
-                                                <% if( sergery[i].status == 5 ){ %>
-                                                    <% count++; %>
-                                                    
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="content" >
-
-                        <div class="content_head">
-                            <p>Doctor addition requests of your clinic</p>
-                        </div>
-
-                        <hr>
-
-                        <div class="main_feature" >
-                            <div class="bookhead" >
-                                <div class="multi_head" >
-                                    <p>Requests</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>Rejected</p>
-                                </div>
-                                <div class="multi_head" >
-                                    <p>Accepted</p>
-                                </div>
-                            </div>
-                            <div class="bookdata" >
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<requ.length;i++ ){ %>
-
-                                                <% if( requ[i].status == 1 ){ %>
-                                                    <% count++; %>
-                                                    
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].clinicName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].doctorName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head">working days:</p> <p><%= appointment[i].workingDays %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">working time: </p> <p><%= appointment[i].workingTime %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].clinicMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].doctorMessage %></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <% } %>
-                                                
-                                            <% } %>
-
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div>
-                                            <% } %>
-                                </div>
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                    <% for( let i = 0;i<requ.length;i++ ){ %>
-
-                                        <% if( requ[i].status == 2 ){ %>
-                                            <% count++; %>
                                             
-                                            <div class="queue">
-                                                <div class="main_info">
-                                                    <div class="info_show">
-                                                        <p>clinic</p>
-                                                        <p class="p_head2"><%= appointment[i].clinicName %></p>
-                                                    </div>
-                                                    <div  class="info_show">
-                                                        <p>to</p>
-                                                    </div>
-                                                    <div class="info_show">
-                                                        <p>doctor</p>
-                                                        <p class="p_head2"><%= appointment[i].doctorName %></p>
-                                                    </div>
-                                                </div>
-                                                <div class="all_info">
-                                                    <div>
-                                                        <p class="p_head">working days:</p> <p><%= appointment[i].workingDays %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">working time: </p> <p><%= appointment[i].workingTime %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">clinic message:</p> <p><%= appointment[i].clinicMessage %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">doctor message:</p> <p><%= appointment[i].doctorMessage %></p>
-                                                    </div>
-                                                </div>
-                                                <div class="main_work">
-                                                    <form action="/clinic/update" method="post">
-                                                        <label for="">Message to doctor :</label>
-                                                        <br>
-                                                        <input type="text" placeholder="enter message" name="message" required>
-                                                        <br>
-                                                        <label for="">Working time for doctor :</label>
-                                                        <br>
-                                                        <input type="text" placeholder="enter message" name="time" required>
-                                                        <br>
-                                                        <label for="">Working days in a week :</label>
-                                                        <br>
-                                                        <input type="text" placeholder="enter message" name="days" required>
-                                                        <br>
+                                        <% } %>
 
-                                                    <input type="hidden" name="uniqueId" value="<%= requ[i].id %>" required >
-                                                        <button type="submit">send</button>
-                                                    </form>
-                                                    <div >
-                                                        <button type="submit">Respond</button>
-                                                    </div>
-                                                </div>
+                                        <% if( count == 0){ %>
+                                            <div class="null_book">
+                                                <p>No booking right now </p>
                                             </div>
                                         <% } %>
-                                        
-                                    <% } %>
+                                    </div>
+                                    <div class="multi_data" >
+                                        <% count = 0; %>
+                                                <% for( let i = 0;i<requ.length;i++ ){ %>
 
-                                    <% if( count == 0){ %>
-                                        <div class="null_book">
-                                            <p>No booking right now </p>
-                                        </div>
-                                    <% } %>
-                                </div>
-                                <div class="multi_data" >
-                                    <% count = 0; %>
-                                            <% for( let i = 0;i<requ.length;i++ ){ %>
-
-                                                <% if( requ[i].status == 3 ){ %>
-                                                    <% count++; %>
+                                                    <% if( requ[i].status == 3 ){ %>
+                                                        <% count++; %>
+                                                        
+                                                        <div class="queue">
+                                                            <div class="main_info">
+                                                                <div class="info_show">
+                                                                    <p>clinic</p>
+                                                                    <p class="p_head2"><%= requ[i].clinicName %></p>
+                                                                </div>
+                                                                <div  class="info_show">
+                                                                    <p>to</p>
+                                                                </div>
+                                                                <div class="info_show">
+                                                                    <p>doctor</p>
+                                                                    <p class="p_head2"><%= requ[i].doctorName %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="all_info">
+                                                                <div>
+                                                                    <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <% } %>
                                                     
-                                                    <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>clinic</p>
-                                                                <p class="p_head2"><%= appointment[i].clinicName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].doctorName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head">working days:</p> <p><%= appointment[i].workingDays %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">working time: </p> <p><%= appointment[i].workingTime %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= appointment[i].clinicMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].doctorMessage %></p>
-                                                            </div>
-                                                        </div>
                                                 <% } %>
-                                                
-                                            <% } %>
 
-                                            <% if( count == 0){ %>
-                                                <div class="null_book">
-                                                    <p>No booking right now </p>
-                                                </div> 
-                                            <% } %>
+                                                <% if( count == 0){ %>
+                                                    <div class="null_book">
+                                                        <p>No booking right now </p>
+                                                    </div> 
+                                                <% } %>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                        
+                        <!-- add as many content section as you want -->
                     </div>
-                    
-                    <!-- add as many content section as you want -->
                 </div>
             </div>
         </div>
+        
     </div>
-    </div>
+
 
 
     <%- include('../../partials/footer.ejs') %>
@@ -921,6 +931,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="/js/profile/edit profile/clinicEdit.js"></script>
+    <script src="/js/partials/messages.js"></script>
+    <script src="/js/partials/header.js"></script>
 
 </body>
 </html>

@@ -42,6 +42,30 @@ const clinicSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  appointmentFee : {
+    type : Number,
+    default : 0
+  },
+  sergeryFee : {
+    type : Number,
+    default : 0
+  },
+  appointmentCount : {
+    type : Number,
+    default : 0
+  },
+  sergeryCount : {
+    type : Number,
+    default : 0
+  },
+  reviewPercent: {
+    type: Number,
+    default : 0
+  },
+  reviewNumber: {
+    type: Number,
+    default : 0
+  },
   establishedDate: {
     type: Date,
   },

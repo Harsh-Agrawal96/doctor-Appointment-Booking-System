@@ -25,11 +25,11 @@ let passportOfUsers = () => {
                             "Login successful"
                         ]));
                     }else{
-                        return done( null, false, req.flash("formError", "Email or password are Incorrect"));
+                        return done( null, false, req.flash("loginError", "Email or password are Incorrect"));
                     }
                 })
                 .catch( error => {
-                    return done(null, false, req.flash("formError", "Email or password are Incorrect"));
+                    return done(null, false, req.flash("loginError", "Email or password are Incorrect"));
                 });
             }catch(err){
                 return done(null, false, req.flash("error", tryErr))

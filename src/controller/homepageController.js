@@ -9,14 +9,17 @@ let gethomepage = async ( req,res ) => {
     try{
         let islog = false;
         let Utype = -1;
+        let userid = -1;
         if( req.isAuthenticated() ){
             islog = true;
             Utype = req.user.type;
+            userid = req.user.maindata.id;
         }
 
         return res.render("home pages/home.ejs",{
             islog : islog,
-            type : Utype
+            usertype : Utype,
+            userid : userid
         });
     }
     catch(err){
@@ -41,9 +44,21 @@ let getdoctorPage = async ( req,res ) => {
         fetchedClinicId = [...fetchedClinicId, ...clinics.map(doc => doc._id)];
         console.log(clinics);
 
+        let islog = false;
+        let Utype = -1;
+        let userid = -1;
+        if( req.isAuthenticated() ){
+            islog = true;
+            Utype = req.user.type;
+            userid = req.user.maindata.id;
+        }
+
         res.render("home pages/findDoctor.ejs",{
             data : doctors,
-            clinic : clinics
+            clinic : clinics,
+            islog : islog,
+            usertype : Utype,
+            userid : userid
         });
     }
     catch(err){

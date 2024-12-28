@@ -17,7 +17,7 @@ let patientProfile = async ( req,res ) => {
         }
         else{
             let islog = false;
-            let user = 199;
+            let user = -1;
             if( req.isAuthenticated() ){
                 islog = true;
                 user = req.user.type
@@ -56,7 +56,7 @@ let doctorProfile = async ( req,res ) => {
         }
         else{
             let islog = false;
-            let user = 199;
+            let user = -1;
             if( req.isAuthenticated() ){
                 islog = true;
                 user = req.user.type
@@ -99,7 +99,7 @@ let clinicProfile = async ( req,res ) => {
         }
         else{
             let islog = false;
-            let user = 199;
+            let user = -1;
             if( req.isAuthenticated() ){
                 islog = true;
                 user = req.user.type
@@ -155,6 +155,12 @@ let doctorEditPage = async ( id,req,res ) => {
         
         let data = await getUsers.getDoctorInfo(id);
         let contant = await getdata.dataforDoctor(id);
+        let islog = false;
+        let Utype = -1;
+        if( req.isAuthenticated() ){
+            islog = true;
+            Utype = req.user.type;
+        }
 
         if( data == false ){
             req.flash("error", tryErr);
@@ -164,7 +170,9 @@ let doctorEditPage = async ( id,req,res ) => {
             res.render("profile/editProfile/doctorEdit.ejs",{
                 data : data,
                 appointment : contant.appoint,
-                requ : contant.requ
+                requ : contant.requ,
+                islog : islog,
+                usertype : Utype
             });
         }
 
@@ -181,6 +189,12 @@ let patientEditPage = async ( id,req,res ) => {
 
         let contant = await getdata.dataforPatient(id);
         let data = await getUsers.getPatientInfo(id);
+        let islog = false;
+        let Utype = -1;
+        if( req.isAuthenticated() ){
+            islog = true;
+            Utype = req.user.type;
+        }
 
         if( data == false ){
             req.flash("error", tryErr);
@@ -190,7 +204,9 @@ let patientEditPage = async ( id,req,res ) => {
             res.render("profile/editProfile/patientEdit.ejs",{
                 data : data,
                 appointment : contant.appoint,
-                sergery : contant.sergery
+                sergery : contant.sergery,
+                islog : islog,
+                usertype : Utype
             });
         }
     }
@@ -206,6 +222,12 @@ let clinicEditPage = async ( id,req,res ) => {
 
         let contant = await getdata.dataforClinic(id);
         let data = await getUsers.getClinicInfo(id);
+        let islog = false;
+        let Utype = -1;
+        if( req.isAuthenticated() ){
+            islog = true;
+            Utype = req.user.type;
+        }
 
         if( data == false ){
             req.flash("error", tryErr);
@@ -216,7 +238,9 @@ let clinicEditPage = async ( id,req,res ) => {
                 data : data,
                 appointment : contant.appoint,
                 sergery : contant.sergery,
-                requ : contant.requ
+                requ : contant.requ,
+                islog : islog,
+                usertype : Utype
             });
         }
     }

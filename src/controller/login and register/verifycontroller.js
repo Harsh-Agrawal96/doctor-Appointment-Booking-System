@@ -7,7 +7,6 @@ import { tryAgainError as tryErr, registrationMsg as registerMsg } from "../../u
 
 let handleDoctorRegister = async (req,res) => {
 
-    // keep user's input fields
     let form = {
         name : req.body.name,
         againpassword : req.body.repassword,
@@ -15,11 +14,11 @@ let handleDoctorRegister = async (req,res) => {
         password : req.body.password
     }
     let forcheck = await checkforValidation(req,res,form);
-    if( forcheck == true ){
-        return res.render("register/register.ejs",{
-            errors : req.flash('formError'),
-            form : form
-        });
+    req.flash('formdata', form);
+
+    if( forcheck ){
+        req.flash('doctorError', forcheck[0]);
+        return res.redirect("/register");
     }
 
     try{
@@ -31,16 +30,13 @@ let handleDoctorRegister = async (req,res) => {
 
     }catch(err){
         req.flash("error",tryErr);
-        return res.render("register/register.ejs",{
-            form : form
-        });
+        return res.redirect("/register");
     }
 
 };
 
 let handleClinicRegister = async (req,res) => {
 
-    // keep user's input fields
     let form = {
         doctoremail : req.body.doctorEmail,
         doctorname : req.body.doctorName,
@@ -49,11 +45,11 @@ let handleClinicRegister = async (req,res) => {
         password : req.body.password
     }
     let forcheck = await checkforValidation(req,res,form);
-    if( forcheck == true ){
-        return res.render("register/clinicRegister.ejs", {
-            errors : req.flash('formError'),
-            form : form
-        })
+    req.flash('formdata', form);
+
+    if( forcheck ){
+        req.flash('clinicError', forcheck[0]);
+        return res.redirect("/clinic/register");
     }
 
     try{
@@ -65,16 +61,12 @@ let handleClinicRegister = async (req,res) => {
 
     }catch(err){
         req.flash("error",tryErr);
-        return res.render("register/clinicRegister.ejs",{
-            form : form
-        });
+        return res.redirect("/register");
     }
-
 };
 
 let handleUserRegister = async (req,res) => {
 
-    // keep user's input fields
     let form = {
         name : req.body.username,
         againpassword : req.body.repassword,
@@ -82,14 +74,16 @@ let handleUserRegister = async (req,res) => {
         password : req.body.password
     }
     let forcheck = await checkforValidation(req,res, form);
-    if( forcheck == true ){
-        return res.render("register/register.ejs",{
-            errors : req.flash('formError'),
-            form : form
-        });
+    req.flash('formdata', form);
+    
+    if( forcheck){
+        req.flash("userError", forcheck[0]);
+        res.redirect("/register");
+        return;
     }
 
     try{
+
         let user = req.body;
         await services.addNewUser(user,1);
         
@@ -98,9 +92,7 @@ let handleUserRegister = async (req,res) => {
 
     }catch(err){
         req.flash("error",tryErr);
-        return res.render("register/register.ejs",{
-            form : form
-        });
+        return res.redirect("/register");
     }
 
 };
@@ -115,10 +107,9 @@ let checkforValidation = async (req,res, form) => {
         errors.forEach( ( items ) => {
             errorArr.push(items.msg);
         })
-        req.flash("formError",errorArr);
-        return true;
+        return errorArr;
     }else{
-        return false;
+        return null;
     }
 };
 

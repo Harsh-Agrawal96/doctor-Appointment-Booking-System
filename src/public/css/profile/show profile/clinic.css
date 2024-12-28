@@ -85,8 +85,12 @@
 }
 .main_data > p{
     font-size: 1.2em;
+}
+.mainhead{
     font-weight: 600;
-    margin-bottom: 1em;
+}
+#smhead{
+    font-size: 0.9em;
 }
 
 .sec2{
@@ -277,6 +281,9 @@
     .main_data > p{
         font-size: 1em;
     }
+    #smhead{
+        font-size: 0.7em;
+    }
     .slot_div p{
         font-size: 1.2em;
     }
@@ -293,6 +300,9 @@
     }
     .main_data > p{
         font-size: 0.8em;
+    }
+    #smhead{
+        font-size: 0.6em;
     }
     .book_left p,.book_right p{
         font-size: 0.4em;
@@ -330,6 +340,9 @@
     }
     .main_data > p{
         font-size: 0.6em;
+    }
+    #smhead{
+        font-size: 0.4em;
     }
     .book_left p,.book_right p{
         font-size: 0.3em;

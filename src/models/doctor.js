@@ -32,6 +32,18 @@ const doctorSchema = new mongoose.Schema({
   work: {
     type: String,
   },
+  appointmentFee : {
+    type : Number,
+    default : 0
+  },
+  consultFee : {
+    type : Number,
+    default : 0
+  },
+  bookingCount : {
+    type : Number,
+    default : 0
+  },
   reviewPercent: {
     type: Number,
     required: true,

@@ -77,6 +77,10 @@ let doctorPU_profession = async (req,res) => {
 }
 
 let makeobject = (string) => {
+
+    if( string === '' ){
+        return [];
+    }
     const substringsArray = string.split(",");
     return substringsArray;
 }

@@ -9,8 +9,7 @@
 .navbar{
     width: 100%;
     height: max-content;
-    padding: 1.3em 0em;
-    padding-top: 0px;
+    padding: 0px;
 }
 
 .main{
@@ -34,5 +33,18 @@
 @media screen and ( max-width : 991px) {
     .padd{
         padding-bottom: 1em;
+    }
+}
+
+
+/* error message css while verifying */
+
+.errMsg{
+    font-size: 0.7em;
+    color: #E74C3C;
+}
+@media screen and ( max-width: 350px ) {
+    .errMsg{
+        font-size: 0.5em;
     }
 }
