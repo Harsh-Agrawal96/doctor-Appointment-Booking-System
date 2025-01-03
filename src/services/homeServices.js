@@ -10,7 +10,6 @@ let findtopdoctor = async (limit, alreadyFetchedIds = []) => {
 
             const doctors = await Doctor.find({ _id: { $nin: alreadyFetchedIds } })
             .limit(limit);
-            console.log(doctors)
             resolve(doctors);
         }
         catch(err){
@@ -25,9 +24,8 @@ let findtopclinic = async (limit, alreadyFetchedIds = []) => {
     return new Promise ( async ( resolve,reject ) => {
         try{
 
-            const clinics = await Doctor.find({ _id: { $nin: alreadyFetchedIds } })
+            const clinics = await Clinic.find({ _id: { $nin: alreadyFetchedIds } })
             .limit(limit);
-            console.log(clinics)
             resolve(clinics);
         }
         catch(err){

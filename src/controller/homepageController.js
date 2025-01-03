@@ -39,7 +39,7 @@ let getdoctorPage = async ( req,res ) => {
         console.log(doctors);
 
         let fetchedClinicId = [];
-        let clinics = await homework.findtopdoctor(limit,fetchedClinicId);
+        let clinics = await homework.findtopclinic(limit,fetchedClinicId);
 
         fetchedClinicId = [...fetchedClinicId, ...clinics.map(doc => doc._id)];
         console.log(clinics);

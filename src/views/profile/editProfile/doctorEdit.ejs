@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/partials/header.css">
     <link rel="stylesheet" href="/css/partials/messages.css">
     <link rel="stylesheet" href="/css/profile/edit profile/doctoreditStyle.css">
+    <link rel="stylesheet" href="/css/profile/edit profile/editcommon.css">
     <link rel="stylesheet" href="/css/partials/footer.css">
 
 </head>
@@ -78,32 +79,32 @@
                                     <div class="user_input1s" >
                                         <label for="">Name : </label>
                                         <br>
-                                        <input value=" <%= data.fullName %> " type="text" placeholder="" name="name">
+                                        <input value="<%= data.fullName %>" type="text" placeholder="" name="name">
                                     </div>
                                     <div class="user_input1s" >
                                         <label for="">Country : </label>
                                         <br>
-                                        <input value=" <%= data.Country %> " type="text"  placeholder="" name="country">
+                                        <input value="<%= data.Country %>" type="text"  placeholder="" name="country">
                                     </div>
                                     <div class="user_input1s" >
                                         <label for="">State : </label>
                                         <br>
-                                        <input value=" <%= data.State %> " type="text" placeholder="" name="state" >
+                                        <input value="<%= data.State %>" type="text" placeholder="" name="state" >
                                     </div>
                                     <div class="user_input1s" >
                                         <label for="">City : </label>
                                         <br>
-                                        <input value=" <%= data.city %> " type="text"  placeholder="" name="city">
+                                        <input value="<%= data.city %>" type="text"  placeholder="" name="city">
                                     </div>
                                     <div class="user_input1s" >
                                         <label for="">address : </label>
                                         <br>
-                                        <input value=" <%= data.address %> " type="text" placeholder="" name="address">
+                                        <input value="<%= data.address %>" type="text" placeholder="" name="address">
                                     </div>
                                     <div class="user_input1s" >
                                         <label for="">Date of birth : </label>
                                         <br>
-                                        <input value=" <%= data.DOB %> " type="date"  placeholder="" name="dob">
+                                        <input value="<%= data.DOB %>" type="date"  placeholder="" name="dob">
                                     </div>
                                 </div>
 
@@ -124,12 +125,12 @@
                                     <div class="user_input2s" >
                                         <label for="">work :</label>
                                         <br>
-                                        <input value=" <%= data.work %> " type="text" name="work" id="" placeholder="">
+                                        <input value="<%= data.work %>" type="text" name="work" id="" placeholder="">
                                     </div>
                                     <div class="user_input2s" >
                                         <label for="">about me :</label>
                                         <br>
-                                        <input value=" <%= data.about %> " type="text" name="about" id="" placeholder="">
+                                        <input value="<%= data.about %>" type="text" name="about" id="" placeholder="">
                                     </div>
                                 </div>
 
@@ -147,132 +148,36 @@
 
                             <form class="saving_form" action="/doctor/profession" method="post">
                                 <div class="formInner inner3s" >
-                                    <div class="user_input3s" >
-                                        <label for="servicesInput">Add services:</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="service">
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                let skill = [];
-                                                for( let i = 0;i<data.Services.length;i++ ){ 
-                                                skill.push(data.Services[i]);
-                                            %>
-                                                <li> <%= data.Services[i] %><button> Remove </button> </li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="serviceslist" >
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="specializationInput">Add specialization :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="specialization" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = [];
-                                                for( let i = 0;i<data.specializations.length;i++ ){ 
-                                                skill.push(data.specializations[i]);
-                                            %>
-                                                <li> <%= data.specializations[i] %><button> Remove </button> </li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="specializationlist">
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="awardInput">Add award :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="award" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = [];
-                                                for( let i = 0;i<data.awards.length;i++ ){ 
-                                                skill.push(data.awards[i]);
-                                            %>
-                                                <li> <%= data.awards[i] %><button> Remove </button> </li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="awardlist">
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="educationInput">Add education :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="education" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = [];
-                                                for( let i = 0;i<data.education.length;i++ ){ 
-                                                skill.push(data.education[i]);
-                                            %>
-                                                <li> <%= data.education[i] %> <button> Remove </button></li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="educationlist">
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="membershipInput">Add membership :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="membership" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = [];
-                                                for( let i = 0;i<data.membership.length;i++ ){ 
-                                                skill.push(data.membership[i]);
-                                            %>
-                                                <li> <%= data.membership[i] %><button> Remove </button> </li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="membershiplist">
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="experienceInput">Add experience :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="experience" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = [];
-                                                for( let i = 0;i<data.experience.length;i++ ){ 
-                                                skill.push(data.experience[i]);
-                                            %>
-                                                <li> <%= data.experience[i] %> <button> Remove </button></li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="experiencelist">
-                                    </div>
-                                    <div class="user_input3s" >
-                                        <label for="registrationInput">Add registration :</label>
-                                        <br>
-                                        <input type="text" class="skillInput" name="registration" >
-                                        <button type="button" class="addSkillButton">Add</button>
-        
-                                        <ul class="skillList">
-                                            <% 
-                                                skill = []
-                                                for( let i = 0;i<data.Registration.length;i++ ){ 
-                                                skill.push(data.experience[i]);
-                                            %>
-                                                <li> <%= data.Registration[i] %> <button> Remove </button> </li>
-                                            <% } %>
-                                        </ul>
-
-                                        <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="registrationlist" >
-                                    </div>
+                                    <% let skill = [] %>
+                                    <% let list = [] %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "services", 
+                                        professionList : data.Services
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "specialization", 
+                                        professionList : data.specializations
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "award", 
+                                        professionList : data.awards
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "education", 
+                                        professionList : data.education
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "membership", 
+                                        professionList : data.membership
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "experience", 
+                                        professionList : data.experience
+                                    }) %>
+                                    <%- include("../../partials/editProfile/doctor/profession.ejs", {
+                                        professionType : "registration", 
+                                        professionList : data.Registration
+                                    }) %>
                                 </div>
 
                                 <button type="submit" >save changes</button>
@@ -312,36 +217,12 @@
                                                     <% count++; %>
                                                     
                                                     <div  class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/bookingHead.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/bookingInfo.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
                                                         <div class="main_work">
                                                             <form action="/for/progress" method="post">
                                                                     <label for="">Date and time of appointment : </label>
@@ -381,36 +262,12 @@
                                                     <% count++; %>
                                                     
                                                     <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/bookingHead.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/bookingInfo.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
                                                         <div class="main_work">
                                                             <form action="/for/comformed" method="post">
                                                                 <label for="">Message to patient :</label>
@@ -446,36 +303,12 @@
                                                     <% count++; %>
                                                     
                                                     <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/bookingHead.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/bookingInfo.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
                                                         <div class="main_work">
                                                             <form action="/denied/response" method="post">
                                                                 <label for="">Message to patient :</label>
@@ -522,36 +355,12 @@
                                                     <% count++; %>
                                                     
                                                     <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>patient</p>
-                                                                <p class="p_head2"><%= appointment[i].patientName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= appointment[i].consultantName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head"> symtom:</p> <p><%= appointment[i].symtom %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head"> referred date by patient: </p> <p><%= appointment[i].preferredConsultdate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">final date of consultant:</p> <p><%= appointment[i].consultDate %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">patient message:</p> <p><%= appointment[i].patientMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= appointment[i].consultantMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/bookingHead.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/bookingInfo.ejs", {
+                                                            bookingInfo : appointment[i]
+                                                        }) %>
                                                     </div>
                                                 <% } %>
                                                 
@@ -598,33 +407,12 @@
                                                     <% count++; %>
                                                     
                                                     <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>clinc</p>
-                                                                <p class="p_head2"><%= requ[i].clinicName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= requ[i].doctorName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/requestHead.ejs", {
+                                                            requestInfo : requ[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/requestInfo.ejs", {
+                                                            requestInfo : requ[i]
+                                                        }) %>
                                                 <div class="main_work">
                                                     <form action="/doctor/request/response" method="post">
                                                         <label for="">Message to doctor :</label>
@@ -675,33 +463,12 @@
                                             <% count++; %>
                                             
                                             <div class="queue">
-                                                <div class="main_info">
-                                                    <div class="info_show">
-                                                        <p>clinc</p>
-                                                        <p class="p_head2"><%= requ[i].clinicName %></p>
-                                                    </div>
-                                                    <div  class="info_show">
-                                                        <p>to</p>
-                                                    </div>
-                                                    <div class="info_show">
-                                                        <p>doctor</p>
-                                                        <p class="p_head2"><%= requ[i].doctorName %></p>
-                                                    </div>
-                                                </div>
-                                                <div class="all_info">
-                                                    <div>
-                                                        <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
-                                                    </div>
-                                                    <div>
-                                                        <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
-                                                    </div>
-                                                </div>
+                                                <%- include("../../partials/editProfile/doctor/requestHead.ejs", {
+                                                    requestInfo : requ[i]
+                                                }) %>
+                                                <%- include("../../partials/editProfile/requestInfo.ejs", {
+                                                    requestInfo : requ[i]
+                                                }) %>
                                             </div>
                                         <% } %>
                                         
@@ -723,33 +490,12 @@
                                                     <% count++; %>
                                                     
                                                     <div class="queue">
-                                                        <div class="main_info">
-                                                            <div class="info_show">
-                                                                <p>clinc</p>
-                                                                <p class="p_head2"><%= requ[i].clinicName %></p>
-                                                            </div>
-                                                            <div  class="info_show">
-                                                                <p>to</p>
-                                                            </div>
-                                                            <div class="info_show">
-                                                                <p>doctor</p>
-                                                                <p class="p_head2"><%= requ[i].doctorName %></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="all_info">
-                                                            <div>
-                                                                <p class="p_head">working days:</p> <p><%= requ[i].workingDays %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">working time: </p> <p><%= requ[i].workingTime %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">clinic message:</p> <p><%= requ[i].clinicMessage %></p>
-                                                            </div>
-                                                            <div>
-                                                                <p class="p_head">doctor message:</p> <p><%= requ[i].doctorMessage %></p>
-                                                            </div>
-                                                        </div>
+                                                        <%- include("../../partials/editProfile/doctor/requestHead.ejs", {
+                                                            requestInfo : requ[i]
+                                                        }) %>
+                                                        <%- include("../../partials/editProfile/requestInfo.ejs", {
+                                                            requestInfo : requ[i]
+                                                        }) %>
                                                 <% } %>
                                                 
                                             <% } %>

@@ -1,0 +1,24 @@
+
+<div class="user_input3s" >
+    <label for="<%= professionType %>Input">Add <%= professionType %> :</label>
+    <br>
+    <input type="text" class="skillInput" name="<%= professionType %>" >
+    <button type="button" class="addSkillButton">Add</button>
+
+    <ul class="skillList">
+        <%
+            List = professionList
+            skill = [];
+            if( List !== null ){
+                for( let i = 0;i<List.length;i++ ){ 
+                skill.push(List[i]);
+        %>
+                <li> <%= List[i] %><button> Remove </button> </li>
+        <%
+                }
+            }
+        %>
+    </ul>
+
+    <input type="hidden" value="<%= skill.join(",") %>" class="hideskillList" name="<%= professionType %>list">
+</div>
