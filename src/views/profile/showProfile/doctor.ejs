@@ -104,8 +104,11 @@
                     <div class="sec1">
                         <!-- info with photo -->
                         <div class="photo">
-                            photo
-                            <img src="" alt="">
+                            <% 
+                                const ind = Math.floor(Math.random() * 4);
+                                const link = "/images/logo/img" + (ind) + ".jpg";
+                            %>
+                            <img src="<%= link %>" alt="">
                         </div>
                         <div class="info">
                             <div class="main_data">

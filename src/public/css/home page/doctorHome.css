@@ -1,6 +1,6 @@
 :root{
-    --boxanimatonWidth : 250px;
-    --boxanimationHeight : 190px;
+    --boxanimatonWidth : 280px;
+    --boxanimationHeight : 210px;
 }
 
 
@@ -44,10 +44,11 @@
     & > button{
         padding: 11px 23px;
         border: 1px solid black;
-        background-color: grey;
+        background-color: #199fd9;
         border-radius: 5px;
         margin-bottom: 1em;
-
+        font-weight: 600;
+        color: #fff;;
     }
     & > .part_icon{
         display: flex;
@@ -257,19 +258,34 @@
 .parent {
     display: flex;
     transition: transform 0.3s ease;
-    gap: 4em;
+    gap: 2.5em;
 }
 
 .child {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.3em;
     height: max-content;
-    width: max-content;
+    width: 200px;
+}
+.child > div{
+    margin: auto;
+    width: 100%;
+    height: max-content;
+    padding: 0em;
+
+    & > p{
+        word-wrap: break-word;
+        font-size: 0.8em;
+        width: 100%;
+        text-align: center;
+        margin: 0px;
+    }
 }
 .child > .forimg{
-    height: 100px;
+    height: 110px;
     width: 100px;
+    padding: 1em 0.1em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,29 +295,18 @@
     background-color: gray;
     overflow: hidden;
 }
-.child > .consult_name{
-    height: max-content;
-    width: 100%;
-    padding: 0.2em 0.3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.consult_name > p{
+.child > .consult_name > p{
     font-size: 1em;
     font-weight: 600;
-    word-wrap: break-word;
-    height: max-content;
-    text-align: center;
 }
 
 .listtwo{
-    gap: 2em;
+    gap: 1.5em;
 }
 .subdiv{
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.1em;
     height: max-content;
     width: max-content;
 }
@@ -324,7 +329,7 @@
 }
 .div_content > p{
     height: max-content;
-    font-size: 1em;
+    font-size: 0.9em;
     word-wrap: break-word;
     padding: 0px;
     margin: 0px;
@@ -422,21 +427,31 @@
         font-size: 0.7em;
     }
     .parent{
-        gap: 2em;
+        gap: 1.2em;
+    }
+    .child{
+        gap: 0.2em;
+        width: 180px;
+    }
+    .child > div{
+        & > p{
+            font-size: 0.6em;
+        }
     }
     .child > .forimg{
         height: 90px;
-        width: 90px;
+        width: 80px;
+        padding: 0.8em 0.1em;
     }
-    .consult_name > p{
+    .child > .consult_name > p{
         font-size: 0.8em;
     }
     :root{
-        --boxanimatonWidth : 190px;
-        --boxanimatonHeight : 165px;
+        --boxanimatonWidth : 200px;
+        --boxanimationHeight : 150px;
     }
     .div_content > p{
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
     .divhead > p{
         font-size: 1em;
@@ -484,25 +499,34 @@
         font-size: 0.5em;
     }
     .parent{
-        gap: 1.5em;
+        gap: 0.9em;
+    }
+    .child{
+        gap: 0.2em;
+        width: 150px;
+    }
+    .child > div{
+        & > p{
+            font-size: 0.4em;
+        }
     }
     .child > .forimg{
         height: 80px;
-        width: 80px;
-
+        width: 70px;
+        padding: 0.6em 0.1em;
     }
-    .consult_name > p{
+    .child > .consult_name > p{
         font-size: 0.6em;
     }
     :root{
-        --boxanimatonWidth : 160px;
-        --boxanimationHeight : 140px;
+        --boxanimatonWidth : 150px;
+        --boxanimationHeight : 110px;
     }
     .div_content > p{
-        font-size: 0.5em;
+        font-size: 0.4em;
     }
     .divhead > p{
-        font-size: 0.7em;
+        font-size: 0.6em;
     }
     .head,.describe{
         padding-left: 2em;
@@ -525,7 +549,13 @@
         margin-bottom: 1.7em;
     }
 }
-a {
+a{
     color: black;
+}
+.subdiv:hover .divhead {
+    color: rgb(72, 72, 255);
+}
+.child:hover .consult_name{
+    color: rgb(72, 72, 255);
 }
 

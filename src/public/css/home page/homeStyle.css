@@ -1,6 +1,6 @@
 :root{
-    --boxanimatonWidth : 230px;
-    --boxanimationHeight : 200px;
+    --boxanimatonWidth : 280px;
+    --boxanimationHeight : 220px;
 }
 
 /* content */
@@ -115,6 +115,7 @@
     gap: 0.5em;
     height: max-content;
     width: max-content;
+    cursor: pointer;
 }
 .child > .forimg{
     height: 100px;
@@ -145,12 +146,12 @@
 }
 
 .listtwo{
-    gap: 2em;
+    gap: 1.5em;
 }
 .subdiv{
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.1em;
     height: max-content;
     width: max-content;
 }
@@ -173,7 +174,7 @@
 }
 .div_content > p{
     height: max-content;
-    font-size: 1em;
+    font-size: 0.9em;
     word-wrap: break-word;
     padding: 0px;
     margin: 0px;
@@ -282,11 +283,11 @@
         font-size: 0.8em;
     }
     :root{
-        --boxanimatonWidth : 190px;
-        --boxanimatonHeight : 160px;
+        --boxanimatonWidth : 200px;
+        --boxanimationHeight : 150px;
     }
     .div_content > p{
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
     .divhead > p{
         font-size: 1em;
@@ -345,14 +346,14 @@
         font-size: 0.6em;
     }
     :root{
-        --boxanimatonWidth : 160px;
-        --boxanimationHeight : 140px;
+        --boxanimatonWidth : 150px;
+        --boxanimationHeight : 110px;
     }
     .div_content > p{
-        font-size: 0.5em;
+        font-size: 0.4em;
     }
     .divhead > p{
-        font-size: 0.7em;
+        font-size: 0.6em;
     }
     .head,.describe{
         padding-left: 2em;
@@ -375,5 +376,12 @@
         margin-bottom: 1.7em;
     }
 }
+a{
+    color: black;
+}
+.subdiv:hover .divhead {
 
+    color: rgb(72, 72, 255);
+    
+}
 

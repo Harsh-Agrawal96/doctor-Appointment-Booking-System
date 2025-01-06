@@ -32,9 +32,7 @@
                     </div>
                     <p class="description">Private consultation and online appointment booking</p>
                     <p> +175 doctors online now</p>
-                    <button>
-                        <a class="link primary-button cta" href="/consult/direct/new_consultation">Consult Now</a>
-                    </button>
+                    <button> Consult Now </button>
                     <div class="part_icon">
                         <i class="icon-ic_awards"></i>
                         <p>Verified Doctors</p>
@@ -56,46 +54,10 @@
 
         <div class="parts">
             <div class="head">
-                <p>Consult online for any health issue</p>
+                <p>Appointment for sergeries with our clinics</p>
             </div>
             <div class="describe">
-                <p>personal consultation for any health issue online with our top doctors in all specialists</p>
-            </div>
-
-            <div class="options">
-                <button class="scroll-btn scroll-left" >&lt;</button>
-                <div class="data_show">
-                    <div class="parent" >
-                        <a href=""></a>
-
-                        <% for( let i = 0;i<data.length;i++){  %>
-                            <a href="/doctor/profile/<%= data[i].id %>">
-                                <div class="child">
-                                    <div class="forimg">
-                                        <img src="https://www.practostatic.com/consult/consult-home/symptoms_icon/irregular-painful+period.png" alt="jjbnk">
-                                    </div>
-                                    <div class="consult_name">
-                                        <p> <%= data[i].fullName  %> </p>
-                                        <!-- doctor work -->
-                                        <!-- consult number of doctor -->
-                                    </div>
-                                </div>
-                            </a>
-                        <% }  %>
-                        
-                    <!-- Add more child divs as needed -->
-                    </div>
-                </div>
-                <button class="scroll-btn scroll-right">&gt;</button>
-            </div>
-        </div>
-
-        <div class="parts">
-            <div class="head">
-                <p>Consult online for any health issue</p>
-            </div>
-            <div class="describe">
-                <p>personal consultation for any health issue online with our top doctors in all specialists</p>
+                <p>Personal appointments for any type of sergeries and test with our trusted clinics and be healthy</p>
             </div>
 
             <div class="options">
@@ -113,8 +75,50 @@
                                     </div>
                                     <div class="consult_name">
                                         <p> <%= clinic[i].fullName  %> </p>
-                                        <!-- doctor work -->
-                                        <!-- consult number of doctor -->
+                                    </div>
+                                    <div>
+                                        <p><%= sergery[i] %></p>
+                                    </div>
+                                </div>
+                            </a>
+                        <% }  %>
+                        
+                    </div>
+                </div>
+                <button class="scroll-btn scroll-right">&gt;</button>
+            </div>
+        </div>
+
+        <div class="parts">
+            <div class="head">
+                <p>Expert Doctors that are connected with us</p>
+            </div>
+            <div class="describe">
+                <p>Doctors with their areas of expertise and services that are ready to appoint you for any health issue</p>
+            </div>
+
+            <div class="options">
+                <button class="scroll-btn scroll-left" >&lt;</button>
+                <div class="data_show">
+                    <div class="parent" >
+
+                        <% for( let i = 0;i<data.length;i++){  %>
+                            <a href="/doctor/profile/<%= data[i].id %>">
+                                <div class="child">
+                                    <div class="forimg">
+                                        <%
+                                            const ind = Math.floor(Math.random() * 4);
+                                            const link =  "/images/logo/img" + (ind) + ".jpg";
+                                        %>
+                                        <img src="<%= link %>" alt="jjbnk">
+                                    </div>
+                                    <div class="consult_name">
+                                        <p> <%= data[i].fullName  %> </p>
+                                    </div>
+                                    <div>
+                                        <% if( data[i].Services !== null ){ %>
+                                            <p><%= data[i].Services.join(", ") %></p>
+                                        <% } %>
                                     </div>
                                 </div>
                             </a>
@@ -129,10 +133,10 @@
 
         <div class="parts">
             <div class="head">
-                <p>Consult online for any health issue</p>
+                <p>Problem that wants to consultance with doctor</p>
             </div>
             <div class="describe">
-                <p>personal consultation for any health issue online with our top doctors in all specialists</p>
+                <p>Know about common health problems and their key symptoms to get rid of this with our experience doctors</p>
             </div>
 
             <div class="options">
@@ -141,135 +145,26 @@
 
                     <div class="parent listtwo" >
 
-                        <% if( data.length >= 1 ){ %>
-                        <a href="/doctor/profile/<%= data[data.length - 1].id %>">
-                            <div class="subdiv">
-                                <div class="showimg">
-                                    <img src="/images/doctorHomeImages/box/img1.jpg" alt="jjbnk">
-                                </div>
-                                <div class="divhead">
-                                    <p>foof asdfipa sd</p>
-                                </div>
-                                <div class="div_content">
-                                    <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                </div>
-                            </div>
-                        </a>
-                        <% } %>
-
-                        <% if( data.length >= 2 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 2].id %>">
+                        <% let ind = -1 %>
+                        <% for(let i = data.length-1;i>=0;i-- ){ %>
+                            <% ind = data.length - i %>
+                            <a href="/doctor/profile/<%= data[i].id %>">
                                 <div class="subdiv">
                                     <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img2.jpg" alt="jjbnk">
+                                        <% const link = "/images/doctorHomeImages/box/img" + ind + ".jpg" %>
+                                        <img src=<%= link %> alt="jjbnk">
                                     </div>
                                     <div class="divhead">
-                                        <p>foof asdfipa sd</p>
+                                        <p><%= disease[ind-1].name %></p>
                                     </div>
                                     <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
+                                        <p><%= disease[ind-1].solution %></p>
+                                        <p><%= disease[ind-1].consult %></p>
                                     </div>
                                 </div>
                             </a>
                         <% } %>
 
-                        <% if( data.length >= 3 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 3].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img3.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-
-                        <% if( data.length >= 4 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 4].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img4.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-
-                        <% if( data.length >= 5 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 5].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img5.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-
-                        <% if( data.length >= 6 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 6].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img6.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-
-                        <% if( data.length >= 7 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 7].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img7.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-
-                        <% if( data.length >= 8 ){ %>
-                            <a href="/doctor/profile/<%= data[data.length - 8].id %>">
-                                <div class="subdiv">
-                                    <div class="showimg">
-                                        <img src="/images/doctorHomeImages/box/img8.jpg" alt="jjbnk">
-                                    </div>
-                                    <div class="divhead">
-                                        <p>foof asdfipa sd</p>
-                                    </div>
-                                    <div class="div_content">
-                                        <p>for childasdfas;dofapsd fas9pdifjasodilkfj apsdo </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <% } %>
-                        
-                    <!-- Add more child divs as needed -->
                     </div>
 
                 </div>

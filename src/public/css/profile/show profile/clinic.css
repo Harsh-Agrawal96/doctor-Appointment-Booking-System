@@ -418,7 +418,11 @@
 .sec2 .lefts_info{
     display: flex;
     justify-content: start;
-    gap: 1.5em;
+    gap: 1em;
+
+    & > .img_div > img{
+        width: 100%;
+    }
 }
 
 .sec2 .rights_info{
