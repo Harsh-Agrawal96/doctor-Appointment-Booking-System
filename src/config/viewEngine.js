@@ -1,9 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 
+
 // config( initialize ) view engine for nodejs application
-
-
 function configViewEngine (app) {
 
     app.use(express.static("./src/public"));
@@ -14,6 +13,4 @@ function configViewEngine (app) {
     app.use(bodyParser.urlencoded({extended:true}));
 };
 
-export {
-    configViewEngine,
-}
+export default configViewEngine;
