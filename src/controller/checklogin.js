@@ -1,3 +1,4 @@
+import { serverErrorController } from "../utils/errorMsg.js";
 
 
 let checkLoggedIn = ( req,res, next ) => {
@@ -18,14 +19,23 @@ let checkLoggedOut = ( req,res, next ) => {
 
 let postLogout = ( req,res ) => {
 
-    req.sessoin.destroy( function(error) {
-        return res.redirect("/login");
+    req.logout(err => {
+        if(err){
+            req.flash("error", serverErr);
+            return res.redirect("/");
+        }
+        req.session.destroy(err => {
+            if(err)
+                return res.redirect("/");
+            res.clearCookie('connect.sid');
+            res.redirect('/login');
+        });
     });
 };
+
 
 export {
     checkLoggedIn,
     checkLoggedOut,
     postLogout,
-
 }

@@ -46,6 +46,7 @@ let initAllVerifyRoutes = (app) => {
     routes.post( "/user/register", validate.registerValid, verifyPost.handleUserRegister );
     routes.post( "/clinic/register", validate.clinicRegisterValid, verifyPost.handleClinicRegister );
 
+    routes.get( "/logout", checkAuth.postLogout);
 
     return app.use("/",routes);
 };
