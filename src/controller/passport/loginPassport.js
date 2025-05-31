@@ -16,9 +16,14 @@ let passportOfUsers = () => {
         },
         async ( req,email, password, done) => {
             try{
+
+                console.log("here comes")
+                console.log(email, password)
                 
                 await passportmanage.findUserbyEmail(email)
                 .then( async (user) => {
+                    console.log("here")
+                    console.log(user)
                     let message = await passportmanage.comparePassword( password, user);
                     if( message == true ){
                         return done(null, user, req.flash("success", [
@@ -29,9 +34,13 @@ let passportOfUsers = () => {
                     }
                 })
                 .catch( error => {
+                    console.log("error 1")
+                    console.log(error)
                     return done(null, false, req.flash("loginError", "Email or password are Incorrect"));
                 });
             }catch(err){
+                console.log("error 2")
+                console.log(err)
                 return done(null, false, req.flash("error", tryErr))
             }
         }

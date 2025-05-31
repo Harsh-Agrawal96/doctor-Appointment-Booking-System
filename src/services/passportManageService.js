@@ -13,6 +13,7 @@ let findUserbyEmail = (email) => {
             const user = await User.findOne({
                 useremail : email
             });
+            console.log("is user present", user)
             if( user == null ) {
                 reject( `Email is not found`);
             }else{

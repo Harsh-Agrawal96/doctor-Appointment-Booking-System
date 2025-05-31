@@ -1,0 +1,30 @@
+export const daysOptions = [
+    'Mon to Fri',
+    'Mon to Satur',
+    'Tues to Satur',
+    'Mon, Wednes, Fri',
+    'Weekdays only',
+    'Weekends only',
+    'Tues, Thurs',
+    'Tues, Thurs, Satur',
+    'Satur, Sun',
+  ];
+
+export  const timeRanges = [
+    '9:00 AM to 1:00 PM',
+    '10:00 AM to 2:00 PM',
+    '2:00 PM to 6:00 PM',
+    '4:00 PM to 9:00 PM',
+    '8:00 AM to 12:00 PM',
+    '3:00 PM to 7:00 PM',
+    '9:00 AM to 5:00 PM',
+    '8:00 PM to 10:00 PM',
+    '8:00 PM to 12:00 PM',
+    '6:00 PM to 10:00 PM',
+    '6:00 PM to 11:00 PM',
+    '7:00 PM to 11:00 PM',
+    '8:00 AM to 12:00 AM',
+    '6:00 AM to 10:00 AM',
+    '6:00 AM to 11:00 AM',
+    '7:00 AM to 11:00 AM',
+  ];
